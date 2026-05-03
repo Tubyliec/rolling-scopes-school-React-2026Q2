@@ -3,7 +3,7 @@ import type { AppState } from './core/model/interfaces/app-state.interface.ts';
 import SearchSection from './widgets/search-section/search-section.tsx';
 import { KEY_SEARCH_TERM } from './shared/constants/search-constants.ts';
 import { buildSearchUrl } from './shared/utilities/build-search-url.ts';
-import type { PersonResponse } from './core/entities/person/model/interfaces/person-response.interface.ts';
+import type { PersonResponse } from './entities/person/model/interfaces/person-response.interface.ts';
 import { RESULTS_PER_PAGE } from './shared/constants/page-constants.ts';
 import Header from './widgets/header/header.tsx';
 
