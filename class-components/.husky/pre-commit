@@ -1,2 +1,2 @@
-prettier --write .
-eslint
+npx prettier --write .
+npx eslint .
