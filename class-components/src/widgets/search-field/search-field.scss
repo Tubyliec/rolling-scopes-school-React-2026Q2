@@ -1,0 +1,96 @@
+@use '../../shared/styles/variables' as *;
+
+.search-field {
+  display: flex;
+  align-items: flex-end;
+  gap: $spacing-md;
+  padding-top: $spacing-sm;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    flex: 1;
+    max-width: 520px;
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    color: $color-text-dim;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+  }
+
+  &__input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+
+    &::before {
+      content: '>';
+      position: absolute;
+      left: 14px;
+      color: $color-amber;
+      font-size: $font-size-md;
+      pointer-events: none;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    background: $color-bg;
+    border: 1px solid $color-border-bright;
+    color: $color-text-bright;
+    font-family: $font-mono;
+    font-size: $font-size-md;
+    padding: 11px $spacing-md 11px 34px;
+    outline: none;
+    transition:
+      border-color $transition-base,
+      box-shadow $transition-base;
+    caret-color: $color-amber;
+
+    &::placeholder {
+      color: $color-text-dim;
+    }
+
+    &:focus {
+      border-color: $color-amber;
+      box-shadow:
+        0 0 0 1px $color-amber,
+        inset 0 0 20px $color-amber-glow;
+    }
+
+    &:disabled {
+      opacity: 0.5;
+    }
+  }
+
+  &__btn {
+    font-family: $font-mono;
+    font-size: 12px;
+    font-weight: 700;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    background: $color-amber;
+    color: #000;
+    padding: 12px 28px;
+    align-self: flex-end;
+    transition:
+      background $transition-fast,
+      transform $transition-fast;
+
+    &:hover:not(:disabled) {
+      background: #ffc04a;
+    }
+
+    &:active:not(:disabled) {
+      transform: scale(0.97);
+    }
+
+    &:disabled {
+      background: $color-border-bright;
+      color: $color-text-dim;
+    }
+  }
+}

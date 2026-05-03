@@ -1,0 +1,33 @@
+// Color palette
+$color-bg: #0d0f11;
+$color-surface: #13171c;
+$color-border: #1e2530;
+$color-border-bright: #2e3a48;
+$color-amber: #f5a623;
+$color-amber-dim: #a36d12;
+$color-amber-glow: rgba(245, 166, 35, 0.08);
+$color-red: #e05252;
+$color-green: #4ade80;
+$color-text: #c8d0da;
+$color-text-dim: #5a6475;
+$color-text-bright: #e8edf3;
+
+// Typography
+$font-mono: 'JetBrains Mono', monospace;
+$font-display: 'Syne', sans-serif;
+
+$font-size-base: 13px;
+$font-size-sm: 11px;
+$font-size-xs: 10px;
+$font-size-md: 14px;
+
+// Spacing
+$spacing-xs: 6px;
+$spacing-sm: 12px;
+$spacing-md: 16px;
+$spacing-lg: 24px;
+$spacing-xl: 32px;
+
+// Transitions
+$transition-fast: 0.15s ease;
+$transition-base: 0.2s ease;
