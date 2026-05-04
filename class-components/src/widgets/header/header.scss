@@ -6,7 +6,6 @@
   display: flex;
   align-items: center;
   gap: $spacing-lg;
-  background: $color-surface;
 
   &__logo {
     font-family: $font-display;
@@ -14,20 +13,6 @@
     font-weight: 800;
     color: $color-amber;
     letter-spacing: -0.5px;
-    text-transform: uppercase;
-  }
-
-  &__logo-sub {
-    color: $color-text-dim;
-    font-weight: 400;
-  }
-
-  &__tag {
-    font-size: $font-size-xs;
-    color: $color-text-dim;
-    border: 1px solid $color-border-bright;
-    padding: 2px 8px;
-    letter-spacing: 2px;
     text-transform: uppercase;
   }
 }

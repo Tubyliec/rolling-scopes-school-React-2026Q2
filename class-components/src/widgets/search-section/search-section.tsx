@@ -34,12 +34,14 @@ class SearchSection extends Component<SearchSectionProps, SearchSectionState> {
 
     return (
       <section className="search-section">
-        <SearchField
-          value={inputValue}
-          isLoading={isLoading}
-          onChange={this.handleChange}
-          onSearch={this.handleSearch}
-        />
+        <div className="search__wrapper wrapper">
+          <SearchField
+            value={inputValue}
+            isLoading={isLoading}
+            onChange={this.handleChange}
+            onSearch={this.handleSearch}
+          />
+        </div>
       </section>
     );
   }
