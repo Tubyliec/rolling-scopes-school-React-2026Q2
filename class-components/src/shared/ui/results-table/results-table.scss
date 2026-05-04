@@ -1,0 +1,79 @@
+@use '../../styles/variables' as *;
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__head tr {
+    border-bottom: 1px solid $color-amber-dim;
+  }
+
+  &__th {
+    text-align: left;
+    padding: 8px $spacing-md;
+    font-size: $font-size-xs;
+    letter-spacing: $letter-spacing-loose-2;
+    text-transform: uppercase;
+    color: $color-amber;
+    font-weight: $font-weight-medium;
+
+    &:first-child {
+      width: 220px;
+    }
+  }
+
+  &__row {
+    border-bottom: 1px solid $color-border;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: $color-amber-glow;
+    }
+  }
+
+  &__cell {
+    padding: 13px $spacing-md;
+    vertical-align: top;
+
+    &--name {
+      color: $color-text-bright;
+      font-weight: $font-weight-medium;
+      font-size: $font-size-base;
+    }
+  }
+
+  &__description {
+    color: $color-text;
+    font-size: 12px;
+    line-height: $line-height-relaxed;
+    margin-bottom: $grid-gap-sm;
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $grid-gap-sm;
+  }
+
+  &__badge {
+    display: inline-block;
+    font-size: $font-size-xs;
+    padding: 1px 7px;
+    border: 1px solid $color-border-bright;
+    color: $color-text-dim;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: $spacing-3xl;
+    color: $color-text-dim;
+    font-size: 12px;
+    letter-spacing: $letter-spacing-loose;
+  }
+
+  &__empty-glyph {
+    font-size: $font-size-2xl;
+    margin-bottom: $spacing-md;
+    opacity: 0.3;
+  }
+}

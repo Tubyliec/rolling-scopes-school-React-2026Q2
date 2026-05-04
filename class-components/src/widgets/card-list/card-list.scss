@@ -1,22 +1,24 @@
+@use '../../shared/styles/variables' as *;
+
 .card-list {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
-  gap: 16px;
+  grid-template-columns: repeat(auto-fill, minmax($grid-min-card-width, 1fr));
+  gap: $grid-gap-lg;
 
   &__empty {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    padding: 48px;
-    color: #8b92b9;
-    font-size: 14px;
-    letter-spacing: 1px;
+    padding: $spacing-2xl;
+    color: $color-text-dim;
+    font-size: $font-size-md;
+    letter-spacing: $letter-spacing-loose;
   }
 
   &__empty-glyph {
-    font-size: 32px;
-    margin-bottom: 16px;
-    color: #e94560;
+    font-size: $font-size-2xl;
+    margin-bottom: $grid-gap-lg;
+    color: $color-amber;
   }
 }

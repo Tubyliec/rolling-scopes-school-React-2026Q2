@@ -1,34 +1,36 @@
+@use '../../../../shared/styles/variables' as *;
+
 .card {
-  background: #1a1a2e;
-  border: 1px solid #16213e;
-  border-radius: 8px;
-  padding: 16px;
-  transition: border-color 0.2s ease;
+  background: $color-surface;
+  border: 1px solid $color-border;
+  border-radius: $border-width-lg;
+  padding: $grid-gap-lg;
+  transition: border-color $transition-base;
 
   &:hover {
-    border-color: #0f3460;
+    border-color: $color-border-bright;
   }
 
   &__header {
-    margin-bottom: 12px;
-    padding-bottom: 12px;
-    border-bottom: 1px solid #16213e;
+    margin-bottom: $grid-gap-lg;
+    padding-bottom: $grid-gap-lg;
+    border-bottom: 1px solid $color-border;
   }
 
   &__name {
     margin: 0;
-    font-size: 18px;
-    font-weight: 600;
-    color: #e94560;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $color-amber;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: $letter-spacing-base;
   }
 
   &__body {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 8px;
-    margin-bottom: 12px;
+    gap: $grid-gap-md;
+    margin-bottom: $grid-gap-lg;
   }
 
   &__info {
@@ -38,29 +40,29 @@
   }
 
   &__label {
-    font-size: 10px;
-    color: #8b92b9;
+    font-size: $font-size-xs;
+    color: $color-text-dim;
     text-transform: uppercase;
-    letter-spacing: 0.5px;
+    letter-spacing: $letter-spacing-base;
   }
 
   &__value {
-    font-size: 14px;
-    color: #eaeaea;
+    font-size: $font-size-sm;
+    color: $color-text;
   }
 
   &__footer {
     display: flex;
     flex-wrap: wrap;
-    gap: 6px;
+    gap: $grid-gap-sm;
   }
 
   &__badge {
-    font-size: 10px;
+    font-size: $font-size-xs;
     padding: 4px 8px;
-    background: #0f3460;
-    border-radius: 4px;
-    color: #8b92b9;
+    background: $color-border-bright;
+    border-radius: $radius-sm;
+    color: $color-text-dim;
     text-transform: lowercase;
   }
 }

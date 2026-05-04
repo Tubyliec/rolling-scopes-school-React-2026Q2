@@ -6,6 +6,7 @@ import { buildSearchUrl } from './shared/utilities/build-search-url.ts';
 import type { PersonResponse } from './entities/person/model/interfaces/person-response.interface.ts';
 import { RESULTS_PER_PAGE } from './shared/constants/page-constants.ts';
 import Header from './widgets/header/header.tsx';
+import ResultsSection from './widgets/results-sections/model/results-section.tsx';
 
 class App extends Component<Record<string, never>, AppState> {
   public constructor(props: Record<string, never>) {
@@ -22,6 +23,9 @@ class App extends Component<Record<string, never>, AppState> {
       hasNextPage: false,
       hasPreviousPage: false,
     };
+
+    this.handleSearch = this.handleSearch.bind(this);
+    this.handlePageChange = this.handlePageChange.bind(this);
   }
 
   public async handleSearch(term: string, page: number = 1): Promise<void> {
@@ -48,9 +52,8 @@ class App extends Component<Record<string, never>, AppState> {
       const response = await fetch(url);
 
       if (!response.ok) {
-        throw new Error(
-          `Server error ${response.status}: ${response.statusText}`
-        );
+        this.setState({ error: `Server error ${response.status}...`, isLoading: false });
+        return;
       }
 
       const data: PersonResponse = await response.json();
@@ -82,10 +85,30 @@ class App extends Component<Record<string, never>, AppState> {
     }
   }
 
+  private async handlePageChange(page: number): Promise<void> {
+    const { lastSearchTerm } = this.state;
+    if (lastSearchTerm !== null) {
+      await this.handleSearch(lastSearchTerm, page);
+    } else {
+      await this.handleSearch('', page);
+    }
+  }
+
   public render(): JSX.Element {
     if (this.state.shouldThrowError) {
       throw new Error('Simulated application error triggered by test button.');
     }
+
+    const {
+      isLoading,
+      error,
+      results,
+      currentPage,
+      totalPages,
+      totalCount,
+      hasNextPage,
+      hasPreviousPage,
+    } = this.state;
 
     return (
       <>
@@ -93,6 +116,17 @@ class App extends Component<Record<string, never>, AppState> {
         <SearchSection
           onSearch={(term) => this.handleSearch(term, 1)}
           isLoading={this.state.isLoading}
+        />
+        <ResultsSection
+          isLoading={isLoading}
+          error={error}
+          results={results}
+          currentPage={currentPage}
+          totalPages={totalPages}
+          totalCount={totalCount}
+          hasNextPage={hasNextPage}
+          hasPreviousPage={hasPreviousPage}
+          onPageChange={this.handlePageChange}
         />
       </>
     );
