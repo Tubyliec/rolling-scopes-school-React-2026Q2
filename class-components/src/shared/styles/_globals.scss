@@ -34,3 +34,22 @@ body {
   margin: 0 auto;
   max-width: 60%;
 }
+
+.app__error-trigger {
+  position: fixed;
+  bottom: $spacing-lg;
+  right: $spacing-xl;
+  font-family: $font-mono;
+  font-size: $font-size-xs;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+  color: $color-red;
+  border: 1px solid $color-red;
+  padding: 8px $spacing-md;
+  z-index: 100;
+
+  &:hover {
+    background: $color-red;
+    color: #fff;
+  }
+}

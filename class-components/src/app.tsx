@@ -26,6 +26,7 @@ class App extends Component<Record<string, never>, AppState> {
 
     this.handleSearch = this.handleSearch.bind(this);
     this.handlePageChange = this.handlePageChange.bind(this);
+    this.handleSimulateError = this.handleSimulateError.bind(this);
   }
 
   public async handleSearch(term: string, page: number = 1): Promise<void> {
@@ -52,7 +53,10 @@ class App extends Component<Record<string, never>, AppState> {
       const response = await fetch(url);
 
       if (!response.ok) {
-        this.setState({ error: `Server error ${response.status}...`, isLoading: false });
+        this.setState({
+          error: `Server error ${response.status}...`,
+          isLoading: false,
+        });
         return;
       }
 
@@ -94,6 +98,10 @@ class App extends Component<Record<string, never>, AppState> {
     }
   }
 
+  private handleSimulateError(): void {
+    this.setState({ shouldThrowError: true });
+  }
+
   public render(): JSX.Element {
     if (this.state.shouldThrowError) {
       throw new Error('Simulated application error triggered by test button.');
@@ -128,6 +136,9 @@ class App extends Component<Record<string, never>, AppState> {
           hasPreviousPage={hasPreviousPage}
           onPageChange={this.handlePageChange}
         />
+        <button className="app__error-trigger" onClick={this.handleSimulateError}>
+          SIMULATE ERROR
+        </button>
       </>
     );
   }
