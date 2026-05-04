@@ -136,7 +136,10 @@ class App extends Component<Record<string, never>, AppState> {
           hasPreviousPage={hasPreviousPage}
           onPageChange={this.handlePageChange}
         />
-        <button className="app__error-trigger" onClick={this.handleSimulateError}>
+        <button
+          className="app__error-trigger"
+          onClick={this.handleSimulateError}
+        >
           SIMULATE ERROR
         </button>
       </>
