@@ -1,0 +1,22 @@
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 16px;
+
+  &__empty {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 48px;
+    color: #8b92b9;
+    font-size: 14px;
+    letter-spacing: 1px;
+  }
+
+  &__empty-glyph {
+    font-size: 32px;
+    margin-bottom: 16px;
+    color: #e94560;
+  }
+}
