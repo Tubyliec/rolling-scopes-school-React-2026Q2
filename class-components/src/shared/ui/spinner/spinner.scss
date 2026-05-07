@@ -1,4 +1,5 @@
 @use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/placeholders' as *;
 
 @keyframes spin {
   to {
@@ -17,10 +18,7 @@
 }
 
 .spinner {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
+  @extend %flex-center-column;
   gap: $spacing-md;
   padding: $spacing-3xl;
 
@@ -35,7 +33,7 @@
 
   &__label {
     font-size: $font-size-xs;
-    letter-spacing: $letter-spacing-loose-3;
+    letter-spacing: $letter-spacing-xl;
     color: $color-text-dim;
     text-transform: uppercase;
     animation: pulse $duration-pulse ease-in-out infinite;

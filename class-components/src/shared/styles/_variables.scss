@@ -12,14 +12,42 @@ $color-text: #c8d0da;
 $color-text-dim: #5a6475;
 $color-text-bright: #e8edf3;
 
-// Typography
+// Fonts
 $font-mono: 'JetBrains Mono', monospace;
 $font-display: 'Syne', sans-serif;
 
-$font-size-base: 13px;
-$font-size-sm: 11px;
+// Font sizes
+$font-size-tiny: 9px;
 $font-size-xs: 10px;
+$font-size-sm: 11px;
+$font-size-base: 13px;
 $font-size-md: 14px;
+$font-size-lg: 18px;
+$font-size-xl: 20px;
+$font-size-2xl: 22px;
+$font-size-3xl: 32px;
+$font-size-4xl: 72px;
+
+// Font weights
+$font-weight-medium: 500;
+$font-weight-bold: 600;
+$font-weight-extrabold: 700;
+$font-weight-black: 800;
+
+// Letter spacing
+$letter-spacing-tight: -0.5px;
+$letter-spacing-xs: 0.1px;
+$letter-spacing-sm: 0.5px;
+$letter-spacing-md: 1px;
+$letter-spacing-lg: 2px;
+$letter-spacing-xl: 3px;
+
+// Line height
+$line-height-xs: 1;
+$line-height-sm: 1.5;
+$line-height-md: 1.6;
+$line-height-lg: 1.7;
+$line-height-xl: 1.8;
 
 // Spacing
 $spacing-xs: 6px;
@@ -27,9 +55,8 @@ $spacing-sm: 12px;
 $spacing-md: 16px;
 $spacing-lg: 24px;
 $spacing-xl: 32px;
-
-// Letter spacing
-$letter-spacing-base: 0.5px;
+$spacing-2xl: 48px;
+$spacing-3xl: 80px;
 
 // Transitions
 $transition-fast: 0.15s ease;
@@ -37,50 +64,51 @@ $transition-base: 0.2s ease;
 
 // Borders
 $border-base: 1px solid $color-border;
+$border-bright: 1px solid $color-border-bright;
+$border-amber: 1px solid $color-amber-dim;
+$border-red: 1px solid $color-red;
 
-// Padding
+// Padding (sorted by size)
+$padding-xs: 1px 7px;
+$padding-sm: 4px 8px;
 $padding-base: 8px 16px;
-$padding-sm: 0 8px;
+$padding-md: 11px 24px;
+$padding-lg: 12px 28px;
+$padding-xl: 13px;
+$padding-2xl: 16px 0;
+$padding-3xl: 16px 24px;
+$padding-4xl: 16px 32px;
+$padding-5xl: 24px 32px;
+$padding-6xl: 28px;
+$padding-7xl: 48px;
+
+// Margin
+$margin-sm: 6px;
 
 // Border radius
 $radius-sm: 4px;
-
-// Font weights
-$font-weight-medium: 500;
+$radius-lg: 4px;
 
 // Opacity
-$opacity-sm: 0.5;
+$opacity-2xs: 0.3;
 $opacity-xs: 0.4;
-
-// Font sizes
-$font-size-lg: 18px;
-$font-size-xl: 20px;
-$font-size-2xl: 32px;
-
-// Font weights
-$font-weight-bold: 600;
-$font-weight-extrabold: 700;
-$font-weight-black: 800;
-
-// Letter spacing
-$letter-spacing-tight: -0.5px;
-$letter-spacing-loose: 1px;
-$letter-spacing-loose-2: 2px;
-$letter-spacing-loose-3: 3px;
+$opacity-sm: 0.5;
 
 // Dimensions
+$size-xs: 2px;
+$size-page-btn: 36px;
 $size-2xl: 48px;
 $size-3xl: 80px;
+$max-width-sm: 420px;
+$max-width-md: 520px;
+$width-table-col: 220px;
 
 // Grid
 $grid-min-card-width: 280px;
+$grid-gap-xs: 2px;
 $grid-gap-sm: 4px;
 $grid-gap-md: 8px;
 $grid-gap-lg: 16px;
-
-// Spacing
-$spacing-2xl: 48px;
-$spacing-3xl: 80px;
 
 // Border widths
 $border-width-sm: 2px;
@@ -93,8 +121,5 @@ $duration-pulse: 1.2s;
 // Transform scale
 $scale-active: 0.97;
 
-// Line height
-$line-height-relaxed: 1.7;
-
 // Positions
-$position-input-icon: 14px;
+$position-input-icon: 12px;

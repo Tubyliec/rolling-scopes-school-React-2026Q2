@@ -1,9 +1,8 @@
 @use '../../shared/styles/variables' as *;
+@use '../../shared/styles/placeholders' as *;
 
 .search-field {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
+  @extend %flex-row-space-between;
   gap: $spacing-md;
   padding-top: $spacing-sm;
   width: 100%;
@@ -16,10 +15,7 @@
   }
 
   &__label {
-    font-size: $font-size-xs;
-    color: $color-text-dim;
-    letter-spacing: 2px;
-    text-transform: uppercase;
+    @extend %label-text;
   }
 
   &__input-wrap {
@@ -41,11 +37,11 @@
   &__input {
     width: 100%;
     background: $color-bg;
-    border: 1px solid $color-border-bright;
+    border: $border-bright;
     color: $color-text-bright;
     font-family: $font-mono;
     font-size: $font-size-md;
-    padding: 11px $spacing-md 11px 34px;
+    padding: $padding-md;
     outline: none;
     transition:
       border-color $transition-base,
@@ -64,19 +60,19 @@
     }
 
     &:disabled {
-      opacity: 0.5;
+      opacity: $opacity-sm;
     }
   }
 
   &__btn {
     font-family: $font-mono;
-    font-size: 12px;
+    font-size: $font-size-sm;
     font-weight: $font-weight-extrabold;
-    letter-spacing: $letter-spacing-loose-2;
+    letter-spacing: $letter-spacing-lg;
     text-transform: uppercase;
     background: $color-amber;
     color: $color-bg;
-    padding: 12px 28px;
+    padding: $padding-lg;
     align-self: flex-end;
     transition:
       background $transition-fast,

@@ -5,20 +5,18 @@ body {
   color: $color-text;
   font-family: $font-mono;
   font-size: $font-size-base;
-  line-height: 1.6;
+  line-height: $line-height-md;
   min-height: 100vh;
 
   &::after {
     content: '';
     position: fixed;
     inset: 0;
-    background: repeating-linear-gradient(
-      0deg,
-      transparent,
-      transparent 2px,
-      rgba(0, 0, 0, 0.03) 2px,
-      rgba(0, 0, 0, 0.03) 4px
-    );
+    background: repeating-linear-gradient(0deg,
+        transparent,
+        transparent 2px,
+        rgba(0, 0, 0, 0.03) 2px,
+        rgba(0, 0, 0, 0.03) 4px);
     pointer-events: none;
     z-index: 9999;
   }
@@ -41,15 +39,15 @@ body {
   right: $spacing-xl;
   font-family: $font-mono;
   font-size: $font-size-xs;
-  letter-spacing: 2px;
+  letter-spacing: $letter-spacing-lg;
   text-transform: uppercase;
   color: $color-red;
-  border: 1px solid $color-red;
-  padding: 8px $spacing-md;
+  border: $border-red;
+  padding: $padding-base;
   z-index: 100;
 
   &:hover {
     background: $color-red;
-    color: #fff;
+    color: $color-text-bright;
   }
 }

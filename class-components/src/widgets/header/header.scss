@@ -1,8 +1,8 @@
 @use '../../shared/styles/variables' as *;
 
 .app-header {
-  border-bottom: 1px solid $color-border;
-  padding: $spacing-md $spacing-xl;
+  border-bottom: $border-base;
+  padding: $padding-4xl;
   display: flex;
   align-items: center;
   gap: $spacing-lg;
@@ -12,7 +12,7 @@
     font-size: $font-size-xl;
     font-weight: $font-weight-black;
     color: $color-amber;
-    letter-spacing: $letter-spacing-tight;
+    letter-spacing: $letter-spacing-xs;
     text-transform: uppercase;
   }
 }
