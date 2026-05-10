@@ -1,0 +1,21 @@
+@use './_variables.scss' as *;
+
+%flex-center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+%flex-row-space-between {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+%label-text {
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-lg;
+  color: $color-text-dim;
+}

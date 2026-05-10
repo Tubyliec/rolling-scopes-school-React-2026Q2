@@ -1,0 +1,79 @@
+@use '../../styles/variables' as *;
+
+.results-table {
+  width: 100%;
+  border-collapse: collapse;
+
+  &__head tr {
+    border-bottom: $border-amber;
+  }
+
+  &__th {
+    text-align: left;
+    padding: $padding-base;
+    font-size: $font-size-xs;
+    letter-spacing: $letter-spacing-lg;
+    text-transform: uppercase;
+    color: $color-amber;
+    font-weight: $font-weight-medium;
+
+    &:first-child {
+      width: $width-table-col;
+    }
+  }
+
+  &__row {
+    border-bottom: $border-base;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: $color-amber-glow;
+    }
+  }
+
+  &__cell {
+    padding: $padding-2xl;
+    vertical-align: top;
+
+    &--name {
+      color: $color-text-bright;
+      font-weight: $font-weight-medium;
+      font-size: $font-size-base;
+    }
+  }
+
+  &__description {
+    color: $color-text;
+    font-size: $font-size-sm;
+    line-height: $line-height-lg;
+    margin-bottom: $grid-gap-sm;
+  }
+
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $grid-gap-sm;
+  }
+
+  &__badge {
+    display: inline-block;
+    font-size: $font-size-xs;
+    padding: $padding-xs;
+    border: $border-bright;
+    color: $color-text-dim;
+  }
+
+  &__empty {
+    text-align: center;
+    padding: $spacing-3xl;
+    color: $color-text-dim;
+    font-size: $font-size-sm;
+    letter-spacing: $letter-spacing-md;
+  }
+
+  &__empty-glyph {
+    font-size: $font-size-3xl;
+    margin-bottom: $spacing-md;
+    opacity: $opacity-2xs;
+  }
+}

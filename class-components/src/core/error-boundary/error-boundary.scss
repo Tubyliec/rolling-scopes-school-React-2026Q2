@@ -1,0 +1,73 @@
+@use '../../shared/styles/variables' as *;
+@use '../../shared/styles/placeholders' as *;
+
+.error-boundary {
+  @extend %flex-center-column;
+  min-height: 100vh;
+  gap: $spacing-lg;
+  padding: $padding-xl;
+  text-align: center;
+
+  &__code {
+    font-size: $font-size-4xl;
+    font-family: $font-display;
+    font-weight: $font-weight-black;
+    color: $color-red;
+    line-height: $line-height-xs;
+    text-shadow: 0 0 60px rgba(224, 82, 82, 0.4);
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-2xl;
+    font-weight: $font-weight-black;
+    color: $color-red;
+    letter-spacing: $letter-spacing-tight;
+  }
+
+  &__message {
+    color: $color-text-dim;
+    max-width: $max-width-sm;
+    line-height: $line-height-xl;
+    font-size: $font-size-base;
+  }
+
+  &__detail {
+    background: $color-surface;
+    border: $border-bright;
+    padding: $padding-3xl;
+    max-width: $max-width-md;
+    width: 100%;
+    text-align: left;
+    color: $color-red;
+    font-size: $font-size-sm;
+  }
+
+  &__detail-label {
+    margin-bottom: $margin-sm;
+    color: $color-text-dim;
+    font-size: $font-size-tiny;
+    letter-spacing: $letter-spacing-lg;
+    text-transform: uppercase;
+  }
+
+  &__reset {
+    font-family: $font-mono;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-extrabold;
+    letter-spacing: $letter-spacing-lg;
+    text-transform: uppercase;
+    background: $color-amber;
+    color: #000;
+    padding: $padding-lg;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: #ffc04a;
+    }
+
+    &:active {
+      transform: scale(0.97);
+    }
+  }
+}
