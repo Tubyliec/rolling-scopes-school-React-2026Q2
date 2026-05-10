@@ -6,7 +6,9 @@ import type { SearchResponse } from './model/interfaces/search-response.interfac
 
 export type { SearchResponse } from './model/interfaces/search-response.interface';
 
-export async function searchPeople(params: SearchParams): Promise<SearchResponse> {
+export async function searchPeople(
+  params: SearchParams
+): Promise<SearchResponse> {
   const { term, page } = params;
   const url = buildSearchUrl(term, page);
 
