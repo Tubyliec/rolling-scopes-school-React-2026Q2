@@ -96,7 +96,6 @@ describe('ErrorBoundary', () => {
     consoleError.mockRestore();
   });
 
-
   it('should log error to console', () => {
     const consoleError = vi
       .spyOn(console, 'error')
