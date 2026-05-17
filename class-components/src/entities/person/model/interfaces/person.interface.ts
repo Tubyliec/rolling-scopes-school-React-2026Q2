@@ -7,4 +7,5 @@ export interface Person {
   readonly eye_color: string;
   readonly birth_year: string;
   readonly gender: string;
+  readonly url: string;
 }
