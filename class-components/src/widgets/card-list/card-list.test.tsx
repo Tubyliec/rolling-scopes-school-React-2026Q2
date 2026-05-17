@@ -13,6 +13,7 @@ describe('CardList', () => {
     eye_color: 'blue',
     birth_year: '19BBY',
     gender: 'male',
+    url: 'https://swapi.dev/api/people/1/',
   };
 
   it('should render without crashing with results', () => {
@@ -56,6 +57,7 @@ describe('CardList', () => {
       eye_color: 'yellow',
       birth_year: '41.9BBY',
       gender: 'male',
+      url: 'https://swapi.dev/api/people/4/',
     };
 
     render(<CardList results={[mockPerson, person2]} />);
@@ -73,6 +75,7 @@ describe('CardList', () => {
       eye_color: 'yellow',
       birth_year: '41.9BBY',
       gender: 'male',
+      url: 'https://swapi.dev/api/people/4/',
     };
 
     render(<CardList results={[person2]} />);
