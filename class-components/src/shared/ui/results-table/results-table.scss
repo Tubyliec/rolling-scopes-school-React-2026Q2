@@ -77,3 +77,15 @@
     opacity: $opacity-2xs;
   }
 }
+
+.results-table__row--clickable {
+  cursor: pointer;
+
+  &:hover {
+    background-color: rgba(255 255 255 / 5%);
+  }
+}
+
+.results-table__row--active {
+  background-color: rgba(255 255 255 / 10%);
+}
