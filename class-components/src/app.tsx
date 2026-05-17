@@ -2,8 +2,8 @@ import { Component, type JSX } from 'react';
 import type { AppState } from './core/model/interfaces/app-state.interface.ts';
 import SearchSection from './widgets/search-section/search-section.tsx';
 import { KEY_SEARCH_TERM } from './shared/constants/search-constants.ts';
-import { searchPeople } from './core/services/swapi/swapi-service.ts';
-import type { SearchResponse } from './core/services/swapi/model/interfaces/search-response.interface';
+import { searchPeople } from './core/swapi/swapi-service.ts';
+import type { SearchResponse } from './core/swapi/model/interfaces/search-response.interface';
 import Header from './widgets/header/header.tsx';
 import ResultsSection from './widgets/results-sections/model/results-section.tsx';
 
