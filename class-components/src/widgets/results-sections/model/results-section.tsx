@@ -1,14 +1,24 @@
-import { Component, type JSX } from 'react';
+import type { JSX } from 'react';
 import type { ResultsSectionProps } from './interfaces/results-section.interface.ts';
 import Spinner from '../../../shared/ui/spinner/spinner.tsx';
 import Pagination from '../../../shared/ui/pagination/pagination.tsx';
 import ResultsTable from '../../../shared/ui/results-table/results-table.tsx';
 import './results-section.scss';
 
-class ResultsSection extends Component<ResultsSectionProps> {
-  private renderContent(): JSX.Element {
-    const { isLoading, error, results } = this.props;
-
+function ResultsSection({
+  isLoading,
+  error,
+  results,
+  currentPage,
+  totalPages,
+  totalCount,
+  hasNextPage,
+  hasPreviousPage,
+  onPageChange,
+  onSelect,
+  selectedId,
+}: ResultsSectionProps): JSX.Element {
+  const renderContent = (): JSX.Element => {
     if (isLoading) {
       return <Spinner />;
     }
@@ -25,19 +35,16 @@ class ResultsSection extends Component<ResultsSectionProps> {
       );
     }
 
-    return <ResultsTable results={results} />;
-  }
+    return (
+      <ResultsTable
+        results={results}
+        onSelect={onSelect}
+        selectedId={selectedId}
+      />
+    );
+  };
 
-  private renderPagination(): JSX.Element | null {
-    const {
-      totalCount,
-      currentPage,
-      totalPages,
-      hasNextPage,
-      hasPreviousPage,
-      onPageChange,
-    } = this.props;
-
+  const renderPagination = (): JSX.Element | null => {
     if (totalCount === 0) {
       return null;
     }
@@ -52,18 +59,16 @@ class ResultsSection extends Component<ResultsSectionProps> {
         count={totalCount}
       />
     );
-  }
+  };
 
-  public render(): JSX.Element {
-    return (
-      <section className="results-section">
-        <div className="results__wrapper wrapper">
-          {this.renderContent()}
-          {this.renderPagination()}
-        </div>
-      </section>
-    );
-  }
+  return (
+    <section className="results-section">
+      <div className="results__wrapper wrapper">
+        {renderContent()}
+        {renderPagination()}
+      </div>
+    </section>
+  );
 }
 
 export default ResultsSection;

@@ -10,4 +10,6 @@ export interface ResultsSectionProps {
   readonly hasNextPage: boolean;
   readonly hasPreviousPage: boolean;
   readonly onPageChange: (page: number) => void;
+  readonly onSelect: (person: Person) => void;
+  readonly selectedId?: string;
 }
