@@ -7,6 +7,18 @@
   justify-content: center;
 }
 
+%flex-row-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%flex-row-space-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
 %flex-row-space-between {
   display: flex;
   align-items: flex-end;
