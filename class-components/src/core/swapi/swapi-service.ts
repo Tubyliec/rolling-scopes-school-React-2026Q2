@@ -44,8 +44,7 @@ export async function searchPeople(
         errorMessage.indexOf('fetch') !== -1 ||
         errorMessage.indexOf('Failed to fetch') !== -1
       ) {
-        message =
-          'Network error: Unable to connect to SWAPI server.';
+        message = 'Network error: Unable to connect to SWAPI server.';
       } else {
         message = errorMessage;
       }
