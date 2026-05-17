@@ -17,7 +17,7 @@ function SearchSection({
 
   useEffect(() => {
     onSearch(savedTerm);
-  }, [onSearch, savedTerm]);
+  }, []);
 
   const handleSearch = (): void => {
     const trimmed = inputValue.trim();
