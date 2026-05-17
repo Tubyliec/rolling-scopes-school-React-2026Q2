@@ -5,10 +5,11 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "preview": "vite preview",
     "build": "tsc -b && vite build",
     "lint": "eslint .",
-    "preview": "vite preview",
     "format:fix": "prettier --write .",
+    "check": "npm run lint && npm run format:fix",
     "prepare": "cd .. && husky class-components/.husky",
     "test": "vitest",
     "test:ui": "vitest --ui",
