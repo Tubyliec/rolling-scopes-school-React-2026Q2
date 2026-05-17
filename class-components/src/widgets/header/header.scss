@@ -1,0 +1,18 @@
+@use '../../shared/styles/variables' as *;
+
+.app-header {
+  border-bottom: $border-base;
+  padding: $padding-4xl;
+  display: flex;
+  align-items: center;
+  gap: $spacing-lg;
+
+  &__logo {
+    font-family: $font-display;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-black;
+    color: $color-amber;
+    letter-spacing: $letter-spacing-xs;
+    text-transform: uppercase;
+  }
+}

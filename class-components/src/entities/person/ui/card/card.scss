@@ -1,0 +1,68 @@
+@use '../../../../shared/styles/variables' as *;
+
+.card {
+  background: $color-surface;
+  border: $border-base;
+  border-radius: $radius-lg;
+  padding: $grid-gap-lg;
+  transition: border-color $transition-base;
+
+  &:hover {
+    border-color: $color-border-bright;
+  }
+
+  &__header {
+    margin-bottom: $grid-gap-lg;
+    padding-bottom: $grid-gap-lg;
+    border-bottom: $border-base;
+  }
+
+  &__name {
+    margin: 0;
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    color: $color-amber;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-sm;
+  }
+
+  &__body {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: $grid-gap-md;
+    margin-bottom: $grid-gap-lg;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    gap: $grid-gap-xs;
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    color: $color-text-dim;
+    text-transform: uppercase;
+    letter-spacing: $letter-spacing-sm;
+  }
+
+  &__value {
+    font-size: $font-size-sm;
+    color: $color-text;
+  }
+
+  &__footer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $grid-gap-sm;
+  }
+
+  &__badge {
+    font-size: $font-size-xs;
+    padding: $padding-sm;
+    background: $color-border-bright;
+    border-radius: $radius-sm;
+    color: $color-text-dim;
+    text-transform: lowercase;
+  }
+}
