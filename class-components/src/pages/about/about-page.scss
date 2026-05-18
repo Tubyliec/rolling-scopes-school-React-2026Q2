@@ -9,7 +9,7 @@
   }
 
   &__title {
-  @extend %title-text;
+    @extend %title-text;
   }
 
   &__section {
@@ -17,7 +17,7 @@
   }
 
   &__subtitle {
-  @extend %subtitle-text;
+    @extend %subtitle-text;
   }
 
   &__text {
@@ -34,17 +34,6 @@
   }
 
   &__back {
-    display: inline-flex;
-    align-items: center;
-    color: inherit;
-    text-decoration: none;
-    text-transform: uppercase;
-    opacity: $opacity-md;
-    border: $border-bright;
-    padding: $padding-base;
-
-    &:hover {
-      opacity: $opacity-lg;
-    }
+    @extend %button-back;
   }
 }
