@@ -18,16 +18,16 @@ $font-mono: 'JetBrains Mono', monospace;
 $font-display: 'Syne', sans-serif;
 
 // Font sizes
-$font-size-tiny: 9px;
-$font-size-xs: 10px;
-$font-size-sm: 11px;
-$font-size-base: 13px;
-$font-size-md: 14px;
-$font-size-lg: 18px;
-$font-size-xl: 20px;
-$font-size-2xl: 22px;
-$font-size-3xl: 32px;
-$font-size-4xl: 72px;
+$font-size-tiny: 0.5em;
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.8rem;
+$font-size-base: 0.9rem;
+$font-size-md: 1rem;
+$font-size-lg: 1.125rem;
+$font-size-xl: 1.25rem;
+$font-size-2xl: 1.75rem;
+$font-size-3xl: 2rem;
+$font-size-4xl: 4.5rem;
 
 // Font weights
 $font-weight-medium: 500;
@@ -51,13 +51,13 @@ $line-height-lg: 1.7;
 $line-height-xl: 1.8;
 
 // Spacing
-$spacing-xs: 6px;
-$spacing-sm: 12px;
-$spacing-md: 16px;
-$spacing-lg: 24px;
-$spacing-xl: 32px;
-$spacing-2xl: 48px;
-$spacing-3xl: 80px;
+$spacing-xs: 0.375rem;
+$spacing-sm: 0.75rem;
+$spacing-md: 1rem;
+$spacing-lg: 1.5rem;
+$spacing-xl: 2rem;
+$spacing-2xl: 3rem;
+$spacing-3xl: 5rem;
 
 // Transitions
 $transition-fast: 0.15s ease;
@@ -70,21 +70,22 @@ $border-amber: 1px solid $color-amber-dim;
 $border-red: 1px solid $color-red;
 
 // Padding (sorted by size)
-$padding-xs: 1px 7px;
-$padding-sm: 4px 8px;
-$padding-base: 8px 16px;
-$padding-md: 11px 24px;
-$padding-lg: 12px 28px;
-$padding-xl: 13px;
-$padding-2xl: 16px 0;
-$padding-3xl: 16px 24px;
-$padding-4xl: 16px 32px;
-$padding-5xl: 24px 32px;
-$padding-6xl: 28px;
-$padding-7xl: 48px;
+$padding-xs: 0.5rem;
+$padding-sm: 0.25rem 0.5rem;
+$padding-base: 0.5rem 1rem;
+$padding-md: 0.6875rem 1.5rem;
+$padding-lg: 0.75rem 1.75rem;
+$padding-xl: 0.8125rem;
+$padding-2xl: 1rem 0;
+$padding-3xl: 1rem 1.5rem;
+$padding-4xl: 1rem 2rem;
+$padding-5xl: 1.5rem 2rem;
+$padding-6xl: 1.75rem;
+$padding-7xl: 3rem;
 
 // Margin
-$margin-sm: 6px;
+$margin-sm: 0.375rem;
+
 
 // Border radius
 $radius-sm: 4px;
@@ -94,6 +95,8 @@ $radius-lg: 4px;
 $opacity-2xs: 0.3;
 $opacity-xs: 0.4;
 $opacity-sm: 0.5;
+$opacity-md: 0.8;
+$opacity-lg: 1;
 
 // Dimensions
 $size-xs: 2px;
@@ -103,14 +106,16 @@ $size-3xl: 80px;
 $max-width-xs: 420px;
 $max-width-sm: 420px;
 $max-width-md: 520px;
+$max-width-lg: 620px;
+
 $width-table-col: 220px;
 
 // Grid
 $grid-min-card-width: 280px;
-$grid-gap-xs: 2px;
-$grid-gap-sm: 4px;
-$grid-gap-md: 8px;
-$grid-gap-lg: 16px;
+$grid-gap-xs: 0.125rem;
+$grid-gap-sm: 0.25rem;
+$grid-gap-md: 0.5rem;
+$grid-gap-lg: 1rem;
 
 // Border widths
 $border-width-sm: 2px;
