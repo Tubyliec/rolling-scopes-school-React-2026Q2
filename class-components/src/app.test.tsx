@@ -6,7 +6,7 @@ import App from './app';
 
 const mockSearchPeople = vi.fn();
 
-vi.mock('./core/services/swapi/swapi-service', () => ({
+vi.mock('./core/swapi/swapi-service', () => ({
   searchPeople: (...args: unknown[]) => mockSearchPeople(...args),
   getPerson: vi.fn(),
 }));
@@ -282,6 +282,10 @@ describe('App', () => {
 
     const nextButton = screen.getByText('Next →');
     await user.click(nextButton);
+
+    await waitFor(() => {
+      expect(screen.getByText('Page 2 of 2')).toBeInTheDocument();
+    });
 
     await waitFor(() => {
       expect(mockSearchPeople).toHaveBeenCalledWith({ term: '', page: 2 });
