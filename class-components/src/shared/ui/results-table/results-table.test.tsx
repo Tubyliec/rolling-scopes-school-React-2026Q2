@@ -87,10 +87,7 @@ describe('ResultsTable', () => {
     };
 
     render(
-      <ResultsTable
-        results={[mockPerson, person2]}
-        onSelect={mockOnSelect}
-      />
+      <ResultsTable results={[mockPerson, person2]} onSelect={mockOnSelect} />
     );
     expect(screen.getByText('Luke Skywalker')).toBeInTheDocument();
     expect(screen.getByText('Darth Vader')).toBeInTheDocument();
