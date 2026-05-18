@@ -13,6 +13,7 @@ describe('Card', () => {
     eye_color: 'blue',
     birth_year: '19BBY',
     gender: 'male',
+    url: 'https://swapi.dev/api/people/1/',
   };
 
   it('should render without crashing', () => {
@@ -82,6 +83,7 @@ describe('Card', () => {
       eye_color: 'yellow',
       birth_year: '41.9BBY',
       gender: 'male',
+      url: 'https://swapi.dev/api/people/4/',
     };
 
     render(<Card person={differentPerson} />);
