@@ -5,15 +5,12 @@ import './results-table.scss';
 import { buildDescription } from '../../utilities/build-descriptions.ts';
 import { extractPersonId } from '../../utilities/extract-person-id.ts';
 
-function ResultsTable({
-  results,
-  onSelect,
-  selectedId,
-}: ResultsTableProps): JSX.Element {
+function ResultsTable({ results, onSelect, selectedId }: ResultsTableProps): JSX.Element {
   if (!results.length) {
     return (
       <div className="results-table__empty">
-        <p>NO RECORDS FOUND</p>
+        <div className="results-table__empty-glyph">◈</div>
+        NO RECORDS FOUND
       </div>
     );
   }
@@ -25,9 +22,7 @@ function ResultsTable({
       <tr
         key={index}
         className={`results-table__row results-table__row--clickable${isActive ? ' results-table__row--active' : ''}`}
-        onClick={() => {
-          onSelect(person);
-        }}
+        onClick={(e) => { e.stopPropagation(); onSelect(person); }}
       >
         <td className="results-table__cell results-table__cell--name">
           {person.name}
@@ -60,7 +55,9 @@ function ResultsTable({
           <th className="results-table__th">Description</th>
         </tr>
       </thead>
-      <tbody>{results.map((person, index) => renderRow(person, index))}</tbody>
+      <tbody>
+        {results.map((person, index) => renderRow(person, index))}
+      </tbody>
     </table>
   );
 }

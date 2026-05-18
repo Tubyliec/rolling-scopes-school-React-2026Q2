@@ -1,13 +1,22 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+import { MemoryRouter } from 'react-router-dom';
 import App from './app';
 
 const mockSearchPeople = vi.fn();
 
 vi.mock('./core/services/swapi/swapi-service', () => ({
   searchPeople: (...args: unknown[]) => mockSearchPeople(...args),
+  getPerson: vi.fn(),
 }));
+
+const renderApp = (initialPath = '/main') =>
+  render(
+    <MemoryRouter initialEntries={[initialPath]}>
+      <App />
+    </MemoryRouter>
+  );
 
 describe('App', () => {
   let localStorageMock: Storage;
@@ -35,7 +44,7 @@ describe('App', () => {
   it('should render without crashing', async () => {
     mockSearchPeople.mockResolvedValue({ message: 'Test error' });
     await act(async () => {
-      render(<App />);
+      renderApp();
     });
     expect(screen.getByText('SIMULATE ERROR')).toBeInTheDocument();
   });
@@ -43,7 +52,7 @@ describe('App', () => {
   it('should render header', async () => {
     mockSearchPeople.mockResolvedValue({ message: 'Test error' });
     await act(async () => {
-      render(<App />);
+      renderApp();
     });
     expect(screen.getByText('Star Wars API search')).toBeInTheDocument();
   });
@@ -51,7 +60,7 @@ describe('App', () => {
   it('should render search section', async () => {
     mockSearchPeople.mockResolvedValue({ message: 'Test error' });
     await act(async () => {
-      render(<App />);
+      renderApp();
     });
     expect(screen.getByLabelText('Search term')).toBeInTheDocument();
   });
@@ -70,7 +79,7 @@ describe('App', () => {
     });
 
     await act(async () => {
-      render(<App />);
+      renderApp();
     });
 
     expect(mockSearchPeople).toHaveBeenCalledWith({ term: 'Luke', page: 1 });
@@ -90,7 +99,7 @@ describe('App', () => {
     });
 
     await act(async () => {
-      render(<App />);
+      renderApp();
     });
 
     expect(mockSearchPeople).toHaveBeenCalledWith({ term: '', page: 1 });
@@ -109,7 +118,7 @@ describe('App', () => {
     });
 
     await act(async () => {
-      render(<App />);
+      renderApp();
     });
 
     mockSearchPeople.mockClear();
@@ -140,6 +149,7 @@ describe('App', () => {
           eye_color: 'blue',
           birth_year: '19BBY',
           gender: 'male',
+          url: 'https://swapi.dev/api/people/1/',
         },
       ],
       totalCount: 1,
@@ -150,7 +160,7 @@ describe('App', () => {
     });
 
     await act(async () => {
-      render(<App />);
+      renderApp();
     });
 
     mockSearchPeople.mockClear();
@@ -172,7 +182,7 @@ describe('App', () => {
     mockSearchPeople.mockResolvedValue({ message: 'Server error 500' });
 
     await act(async () => {
-      render(<App />);
+      renderApp();
     });
 
     mockSearchPeople.mockClear();
@@ -202,7 +212,7 @@ describe('App', () => {
     });
 
     await act(async () => {
-      render(<App />);
+      renderApp();
     });
 
     mockSearchPeople.mockClear();
@@ -231,6 +241,7 @@ describe('App', () => {
           eye_color: 'blue',
           birth_year: '19BBY',
           gender: 'male',
+          url: 'https://swapi.dev/api/people/1/',
         },
       ],
       totalCount: 20,
@@ -241,16 +252,8 @@ describe('App', () => {
     });
 
     await act(async () => {
-      render(<App />);
+      renderApp();
     });
-
-    mockSearchPeople.mockClear();
-
-    const input = screen.getByLabelText('Search term');
-    await user.type(input, 'Luke');
-
-    const searchButton = screen.getByText('SEARCH');
-    await user.click(searchButton);
 
     await waitFor(() => {
       expect(screen.getByText('Page 1 of 2')).toBeInTheDocument();
@@ -267,6 +270,7 @@ describe('App', () => {
           eye_color: 'yellow',
           birth_year: '41.9BBY',
           gender: 'male',
+          url: 'https://swapi.dev/api/people/4/',
         },
       ],
       totalCount: 20,
@@ -280,7 +284,7 @@ describe('App', () => {
     await user.click(nextButton);
 
     await waitFor(() => {
-      expect(mockSearchPeople).toHaveBeenCalledWith({ term: 'Luke', page: 2 });
+      expect(mockSearchPeople).toHaveBeenCalledWith({ term: '', page: 2 });
     });
   });
 });

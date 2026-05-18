@@ -49,7 +49,7 @@ function PersonDetail(): JSX.Element {
   }, [detailsId]);
 
   const handleClose = (): void => {
-    navigate(`/${page ?? '1'}`);
+    navigate(`/${page ?? 'main'}`);
   };
 
   const renderContent = (): JSX.Element => {

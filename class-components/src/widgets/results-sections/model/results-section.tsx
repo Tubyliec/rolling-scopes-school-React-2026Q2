@@ -35,13 +35,7 @@ function ResultsSection({
       );
     }
 
-    return (
-      <ResultsTable
-        results={results}
-        onSelect={onSelect}
-        selectedId={selectedId}
-      />
-    );
+    return <ResultsTable results={results} onSelect={onSelect} selectedId={selectedId} />;
   };
 
   const renderPagination = (): JSX.Element | null => {
@@ -63,7 +57,10 @@ function ResultsSection({
 
   return (
     <section className="results-section">
-      <div className="results__wrapper wrapper">
+      <div
+        className="results__wrapper wrapper"
+        onClick={(e) => { e.stopPropagation(); }}
+      >
         {renderContent()}
         {renderPagination()}
       </div>

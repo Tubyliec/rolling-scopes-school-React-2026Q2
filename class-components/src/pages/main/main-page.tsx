@@ -63,12 +63,12 @@ function MainPage(): JSX.Element {
 
   const handleSelect = (person: Person): void => {
     const id = extractPersonId(person.url);
-    navigate(`/${currentPage}/${id}`);
+    navigate(`/main/${id}`);
   };
 
   const handleMainPanelClick = (): void => {
     if (detailsId) {
-      navigate(`/${currentPage}`);
+      navigate('/main');
     }
   };
 
