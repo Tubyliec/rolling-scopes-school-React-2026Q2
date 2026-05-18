@@ -1,5 +1,5 @@
 import { useState, useEffect, type JSX } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
 import type { Person } from '../../model/interfaces/person.interface.ts';
 import Spinner from '../../../../shared/ui/spinner/spinner.tsx';
@@ -7,8 +7,11 @@ import './person-details.scss';
 import { getPerson } from '../../../../core/swapi/swapi-service.ts';
 
 function PersonDetail(): JSX.Element {
-  const { page, detailsId } = useParams();
+  const { detailsId } = useParams();
+  const location = useLocation();
   const navigate = useNavigate();
+
+  const page = location.pathname.match(/\/main\/(\d+)/)?.[1] || '1';
   const [person, setPerson] = useState<Person | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
@@ -49,7 +52,7 @@ function PersonDetail(): JSX.Element {
   }, [detailsId]);
 
   const handleClose = (): void => {
-    navigate(`/${page ?? 'main'}`);
+    navigate(`/main/${page}`);
   };
 
   const renderContent = (): JSX.Element => {

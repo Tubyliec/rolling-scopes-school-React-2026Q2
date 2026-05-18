@@ -9,7 +9,7 @@ function App(): JSX.Element {
   return (
     <Routes>
       <Route path="/" element={<Navigate to="/main" replace />} />
-      <Route path="/main" element={<MainPage />}>
+      <Route path="/main/:page?" element={<MainPage />}>
         <Route path=":detailsId" element={<PersonDetail />} />
       </Route>
       <Route path="/about" element={<AboutPage />} />
