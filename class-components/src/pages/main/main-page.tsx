@@ -2,7 +2,7 @@ import { useState, useEffect, type JSX } from 'react';
 import { useParams, useNavigate, Outlet } from 'react-router-dom';
 import Header from '../../widgets/header/header.tsx';
 import SearchSection from '../../widgets/search-section/search-section.tsx';
-import ResultsSection from '../../widgets/results-sections/model/results-section.tsx';
+import ResultsSection from '../../widgets/results-sections/results-section.tsx';
 
 import type { Person } from '../../entities/person/model/interfaces/person.interface.ts';
 import { extractPersonId } from '../../shared/utilities/extract-person-id.ts';
