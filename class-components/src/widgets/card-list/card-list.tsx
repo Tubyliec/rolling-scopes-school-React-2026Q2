@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
 import type { CardListProps } from './model/interfaces/card-list.interface';
 import './card-list.scss';
-import Card from '@/entities/person/ui/card/card.tsx';
+import Card from '@/entities/person/components/card/card.tsx';
 
 function CardList({ results }: CardListProps): JSX.Element {
   if (!results.length) {
