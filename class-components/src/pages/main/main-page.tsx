@@ -1,14 +1,20 @@
 import { useState, useEffect, type JSX } from 'react';
 import { useParams, useNavigate, Outlet } from 'react-router-dom';
+
 import Header from '@/widgets/header/header.tsx';
 import SearchSection from '@/widgets/search-section/search-section.tsx';
 import ResultsSection from '@/widgets/results-sections/results-section.tsx';
 
+import { searchPeople } from '@/core/swapi/swapi-service.ts';
+
 import type { Person } from '@/entities/person/model/interfaces/person.interface.ts';
+
 import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
 import { KEY_SEARCH_TERM } from '@/shared/constants/search-constants.ts';
+
 import './main-page.scss';
-import { searchPeople } from '@/core/swapi/swapi-service.ts';
+import { ErrorButton } from '@shared/ui/buttons/error-button/error-button.tsx';
+
 
 function MainPage(): JSX.Element {
   const { page, detailsId } = useParams();
@@ -25,7 +31,7 @@ function MainPage(): JSX.Element {
   const [activeTerm, setActiveTerm] = useState<string>(
     () => localStorage.getItem(KEY_SEARCH_TERM) ?? ''
   );
-  const [shouldThrowError, setShouldThrowError] = useState(false);
+
 
   const doSearch = async (term: string, targetPage: number): Promise<void> => {
     setIsLoading(true);
@@ -72,10 +78,6 @@ function MainPage(): JSX.Element {
     }
   };
 
-  if (shouldThrowError) {
-    throw new Error('Simulated application error triggered by test button.');
-  }
-
   return (
     <>
       <Header />
@@ -103,14 +105,7 @@ function MainPage(): JSX.Element {
         </div>
         <Outlet />
       </div>
-      <button
-        className="app__error-trigger"
-        onClick={() => {
-          setShouldThrowError(true);
-        }}
-      >
-        SIMULATE ERROR
-      </button>
+      <ErrorButton />
     </>
   );
 }

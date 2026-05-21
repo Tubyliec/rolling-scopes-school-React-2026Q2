@@ -1,0 +1,20 @@
+@use '../../../../shared/styles/variables' as *;
+
+.app__error-trigger {
+  position: fixed;
+  bottom: $spacing-lg;
+  right: $spacing-xl;
+  font-family: $font-mono;
+  font-size: $font-size-xs;
+  letter-spacing: $letter-spacing-lg;
+  text-transform: uppercase;
+  color: $color-red;
+  border: $border-red;
+  padding: $padding-base;
+  z-index: 100;
+
+  &:hover {
+    background: $color-red;
+    color: $color-text-bright;
+  }
+}
