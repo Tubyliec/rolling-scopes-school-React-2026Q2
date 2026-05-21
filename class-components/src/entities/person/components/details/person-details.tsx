@@ -1,10 +1,10 @@
 import { useState, useEffect, type JSX } from 'react';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 
-import type { Person } from '../../model/interfaces/person.interface.ts';
-import Spinner from '../../../../shared/ui/spinner/spinner.tsx';
+import type { Person } from '@/entities/person/model/interfaces/person.interface.ts';
+import Spinner from '@/shared/ui/spinner/spinner.tsx';
 import './person-details.scss';
-import { getPerson } from '../../../../core/swapi/swapi-service.ts';
+import { getPerson } from '@/core/swapi/swapi-service.ts';
 
 function PersonDetail(): JSX.Element {
   const { detailsId } = useParams();

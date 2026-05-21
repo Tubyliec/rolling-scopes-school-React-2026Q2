@@ -1,9 +1,9 @@
 import { useState, useEffect, type JSX } from 'react';
-import { KEY_SEARCH_TERM } from '../../shared/constants/search-constants.ts';
+import { KEY_SEARCH_TERM } from '@/shared/constants/search-constants.ts';
 import type { SearchSectionProps } from './model/interfaces/search-section-props.interface.ts';
-import SearchField from '../search-field/search-field.tsx';
+import SearchField from '@/widgets/search-field/search-field.tsx';
 import './search-section.scss';
-import { useLocalStorage } from '../../core/use-local-storage/use-local-storage.ts';
+import { useLocalStorage } from '@/core/use-local-storage/use-local-storage.ts';
 
 function SearchSection({
   onSearch,

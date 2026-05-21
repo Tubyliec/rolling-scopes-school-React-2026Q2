@@ -1,4 +1,4 @@
-import { API_BASE_URL } from '../constants/api-constants.ts';
+import { API_BASE_URL } from '@/shared/constants/api-constants.ts';
 
 export function buildSearchUrl(term: string, page: number = 1): string {
   const params = new URLSearchParams();

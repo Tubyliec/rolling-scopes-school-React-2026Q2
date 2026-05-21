@@ -1,9 +1,9 @@
 import type { JSX } from 'react';
 import type { ResultsTableProps } from './model/interfaces/results-table.interface';
-import type { Person } from '../../../entities/person/model/interfaces/person.interface';
+import type { Person } from '@/entities/person/model/interfaces/person.interface';
 import './results-table.scss';
-import { buildDescription } from '../../utilities/build-descriptions.ts';
-import { extractPersonId } from '../../utilities/extract-person-id.ts';
+import { buildDescription } from '@/shared/utilities/build-descriptions.ts';
+import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
 
 function ResultsTable({
   results,

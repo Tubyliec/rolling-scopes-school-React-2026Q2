@@ -1,14 +1,14 @@
 import { useState, useEffect, type JSX } from 'react';
 import { useParams, useNavigate, Outlet } from 'react-router-dom';
-import Header from '../../widgets/header/header.tsx';
-import SearchSection from '../../widgets/search-section/search-section.tsx';
-import ResultsSection from '../../widgets/results-sections/results-section.tsx';
+import Header from '@/widgets/header/header.tsx';
+import SearchSection from '@/widgets/search-section/search-section.tsx';
+import ResultsSection from '@/widgets/results-sections/results-section.tsx';
 
-import type { Person } from '../../entities/person/model/interfaces/person.interface.ts';
-import { extractPersonId } from '../../shared/utilities/extract-person-id.ts';
-import { KEY_SEARCH_TERM } from '../../shared/constants/search-constants.ts';
+import type { Person } from '@/entities/person/model/interfaces/person.interface.ts';
+import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
+import { KEY_SEARCH_TERM } from '@/shared/constants/search-constants.ts';
 import './main-page.scss';
-import { searchPeople } from '../../core/swapi/swapi-service.ts';
+import { searchPeople } from '@/core/swapi/swapi-service.ts';
 
 function MainPage(): JSX.Element {
   const { page, detailsId } = useParams();
