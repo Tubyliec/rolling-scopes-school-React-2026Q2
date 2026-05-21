@@ -10,7 +10,6 @@ import PersonDetail from '@entities/person/components/details/person-details.tsx
 import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
 import { AppRouteSegment } from '@core/router/model/enums/app-route-segment.ts';
 
-
 function AppRouter(): JSX.Element {
   return (
     <BrowserRouter>
