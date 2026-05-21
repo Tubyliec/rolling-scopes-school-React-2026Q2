@@ -15,7 +15,6 @@ import { KEY_SEARCH_TERM } from '@/shared/constants/search-constants.ts';
 import './main-page.scss';
 import { ErrorButton } from '@shared/ui/buttons/error-button/error-button.tsx';
 
-
 function MainPage(): JSX.Element {
   const { page, detailsId } = useParams();
   const navigate = useNavigate();
@@ -31,7 +30,6 @@ function MainPage(): JSX.Element {
   const [activeTerm, setActiveTerm] = useState<string>(
     () => localStorage.getItem(KEY_SEARCH_TERM) ?? ''
   );
-
 
   const doSearch = async (term: string, targetPage: number): Promise<void> => {
     setIsLoading(true);
