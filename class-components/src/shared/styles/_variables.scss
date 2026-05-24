@@ -3,7 +3,6 @@ $color-bg: #0d0f11;
 $color-surface: #13171c;
 $color-border: #1e2530;
 $color-border-bright: #2e3a48;
-$color-border-light: rgb(255 255 255 / 20%);
 $color-amber: #f5a623;
 $color-amber-dim: #a36d12;
 $color-amber-glow: rgba(245, 166, 35, 0.08);
@@ -12,6 +11,18 @@ $color-green: #4ade80;
 $color-text: #c8d0da;
 $color-text-dim: #5a6475;
 $color-text-bright: #e8edf3;
+$color-bg-light: #f0f2f5;
+$color-surface-light: #ffffff;
+$color-border-light: #d0d8e4;
+$color-text-light: #1a2030;
+$color-text-dim-light: #4a5568;
+$color-text-muted: #718096;
+$color-amber-light: #b87a00;
+$color-amber-glow-light-xs: rgba($color-amber-light, 0.06);
+$color-amber-glow-light: rgba($color-amber-light, 0.08);
+$color-amber-glow-light-md: rgba($color-amber-light, 0.12);
+$color-amber-dim-light: rgba($color-amber-light, 0.2);
+$color-red-light: #c53030;
 
 // Fonts
 $font-mono: 'JetBrains Mono', monospace;
@@ -68,6 +79,8 @@ $border-base: 1px solid $color-border;
 $border-bright: 1px solid $color-border-bright;
 $border-amber: 1px solid $color-amber-dim;
 $border-red: 1px solid $color-red;
+$border-light: 1px solid $color-border-light;
+$border-light-amber: 1px solid $color-amber-light;
 
 // Padding (sorted by size)
 $padding-xs: 0.5rem;
