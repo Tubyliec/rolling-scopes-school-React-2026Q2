@@ -12,8 +12,9 @@ import type { Person } from '@/entities/person/model/interfaces/person.interface
 import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
 import { KEY_SEARCH_TERM } from '@/shared/constants/search-constants.ts';
 
-import './main-page.scss';
 import { ErrorButton } from '@shared/ui/buttons/error-button/error-button.tsx';
+
+import './main-page.scss';
 
 function MainPage(): JSX.Element {
   const { page, detailsId } = useParams();
