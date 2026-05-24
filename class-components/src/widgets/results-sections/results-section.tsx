@@ -1,23 +1,44 @@
 import type { JSX } from 'react';
-import type { ResultsSectionProps } from './model/interfaces/results-section.interface.ts';
+import { useParams, useNavigate } from 'react-router-dom';
+
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
 import Pagination from '@/shared/ui/pagination/pagination.tsx';
 import ResultsTable from '@/shared/ui/results-table/results-table.tsx';
+
+import { useSelectionStore } from '@/core/store/selection-store.ts';
+import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
+import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';
+
+import type { Person } from '@entities/person/model/types/person.type.ts';
+
 import './results-section.scss';
 
-function ResultsSection({
-  isLoading,
-  error,
-  results,
-  currentPage,
-  totalPages,
-  totalCount,
-  hasNextPage,
-  hasPreviousPage,
-  onPageChange,
-  onSelect,
-  selectedId,
-}: ResultsSectionProps): JSX.Element {
+function ResultsSection(): JSX.Element {
+  const { detailsId } = useParams();
+  const navigate = useNavigate();
+
+  const {
+    results,
+    isLoading,
+    error,
+    currentPage,
+    totalPages,
+    totalCount,
+    hasNextPage,
+    hasPreviousPage,
+  } = useResultsSection();
+
+  const { toggleItem, isSelected } = useSelectionStore();
+
+  const handleSelect = (person: Person): void => {
+    const id = extractPersonId(person.url);
+    navigate(`/main/${currentPage}/${id}`);
+  };
+
+  const handlePageChange = (newPage: number): void => {
+    navigate(`/main/${newPage}${detailsId ? `/${detailsId}` : ''}`);
+  };
+
   const renderContent = (): JSX.Element => {
     if (isLoading) {
       return <Spinner />;
@@ -38,25 +59,10 @@ function ResultsSection({
     return (
       <ResultsTable
         results={results}
-        onSelect={onSelect}
-        selectedId={selectedId}
-      />
-    );
-  };
-
-  const renderPagination = (): JSX.Element | null => {
-    if (totalCount === 0) {
-      return null;
-    }
-
-    return (
-      <Pagination
-        currentPage={currentPage}
-        totalPages={totalPages}
-        hasNext={hasNextPage}
-        hasPrevious={hasPreviousPage}
-        onPageChange={onPageChange}
-        count={totalCount}
+        onSelect={handleSelect}
+        onCheckboxToggle={toggleItem}
+        isChecked={isSelected}
+        selectedId={detailsId}
       />
     );
   };
@@ -65,12 +71,19 @@ function ResultsSection({
     <section className="results-section">
       <div
         className="results__wrapper wrapper"
-        onClick={(e) => {
-          e.stopPropagation();
-        }}
+        onClick={(e) => e.stopPropagation()}
       >
         {renderContent()}
-        {renderPagination()}
+        {totalCount > 0 && (
+          <Pagination
+            currentPage={currentPage}
+            totalPages={totalPages}
+            hasNext={hasNextPage}
+            hasPrevious={hasPreviousPage}
+            onPageChange={handlePageChange}
+            count={totalCount}
+          />
+        )}
       </div>
     </section>
   );

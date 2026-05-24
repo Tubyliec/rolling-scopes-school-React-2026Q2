@@ -8,13 +8,11 @@ export const useSelectionStore = create<SelectionState>((set, get) => ({
 
   toggleItem: (person: Person): void => {
     const { selectedItems } = get();
-    const exists = selectedItems.some((person) => person.url === person.url);
+    const exists = selectedItems.some((item) => item.url === person.url);
 
     if (exists) {
       set({
-        selectedItems: selectedItems.filter(
-          (person) => person.url !== person.url
-        ),
+        selectedItems: selectedItems.filter((item) => item.url !== person.url),
       });
     } else {
       set({ selectedItems: [...selectedItems, person] });

@@ -2,7 +2,6 @@
 
 .results-table {
   width: 100%;
-  border-collapse: collapse;
 
   &__head tr {
     border-bottom: $border-amber;
@@ -16,10 +15,6 @@
     text-transform: uppercase;
     color: $color-amber;
     font-weight: $font-weight-medium;
-
-    &:first-child {
-      width: $width-table-col;
-    }
   }
 
   &__row {
@@ -80,12 +75,20 @@
 
 .results-table__row--clickable {
   cursor: pointer;
-
-  &:hover {
-    background-color: rgba(255 255 255 / 5%);
-  }
 }
 
-.results-table__row--active {
-  background-color: rgba(255 255 255 / 10%);
+.results-table__cell--checkbox {
+  padding: $padding-2xl;
+  width: 5vw;
+}
+
+.results-table__checkbox {
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+  accent-color: $color-amber;
+}
+
+.results-table__row--selected {
+  background-color: $color-amber-glow;
 }
