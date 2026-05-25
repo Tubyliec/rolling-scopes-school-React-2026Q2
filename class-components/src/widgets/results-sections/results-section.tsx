@@ -7,6 +7,7 @@ import ResultsTable from '@/shared/ui/results-table/results-table.tsx';
 
 import { useSelectionStore } from '@/core/store/selection-store.ts';
 import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
+import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';
 import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';
 
 import type { Person } from '@entities/person/model/types/person.type.ts';
@@ -69,10 +70,7 @@ function ResultsSection(): JSX.Element {
 
   return (
     <section className="results-section">
-      <div
-        className="results__wrapper wrapper"
-        onClick={(e) => e.stopPropagation()}
-      >
+      <div className="results__wrapper wrapper" onClick={stopPropagation}>
         {renderContent()}
         {totalCount > 0 && (
           <Pagination

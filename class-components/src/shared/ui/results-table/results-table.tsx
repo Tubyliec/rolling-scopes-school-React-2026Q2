@@ -3,6 +3,7 @@ import type { ResultsTableProps } from './model/interfaces/results-table.interfa
 
 import { buildDescription } from '@/shared/utilities/build-descriptions.ts';
 import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
+import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';
 
 import type { Person } from '@entities/person/model/types/person.type.ts';
 
@@ -34,7 +35,7 @@ function ResultsTable({
         key={index}
         className={`results-table__row results-table__row--clickable${isActive ? ' results-table__row--active' : ''}${checked ? ' results-table__row--selected' : ''}`}
         onClick={(e) => {
-          e.stopPropagation();
+          stopPropagation(e);
           onSelect(person);
         }}
       >
@@ -46,7 +47,7 @@ function ResultsTable({
             aria-label={`Select ${person.name}`}
             onChange={() => {}}
             onClick={(e) => {
-              e.stopPropagation();
+              stopPropagation(e);
               onCheckboxToggle(person);
             }}
           />
