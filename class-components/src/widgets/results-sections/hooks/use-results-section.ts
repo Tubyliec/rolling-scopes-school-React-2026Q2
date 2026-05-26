@@ -24,7 +24,7 @@ export function useResultsSection(): ResultsFetchState {
   useEffect(() => {
     let cancelled = false;
 
-    const doSearch = async (): Promise<void> => {
+    const handleSearch = async (): Promise<void> => {
       setIsLoading(true);
       setError(null);
 
@@ -47,7 +47,7 @@ export function useResultsSection(): ResultsFetchState {
       setIsLoading(false);
     };
 
-    void doSearch();
+    void handleSearch();
 
     return (): void => {
       cancelled = true;
