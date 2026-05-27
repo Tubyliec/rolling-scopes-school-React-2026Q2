@@ -1,4 +1,4 @@
-import type { Person } from '@/entities/person/model/interfaces/person.interface';
+import type { Person } from '@entities/person/model/types/person.type.ts';
 
 export interface SearchResult {
   results: Person[];

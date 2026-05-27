@@ -1,13 +1,13 @@
 import { buildSearchUrl } from '@/shared/utilities/build-search-url';
-import type { PersonResponse } from '@/entities/person/model/interfaces/person-response.interface';
-import type { Person } from '@/entities/person/model/interfaces/person.interface';
+
 import { RESULTS_PER_PAGE } from '@/shared/constants/page-constants';
 import { API_BASE_URL } from '@/shared/constants/api-constants';
+
+import type { PersonResponse } from '@entities/person/model/types/person-response.type.ts';
+import type { Person } from '@entities/person/model/types/person.type.ts';
 import type { SearchParams } from './model/interfaces/search-params.interface';
 import type { SearchResponse } from './model/interfaces/search-response.interface';
 import type { SearchError } from './model/interfaces/search-error.interface';
-
-export type { SearchResponse } from './model/interfaces/search-response.interface';
 
 export async function searchPeople(
   params: SearchParams

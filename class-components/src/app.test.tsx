@@ -1,8 +1,26 @@
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
+
 import { render, screen, waitFor, act } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
+
 import { MemoryRouter } from 'react-router-dom';
+
+import { ThemeProvider } from '@/core/theme/theme-context.tsx';
+
 import App from './app';
+
+import { useSearchStore } from '@/core/store/search-store.ts';
+import { useSelectionStore } from '@/core/store/selection-store.ts';
+
+vi.mock('react-router-dom', async () => {
+  const actual = await vi.importActual('react-router-dom');
+  return {
+    ...actual,
+    BrowserRouter: ({ children }: { children: React.ReactNode }) => (
+      <>{children}</>
+    ),
+  };
+});
 
 const mockSearchPeople = vi.fn();
 
@@ -14,27 +32,20 @@ vi.mock('./core/swapi/swapi-service', () => ({
 const renderApp = (initialPath = '/main') =>
   render(
     <MemoryRouter initialEntries={[initialPath]}>
-      <App />
+      <ThemeProvider>
+        <App />
+      </ThemeProvider>
     </MemoryRouter>
   );
 
 describe('App', () => {
-  let localStorageMock: Storage;
-
   beforeEach(() => {
     mockSearchPeople.mockClear();
-    localStorageMock = {
-      getItem: vi.fn(),
-      setItem: vi.fn(),
-      removeItem: vi.fn(),
-      clear: vi.fn(),
-      length: 0,
-      key: vi.fn(),
-    };
-    Object.defineProperty(window, 'localStorage', {
-      value: localStorageMock,
-      writable: true,
-    });
+    useSearchStore.setState({ term: '', isLoading: false });
+    useSelectionStore.setState({ selectedItems: [] });
+
+    vi.spyOn(Storage.prototype, 'setItem');
+    vi.spyOn(Storage.prototype, 'getItem').mockReturnValue(null);
   });
 
   afterEach(() => {
@@ -66,9 +77,7 @@ describe('App', () => {
   });
 
   it('should call searchPeople on mount with saved term', async () => {
-    (localStorageMock.getItem as ReturnType<typeof vi.fn>).mockReturnValue(
-      'Luke'
-    );
+    useSearchStore.setState({ term: 'Luke' });
     mockSearchPeople.mockResolvedValue({
       results: [],
       totalCount: 0,
@@ -86,9 +95,6 @@ describe('App', () => {
   });
 
   it('should call searchPeople on mount with empty term when no saved term', async () => {
-    (localStorageMock.getItem as ReturnType<typeof vi.fn>).mockReturnValue(
-      null
-    );
     mockSearchPeople.mockResolvedValue({
       results: [],
       totalCount: 0,
@@ -107,7 +113,6 @@ describe('App', () => {
 
   it('should save search term to localStorage when searching', async () => {
     const user = userEvent.setup();
-    (localStorageMock.getItem as ReturnType<typeof vi.fn>).mockReturnValue('');
     mockSearchPeople.mockResolvedValue({
       results: [],
       totalCount: 0,
@@ -121,15 +126,11 @@ describe('App', () => {
       renderApp();
     });
 
-    mockSearchPeople.mockClear();
-
     const input = screen.getByLabelText('Search term');
     await user.type(input, 'Darth Vader');
+    await user.click(screen.getByText('SEARCH'));
 
-    const searchButton = screen.getByText('SEARCH');
-    await user.click(searchButton);
-
-    expect(localStorageMock.setItem).toHaveBeenCalledWith(
+    expect(localStorage.setItem).toHaveBeenCalledWith(
       'swapi_search_term',
       'Darth Vader'
     );
@@ -137,7 +138,6 @@ describe('App', () => {
 
   it('should display results after successful search', async () => {
     const user = userEvent.setup();
-    (localStorageMock.getItem as ReturnType<typeof vi.fn>).mockReturnValue('');
     mockSearchPeople.mockResolvedValue({
       results: [
         {
@@ -163,13 +163,9 @@ describe('App', () => {
       renderApp();
     });
 
-    mockSearchPeople.mockClear();
-
     const input = screen.getByLabelText('Search term');
     await user.type(input, 'Luke');
-
-    const searchButton = screen.getByText('SEARCH');
-    await user.click(searchButton);
+    await user.click(screen.getByText('SEARCH'));
 
     await waitFor(() => {
       expect(screen.getByText('Luke Skywalker')).toBeInTheDocument();
@@ -178,20 +174,15 @@ describe('App', () => {
 
   it('should display error message when API call fails', async () => {
     const user = userEvent.setup();
-    (localStorageMock.getItem as ReturnType<typeof vi.fn>).mockReturnValue('');
     mockSearchPeople.mockResolvedValue({ message: 'Server error 500' });
 
     await act(async () => {
       renderApp();
     });
 
-    mockSearchPeople.mockClear();
-
     const input = screen.getByLabelText('Search term');
     await user.type(input, 'Luke');
-
-    const searchButton = screen.getByText('SEARCH');
-    await user.click(searchButton);
+    await user.click(screen.getByText('SEARCH'));
 
     await waitFor(() => {
       expect(screen.getByText('REQUEST FAILED')).toBeInTheDocument();
@@ -201,7 +192,6 @@ describe('App', () => {
 
   it('should show loading state during search', async () => {
     const user = userEvent.setup();
-    (localStorageMock.getItem as ReturnType<typeof vi.fn>).mockReturnValue('');
     mockSearchPeople.mockResolvedValue({
       results: [],
       totalCount: 0,
@@ -215,21 +205,17 @@ describe('App', () => {
       renderApp();
     });
 
-    mockSearchPeople.mockClear();
     mockSearchPeople.mockImplementation(() => new Promise(() => {}));
 
     const input = screen.getByLabelText('Search term');
     await user.type(input, 'Luke');
-
-    const searchButton = screen.getByText('SEARCH');
-    await user.click(searchButton);
+    await user.click(screen.getByText('SEARCH'));
 
     expect(screen.getByText('FETCHING…')).toBeInTheDocument();
   });
 
   it('should handle pagination page change', async () => {
     const user = userEvent.setup();
-    (localStorageMock.getItem as ReturnType<typeof vi.fn>).mockReturnValue('');
     mockSearchPeople.mockResolvedValue({
       results: [
         {
@@ -280,15 +266,12 @@ describe('App', () => {
       hasPreviousPage: true,
     });
 
-    const nextButton = screen.getByText('Next →');
-    await user.click(nextButton);
+    await user.click(screen.getByText('Next →'));
 
     await waitFor(() => {
       expect(screen.getByText('Page 2 of 2')).toBeInTheDocument();
     });
 
-    await waitFor(() => {
-      expect(mockSearchPeople).toHaveBeenCalledWith({ term: '', page: 2 });
-    });
+    expect(mockSearchPeople).toHaveBeenCalledWith({ term: '', page: 2 });
   });
 });

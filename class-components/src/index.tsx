@@ -4,6 +4,7 @@ import { createRoot } from 'react-dom/client';
 import App from '@/app.tsx';
 
 import ErrorBoundary from '@/core/error-boundary/error-boundary.tsx';
+import { ThemeProvider } from '@/core/theme/theme-context.tsx';
 
 import './index.scss';
 
@@ -15,8 +16,10 @@ if (container === null) {
 
 createRoot(container).render(
   <StrictMode>
-    <ErrorBoundary>
-      <App />
-    </ErrorBoundary>
+    <ThemeProvider>
+      <ErrorBoundary>
+        <App />
+      </ErrorBoundary>
+    </ThemeProvider>
   </StrictMode>
 );
