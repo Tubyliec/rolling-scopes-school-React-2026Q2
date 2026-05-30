@@ -1,0 +1,17 @@
+.main-layout {
+  &__body {
+    display: flex;
+    flex: 1;
+
+    &--split {
+      .main-layout__results {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__results {
+    flex: 1;
+    min-width: 0;
+  }
+}
