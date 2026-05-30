@@ -1,6 +1,6 @@
-import { extractPersonId } from './extract-person-id.ts';
-
 import type { Person } from '@entities/person/model/types/person.type.ts';
+
+import { extractPersonId } from './extract-person-id.ts';
 
 const CSV_HEADERS = [
   'Name',

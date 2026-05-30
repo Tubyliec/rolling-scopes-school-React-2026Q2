@@ -1,7 +1,8 @@
-import { describe, it, expect } from 'vitest';
-import { render, screen } from '@testing-library/react';
-import CardList from './card-list';
 import type { Person } from '@entities/person/model/types/person.type.ts';
+import { render, screen } from '@testing-library/react';
+import { describe, expect,it } from 'vitest';
+
+import CardList from './card-list';
 
 describe('CardList', () => {
   const mockPerson: Person = {

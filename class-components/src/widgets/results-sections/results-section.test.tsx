@@ -1,15 +1,12 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-
+import type { Person } from '@entities/person/model/types/person.type.ts';
 import { render, screen } from '@testing-library/react';
-
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-
-import ResultsSection from './results-section';
+import { beforeEach,describe, expect, it, vi } from 'vitest';
 
 import { useSearchStore } from '@/core/store/search-store.ts';
 import { useSelectionStore } from '@/core/store/selection-store.ts';
 
-import type { Person } from '@entities/person/model/types/person.type.ts';
+import ResultsSection from './results-section';
 
 const mockSearchPeople = vi.fn();
 

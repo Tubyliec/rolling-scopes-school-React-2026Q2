@@ -1,6 +1,7 @@
+import './not-found-page.scss';
+
 import type { JSX } from 'react';
 import { Link } from 'react-router-dom';
-import './not-found-page.scss';
 
 function NotFoundPage(): JSX.Element {
   return (

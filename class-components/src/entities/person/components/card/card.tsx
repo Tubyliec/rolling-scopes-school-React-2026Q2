@@ -1,6 +1,8 @@
-import type { JSX } from 'react';
-import type { CardProps } from './model/interfaces/card.interface';
 import './card.scss';
+
+import type { JSX } from 'react';
+
+import type { CardProps } from './model/interfaces/card.interface';
 
 function Card({ person }: CardProps): JSX.Element {
   return (

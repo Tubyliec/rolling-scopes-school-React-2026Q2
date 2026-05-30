@@ -1,11 +1,10 @@
-import { useState, type JSX } from 'react';
+import './search-section.scss';
+
+import { type JSX,useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
-import SearchField from '@/widgets/search-field/search-field.tsx';
-
 import { useSearchStore } from '@/core/store/search-store.ts';
-
-import './search-section.scss';
+import SearchField from '@/widgets/search-field/search-field.tsx';
 
 function SearchSection(): JSX.Element {
   const navigate = useNavigate();

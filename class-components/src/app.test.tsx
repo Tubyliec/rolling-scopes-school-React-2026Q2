@@ -1,16 +1,13 @@
-import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
-
-import { render, screen, waitFor, act } from '@testing-library/react';
+import { act,render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
 import { MemoryRouter } from 'react-router-dom';
-
-import { ThemeProvider } from '@/core/theme/theme-context.tsx';
-
-import App from './app';
+import { afterEach,beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useSearchStore } from '@/core/store/search-store.ts';
 import { useSelectionStore } from '@/core/store/selection-store.ts';
+import { ThemeProvider } from '@/core/theme/theme-context.tsx';
+
+import App from './app';
 
 vi.mock('react-router-dom', async () => {
   const actual = await vi.importActual('react-router-dom');

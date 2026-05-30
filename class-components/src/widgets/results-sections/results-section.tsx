@@ -1,18 +1,16 @@
-import type { JSX } from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
-
-import Spinner from '@/shared/ui/spinner/spinner.tsx';
-import Pagination from '@/shared/ui/pagination/pagination.tsx';
-import ResultsTable from '@/shared/ui/results-table/results-table.tsx';
-
-import { useSelectionStore } from '@/core/store/selection-store.ts';
-import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
-import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';
-import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';
+import './results-section.scss';
 
 import type { Person } from '@entities/person/model/types/person.type.ts';
+import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';
+import type { JSX } from 'react';
+import { useNavigate,useParams } from 'react-router-dom';
 
-import './results-section.scss';
+import { useSelectionStore } from '@/core/store/selection-store.ts';
+import Pagination from '@/shared/ui/pagination/pagination.tsx';
+import ResultsTable from '@/shared/ui/results-table/results-table.tsx';
+import Spinner from '@/shared/ui/spinner/spinner.tsx';
+import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
+import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';
 
 function ResultsSection(): JSX.Element {
   const { detailsId } = useParams();

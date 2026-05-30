@@ -1,5 +1,7 @@
-import type { JSX } from 'react';
 import './pagination.scss';
+
+import type { JSX } from 'react';
+
 import type { PaginationProps } from './model/interfaces/pagination.interface.ts';
 
 function Pagination({

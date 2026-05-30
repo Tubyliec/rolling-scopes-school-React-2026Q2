@@ -1,12 +1,10 @@
-import { useState, useEffect } from 'react';
+import type { Person } from '@entities/person/model/types/person.type.ts';
+import type { ResultsFetchState } from '@widgets/results-sections/model/types/results-fetch-state.type.ts';
+import { useEffect,useState } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { searchPeople } from '@/core/swapi/swapi-service.ts';
-
 import { useSearchStore } from '@/core/store/search-store.ts';
-
-import type { ResultsFetchState } from '@widgets/results-sections/model/types/results-fetch-state.type.ts';
-import type { Person } from '@entities/person/model/types/person.type.ts';
+import { searchPeople } from '@/core/swapi/swapi-service.ts';
 
 export function useResultsSection(): ResultsFetchState {
   const { page } = useParams();

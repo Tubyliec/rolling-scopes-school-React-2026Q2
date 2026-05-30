@@ -1,13 +1,11 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest';
-
-import { render, screen, fireEvent } from '@testing-library/react';
-
-import Flyout from './flyout';
+import type { Person } from '@entities/person/model/types/person.type.ts';
+import { fireEvent,render, screen } from '@testing-library/react';
+import { beforeEach,describe, expect, it, vi } from 'vitest';
 
 import { useSelectionStore } from '@/core/store/selection-store.ts';
 import * as downloadUtils from '@/shared/utilities/download-csv.ts';
 
-import type { Person } from '@entities/person/model/types/person.type.ts';
+import Flyout from './flyout';
 
 const makePerson = (id: number): Person => ({
   name: `Person ${id}`,
