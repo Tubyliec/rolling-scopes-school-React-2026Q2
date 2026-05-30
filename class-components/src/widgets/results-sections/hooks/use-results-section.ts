@@ -52,7 +52,7 @@ export function useResultsSection(): ResultsFetchState {
     return (): void => {
       cancelled = true;
     };
-  }, [currentPage, term]);
+  }, [currentPage, term, setIsLoading]);
 
   const { isLoading } = useSearchStore();
 
