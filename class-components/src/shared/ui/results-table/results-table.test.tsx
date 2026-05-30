@@ -1,5 +1,5 @@
 import type { Person } from '@entities/person/model/types/person.type.ts';
-import { fireEvent,render, screen } from '@testing-library/react';
+import { fireEvent, render, screen } from '@testing-library/react';
 import { describe, expect, it, vi } from 'vitest';
 
 import ResultsTable from './results-table';

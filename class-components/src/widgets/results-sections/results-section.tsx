@@ -3,7 +3,7 @@ import './results-section.scss';
 import type { Person } from '@entities/person/model/types/person.type.ts';
 import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';
 import type { JSX } from 'react';
-import { useNavigate,useParams } from 'react-router-dom';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useSelectionStore } from '@/core/store/selection-store.ts';
 import Pagination from '@/shared/ui/pagination/pagination.tsx';

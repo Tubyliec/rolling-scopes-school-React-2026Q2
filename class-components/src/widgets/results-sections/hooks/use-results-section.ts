@@ -1,6 +1,6 @@
 import type { Person } from '@entities/person/model/types/person.type.ts';
 import type { ResultsFetchState } from '@widgets/results-sections/model/types/results-fetch-state.type.ts';
-import { useEffect,useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { useSearchStore } from '@/core/store/search-store.ts';

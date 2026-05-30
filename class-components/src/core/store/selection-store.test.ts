@@ -1,4 +1,4 @@
-import { beforeEach,describe, expect, it } from 'vitest';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 import type { Person } from '@/entities/person/model/types/person.type.ts';
 

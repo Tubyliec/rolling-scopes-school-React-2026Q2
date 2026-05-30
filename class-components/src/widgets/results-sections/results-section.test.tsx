@@ -1,7 +1,7 @@
 import type { Person } from '@entities/person/model/types/person.type.ts';
 import { render, screen } from '@testing-library/react';
 import { MemoryRouter, Route, Routes } from 'react-router-dom';
-import { beforeEach,describe, expect, it, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useSearchStore } from '@/core/store/search-store.ts';
 import { useSelectionStore } from '@/core/store/selection-store.ts';

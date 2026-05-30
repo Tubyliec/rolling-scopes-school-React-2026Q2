@@ -1,5 +1,5 @@
 import type { Person } from '@entities/person/model/types/person.type.ts';
-import { afterEach,beforeEach, describe, expect, it, vi } from 'vitest';
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { downloadSelectedAsCsv } from './download-csv';
 

@@ -1,6 +1,6 @@
 import './search-section.scss';
 
-import { type JSX,useState } from 'react';
+import { type JSX, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { useSearchStore } from '@/core/store/search-store.ts';

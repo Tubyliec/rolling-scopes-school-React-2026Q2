@@ -1,6 +1,6 @@
 import type { Person } from '@entities/person/model/types/person.type.ts';
 import { render, screen } from '@testing-library/react';
-import { describe, expect,it } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import CardList from './card-list';
 
