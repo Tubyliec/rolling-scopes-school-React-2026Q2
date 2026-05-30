@@ -1,0 +1,6 @@
+@use '../../shared/styles/variables' as *;
+
+.results-section {
+  flex: 1;
+  padding: $padding-xl;
+}
