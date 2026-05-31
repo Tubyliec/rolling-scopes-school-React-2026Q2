@@ -5,23 +5,21 @@ import AboutPage from '@pages/about/about-page.tsx';
 import MainPage from '@pages/main/main-page.tsx';
 import NotFoundPage from '@pages/not-found/not-found-page.tsx';
 import { type JSX } from 'react';
-import { BrowserRouter, Navigate, Route, Routes } from 'react-router-dom';
+import { Navigate, Route, Routes } from 'react-router-dom';
 
 function AppRouter(): JSX.Element {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route
-          path={AppRoute.Root}
-          element={<Navigate to={AppRoute.Main} replace />}
-        />
-        <Route path={`${AppRouteSegment.Main}/:page?`} element={<MainPage />}>
-          <Route path={AppRouteSegment.DetailsId} element={<PersonDetail />} />
-        </Route>
-        <Route path={AppRouteSegment.About} element={<AboutPage />} />
-        <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
-      </Routes>
-    </BrowserRouter>
+    <Routes>
+      <Route
+        path={AppRoute.Root}
+        element={<Navigate to={AppRoute.Main} replace />}
+      />
+      <Route path={`${AppRouteSegment.Main}/:page?`} element={<MainPage />}>
+        <Route path={AppRouteSegment.DetailsId} element={<PersonDetail />} />
+      </Route>
+      <Route path={AppRouteSegment.About} element={<AboutPage />} />
+      <Route path={AppRoute.NotFound} element={<NotFoundPage />} />
+    </Routes>
   );
 }
 
