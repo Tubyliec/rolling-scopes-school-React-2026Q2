@@ -1,9 +1,10 @@
 import { fireEvent, render, screen } from '@testing-library/react';
-import { describe, expect, it, vi } from 'vitest';
 
 import type { Person } from '@entities/person/model/types/person.type.ts';
 
 import ResultsTable from './results-table';
+
+import { describe, expect, it, vi } from 'vitest';
 
 describe('ResultsTable', () => {
   const mockOnSelect = vi.fn();

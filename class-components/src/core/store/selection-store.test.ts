@@ -1,8 +1,8 @@
-import { beforeEach, describe, expect, it } from 'vitest';
+import type { Person } from '@/entities/person/model/types/person.type.ts';
 
 import { useSelectionStore } from './selection-store';
 
-import type { Person } from '@/entities/person/model/types/person.type.ts';
+import { beforeEach, describe, expect, it } from 'vitest';
 
 const makePerson = (id: number): Person => ({
   name: `Person ${id}`,

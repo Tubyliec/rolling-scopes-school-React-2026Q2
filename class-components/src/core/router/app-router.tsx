@@ -1,14 +1,12 @@
 import { type JSX } from 'react';
 import { Navigate, Route, Routes } from 'react-router-dom';
 
+import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
+import { AppRouteSegment } from '@core/router/model/enums/app-route-segment.ts';
+import PersonDetail from '@entities/person/components/details/person-details.tsx';
 import AboutPage from '@pages/about/about-page.tsx';
 import MainPage from '@pages/main/main-page.tsx';
 import NotFoundPage from '@pages/not-found/not-found-page.tsx';
-
-import PersonDetail from '@entities/person/components/details/person-details.tsx';
-
-import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
-import { AppRouteSegment } from '@core/router/model/enums/app-route-segment.ts';
 
 function AppRouter(): JSX.Element {
   return (

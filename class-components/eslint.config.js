@@ -33,24 +33,10 @@ export default defineConfig([
         'error',
         {
           groups: [
-            ['^\\u0000'],
-            ['^react$', '^react-dom$', '^react-router-dom$'],
-            [
-              '^(?!@core|@shared|@widgets|@entities|@features|@pages|@app)(@?\\w)',
-            ],
-            ['^@app/'],
-            ['^@pages/'],
-            ['^@widgets/'],
-            ['^@features/'],
-            ['^@entities/'],
-            ['^@shared/'],
-            ['^@core/'],
-
-            ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
-            ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
-            ['^.+\\.module\\.(css|scss)$'],
-            ['^.+\\.(svg|png|jpe?g|gif|webp)$'],
-            ['^.+\\.(css|scss)$'],
+            ['^react\\u0000$', '^react$', '^react-router-dom$'],
+            ['^@'],
+            ['^.+\\u0000$'],
+            ['^\\.'],
           ],
         },
       ],

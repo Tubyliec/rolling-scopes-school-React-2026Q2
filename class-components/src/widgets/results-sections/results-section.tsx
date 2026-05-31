@@ -1,12 +1,5 @@
-import { useNavigate, useParams } from 'react-router-dom';
-
 import type { JSX } from 'react';
-
-import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';
-
-import type { Person } from '@entities/person/model/types/person.type.ts';
-
-import './results-section.scss';
+import { useNavigate, useParams } from 'react-router-dom';
 
 import { useSelectionStore } from '@/core/store/selection-store.ts';
 import Pagination from '@/shared/ui/pagination/pagination.tsx';
@@ -14,6 +7,11 @@ import ResultsTable from '@/shared/ui/results-table/results-table.tsx';
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
 import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
 import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';
+import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';
+
+import type { Person } from '@entities/person/model/types/person.type.ts';
+
+import './results-section.scss';
 
 function ResultsSection(): JSX.Element {
   const { detailsId } = useParams();

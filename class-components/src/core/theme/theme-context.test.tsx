@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it } from 'vitest';
 
 import { ThemeProvider } from './theme-context';
 import { useTheme } from './use-theme';
+
+import { describe, expect, it } from 'vitest';
 
 function TestComponent() {
   const { theme, toggleTheme } = useTheme();

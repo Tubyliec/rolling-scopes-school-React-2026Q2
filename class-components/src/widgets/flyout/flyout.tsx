@@ -1,9 +1,9 @@
 import type { JSX } from 'react';
 
-import './flyout.scss';
-
 import { useSelectionStore } from '@/core/store/selection-store.ts';
 import { downloadSelectedAsCsv } from '@/shared/utilities/download-csv.ts';
+
+import './flyout.scss';
 
 function Flyout(): JSX.Element | null {
   const { selectedItems, unselectAll } = useSelectionStore();

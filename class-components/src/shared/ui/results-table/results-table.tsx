@@ -1,14 +1,13 @@
 import type { JSX } from 'react';
 
-import type { Person } from '@entities/person/model/types/person.type.ts';
-
-import type { ResultsTableProps } from './model/interfaces/results-table.interface';
-
-import './results-table.scss';
-
 import { buildDescription } from '@/shared/utilities/build-descriptions.ts';
 import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
 import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';
+
+import type { ResultsTableProps } from './model/interfaces/results-table.interface';
+import type { Person } from '@entities/person/model/types/person.type.ts';
+
+import './results-table.scss';
 
 function ResultsTable({
   results,

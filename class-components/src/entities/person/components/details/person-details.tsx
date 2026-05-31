@@ -1,11 +1,10 @@
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
-
 import type { JSX } from 'react';
-
-import './person-details.scss';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { usePersonQuery } from '@/core/swapi/hooks/use-person-query.ts';
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
+
+import './person-details.scss';
 
 function PersonDetail(): JSX.Element {
   const { detailsId } = useParams();

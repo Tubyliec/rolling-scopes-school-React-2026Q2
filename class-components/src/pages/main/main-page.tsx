@@ -1,19 +1,15 @@
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
-
 import type { JSX } from 'react';
-
-import { Layout } from '@widgets/layout/layout.tsx';
-
-import { ErrorButton } from '@shared/ui/buttons/error-button/error-button.tsx';
-
-import { useTheme } from '@core/theme/use-theme.tsx';
-
-import './main-page.scss';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
 
 import Flyout from '@/widgets/flyout/flyout.tsx';
 import Header from '@/widgets/header/header.tsx';
 import ResultsSection from '@/widgets/results-sections/results-section.tsx';
 import SearchSection from '@/widgets/search-section/search-section.tsx';
+import { useTheme } from '@core/theme/use-theme.tsx';
+import { ErrorButton } from '@shared/ui/buttons/error-button/error-button.tsx';
+import { Layout } from '@widgets/layout/layout.tsx';
+
+import './main-page.scss';
 
 function MainPage(): JSX.Element {
   const { detailsId } = useParams();

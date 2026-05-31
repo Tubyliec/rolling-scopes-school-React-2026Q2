@@ -1,12 +1,11 @@
 import { type JSX, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
+import { useSearchStore } from '@/core/store/search-store.ts';
+import SearchField from '@/widgets/search-field/search-field.tsx';
 import { useIsFetching } from '@tanstack/react-query';
 
 import './search-section.scss';
-
-import { useSearchStore } from '@/core/store/search-store.ts';
-import SearchField from '@/widgets/search-field/search-field.tsx';
 
 function SearchSection(): JSX.Element {
   const navigate = useNavigate();

@@ -1,8 +1,8 @@
-import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
-
 import type { Person } from '@entities/person/model/types/person.type.ts';
 
 import { downloadSelectedAsCsv } from './download-csv';
+
+import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 describe('downloadSelectedAsCsv', () => {
   const mockCreateObjectURL = vi.fn();

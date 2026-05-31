@@ -1,8 +1,9 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
 
 import SearchField from './search-field';
+
+import { describe, expect, it, vi } from 'vitest';
 
 describe('SearchField', () => {
   const mockOnChange = vi.fn();

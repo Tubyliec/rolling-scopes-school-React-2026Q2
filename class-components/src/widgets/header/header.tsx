@@ -1,6 +1,5 @@
-import { NavLink } from 'react-router-dom';
-
 import type { JSX } from 'react';
+import { NavLink } from 'react-router-dom';
 
 import { useTheme } from '@core/theme/use-theme.tsx';
 

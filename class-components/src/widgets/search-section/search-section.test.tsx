@@ -1,14 +1,14 @@
 import { MemoryRouter } from 'react-router-dom';
 
+import { useSearchStore } from '@/core/store/search-store.ts';
+import { createTestQueryClient } from '@/test/query-test-utils.tsx';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import SearchSection from './search-section';
 
-import { useSearchStore } from '@/core/store/search-store.ts';
-import { createTestQueryClient } from '@/test/query-test-utils.tsx';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockNavigate = vi.fn();
 vi.mock('react-router-dom', async (importOriginal) => {

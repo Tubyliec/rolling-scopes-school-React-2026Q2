@@ -1,8 +1,7 @@
-import { create } from 'zustand';
-
+import type { SelectionState } from '@core/store/model/types/selection-state.type.ts';
 import type { Person } from '@entities/person/model/types/person.type.ts';
 
-import type { SelectionState } from '@core/store/model/types/selection-state.type.ts';
+import { create } from 'zustand';
 
 export const useSelectionStore = create<SelectionState>((set, get) => ({
   selectedItems: [],

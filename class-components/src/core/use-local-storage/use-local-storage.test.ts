@@ -1,7 +1,8 @@
 import { act, renderHook } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useLocalStorage } from './use-local-storage';
+
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 describe('useLocalStorage', () => {
   beforeEach(() => {

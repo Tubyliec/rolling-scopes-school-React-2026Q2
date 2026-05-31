@@ -1,6 +1,6 @@
-import { describe, expect, it } from 'vitest';
-
 import { buildSearchUrl } from './build-search-url';
+
+import { describe, expect, it } from 'vitest';
 
 describe('buildSearchUrl', () => {
   it('should return base URL when no term and page is 1', () => {

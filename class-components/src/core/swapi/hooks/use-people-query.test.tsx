@@ -1,14 +1,15 @@
-import { QueryClientProvider } from '@tanstack/react-query';
-import { renderHook, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-
-import { usePeopleQuery } from './use-people-query';
 
 import {
   createCachingQueryClient,
   createTestQueryClient,
 } from '@/test/query-test-utils.tsx';
+import { QueryClientProvider } from '@tanstack/react-query';
+import { renderHook, waitFor } from '@testing-library/react';
+
+import { usePeopleQuery } from './use-people-query';
+
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockSearchPeople = vi.fn();
 vi.mock('@/core/swapi/swapi-service.ts', () => ({

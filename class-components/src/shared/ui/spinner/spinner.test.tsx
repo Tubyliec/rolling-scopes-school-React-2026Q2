@@ -1,7 +1,8 @@
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
 
 import Spinner from './spinner';
+
+import { describe, expect, it } from 'vitest';
 
 describe('Spinner', () => {
   it('should render without crashing', () => {

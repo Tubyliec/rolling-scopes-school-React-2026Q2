@@ -2,9 +2,10 @@ import { Component, type JSX } from 'react';
 
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { describe, expect, it, vi } from 'vitest';
 
 import ErrorBoundary from './error-boundary';
+
+import { describe, expect, it, vi } from 'vitest';
 
 class ThrowError extends Component<{ shouldThrow: boolean }> {
   public render(): JSX.Element {
