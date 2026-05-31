@@ -1,10 +1,9 @@
 import './person-details.scss';
 
-import type { Person } from '@entities/person/model/types/person.type.ts';
-import { type JSX, useEffect, useState } from 'react';
+import type { JSX } from 'react';
 import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
-import { getPerson } from '@/core/swapi/swapi-service.ts';
+import { usePersonQuery } from '@/core/swapi/hooks/use-person-query.ts';
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
 
 function PersonDetail(): JSX.Element {
@@ -12,45 +11,9 @@ function PersonDetail(): JSX.Element {
   const location = useLocation();
   const navigate = useNavigate();
 
-  const page = location.pathname.match(/\/main\/(\d+)/)?.[1] || '1';
-  const [person, setPerson] = useState<Person | null>(null);
-  const [isLoading, setIsLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+  const page = location.pathname.match(/\/main\/(\d+)/)?.[1] ?? '1';
 
-  useEffect(() => {
-    if (!detailsId) return;
-
-    let isMounted = true;
-
-    setIsLoading(true);
-    setPerson(null);
-    setError(null);
-
-    getPerson(detailsId)
-      .then((response) => {
-        if (!isMounted) return;
-
-        if ('message' in response) {
-          setError(response.message);
-        } else {
-          setPerson(response);
-        }
-      })
-      .catch((err: unknown) => {
-        if (!isMounted) return;
-
-        setError(err instanceof Error ? err.message : 'Unknown error');
-      })
-      .finally(() => {
-        if (!isMounted) return;
-
-        setIsLoading(false);
-      });
-
-    return () => {
-      isMounted = false;
-    };
-  }, [detailsId]);
+  const { data: person, isLoading, error, refetch } = usePersonQuery(detailsId);
 
   const handleClose = (): void => {
     navigate(`/main/${page}`);
@@ -65,12 +28,12 @@ function PersonDetail(): JSX.Element {
       return (
         <div className="person-details__error">
           <span className="person-details__error-icon">✖</span>
-          <div className="person-details__error-msg">{error}</div>
+          <div className="person-details__error-msg">{error.message}</div>
         </div>
       );
     }
 
-    if (person === null) {
+    if (!person) {
       return <div className="person-details__empty">No data available.</div>;
     }
 
@@ -113,13 +76,18 @@ function PersonDetail(): JSX.Element {
 
   return (
     <aside className="person-details">
-      <button
-        className="person-details__close"
-        onClick={handleClose}
-        aria-label="Close details"
-      >
-        ✕
-      </button>
+      <div className="person-details__actions">
+        <button
+          className="person-details__refresh"
+          onClick={() => refetch()}
+          type="button"
+        >
+          ↻
+        </button>
+        <button className="person-details__close" onClick={handleClose}>
+          ✕
+        </button>
+      </div>
       {renderContent()}
     </aside>
   );

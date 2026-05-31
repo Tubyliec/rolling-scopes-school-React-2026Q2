@@ -25,6 +25,7 @@ function ResultsSection(): JSX.Element {
     totalCount,
     hasNextPage,
     hasPreviousPage,
+    refetch,
   } = useResultsSection();
 
   const { toggleItem, isSelected } = useSelectionStore();
@@ -80,6 +81,15 @@ function ResultsSection(): JSX.Element {
             count={totalCount}
           />
         )}
+        <div className="results-section__toolbar">
+          <button
+            className="results-section__refresh"
+            onClick={() => refetch()}
+            type="button"
+          >
+            ↻ Refresh
+          </button>
+        </div>
       </div>
     </section>
   );

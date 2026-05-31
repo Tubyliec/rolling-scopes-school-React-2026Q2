@@ -1,5 +1,6 @@
 import './search-section.scss';
 
+import { useIsFetching } from '@tanstack/react-query';
 import { type JSX, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 
@@ -8,7 +9,8 @@ import SearchField from '@/widgets/search-field/search-field.tsx';
 
 function SearchSection(): JSX.Element {
   const navigate = useNavigate();
-  const { term, isLoading, setTerm } = useSearchStore();
+  const isFetching = useIsFetching() > 0;
+  const { term, setTerm } = useSearchStore();
 
   const [inputValue, setInputValue] = useState<string>(term);
 
@@ -24,7 +26,7 @@ function SearchSection(): JSX.Element {
       <div className="search__wrapper wrapper">
         <SearchField
           value={inputValue}
-          isLoading={isLoading}
+          isLoading={isFetching}
           onChange={setInputValue}
           onSearch={useSearch}
         />
