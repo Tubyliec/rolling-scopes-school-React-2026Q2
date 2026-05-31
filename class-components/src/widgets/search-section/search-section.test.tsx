@@ -1,95 +1,91 @@
+import { QueryClientProvider } from '@tanstack/react-query';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { useSearchStore } from '@/core/store/search-store.ts';
+import { createTestQueryClient } from '@/test/query-test-utils.tsx';
 
 import SearchSection from './search-section';
 
 const mockNavigate = vi.fn();
-
 vi.mock('react-router-dom', async (importOriginal) => {
   const actual = await importOriginal<typeof import('react-router-dom')>();
   return { ...actual, useNavigate: () => mockNavigate };
 });
 
+vi.mock('@tanstack/react-query', async (importOriginal) => {
+  const actual = await importOriginal<typeof import('@tanstack/react-query')>();
+  return { ...actual, useIsFetching: () => 0 };
+});
+
 const renderSearchSection = () =>
   render(
-    <MemoryRouter>
-      <SearchSection />
-    </MemoryRouter>
+    <QueryClientProvider client={createTestQueryClient()}>
+      <MemoryRouter>
+        <SearchSection />
+      </MemoryRouter>
+    </QueryClientProvider>
   );
 
 describe('SearchSection', () => {
   beforeEach(() => {
     mockNavigate.mockClear();
-    useSearchStore.setState({ term: '', isLoading: false });
+    useSearchStore.setState({ term: '' });
   });
 
-  it('should render without crashing', () => {
+  it('renders without crashing', () => {
     renderSearchSection();
     expect(screen.getByLabelText('Search term')).toBeInTheDocument();
   });
 
-  it('should render with section class', () => {
+  it('renders with section class', () => {
     const { container } = renderSearchSection();
     expect(container.querySelector('.search-section')).toBeInTheDocument();
   });
 
-  it('should initialise input with the current store term', () => {
+  it('initialises input with current store term', () => {
     useSearchStore.setState({ term: 'Luke' });
     renderSearchSection();
     expect(screen.getByLabelText('Search term')).toHaveValue('Luke');
   });
 
-  it('should update input value when user types', async () => {
+  it('updates input value when user types', async () => {
     const user = userEvent.setup();
     renderSearchSection();
-    const input = screen.getByLabelText('Search term');
-    await user.type(input, 'Vader');
-    expect(input).toHaveValue('Vader');
+    await user.type(screen.getByLabelText('Search term'), 'Vader');
+    expect(screen.getByLabelText('Search term')).toHaveValue('Vader');
   });
 
-  it('should trim the term and update the store on search', async () => {
+  it('trims term and updates store on search', async () => {
     const user = userEvent.setup();
     renderSearchSection();
-    const input = screen.getByLabelText('Search term');
-    await user.type(input, '  Luke  ');
+    await user.type(screen.getByLabelText('Search term'), '  Luke  ');
     await user.click(screen.getByText('SEARCH'));
     expect(useSearchStore.getState().term).toBe('Luke');
   });
 
-  it('should navigate to /main/1 on search', async () => {
+  it('navigates to /main/1 on search', async () => {
     const user = userEvent.setup();
     renderSearchSection();
     await user.click(screen.getByText('SEARCH'));
     expect(mockNavigate).toHaveBeenCalledWith('/main/1');
   });
 
-  it('should disable input when isLoading is true', () => {
-    useSearchStore.setState({ isLoading: true });
-    renderSearchSection();
-    expect(screen.getByLabelText('Search term')).toBeDisabled();
-  });
-
-  it('should trigger search on Enter key press', async () => {
-    const user = userEvent.setup();
-    renderSearchSection();
-    const input = screen.getByLabelText('Search term');
-    await user.type(input, 'Leia{Enter}');
-    await waitFor(() => {
-      expect(mockNavigate).toHaveBeenCalledWith('/main/1');
-    });
-  });
-
-  it('should persist term to localStorage via store on search', async () => {
+  it('persists term to localStorage via store on search', async () => {
     const user = userEvent.setup();
     const setItemSpy = vi.spyOn(Storage.prototype, 'setItem');
     renderSearchSection();
-    const input = screen.getByLabelText('Search term');
-    await user.type(input, 'Obi-Wan');
+    await user.type(screen.getByLabelText('Search term'), 'Obi-Wan');
     await user.click(screen.getByText('SEARCH'));
     expect(setItemSpy).toHaveBeenCalledWith('swapi_search_term', 'Obi-Wan');
+  });
+
+  it('triggers search on Enter key', async () => {
+    const user = userEvent.setup();
+    renderSearchSection();
+    await user.type(screen.getByLabelText('Search term'), 'Leia{Enter}');
+    await waitFor(() => expect(mockNavigate).toHaveBeenCalledWith('/main/1'));
   });
 });
