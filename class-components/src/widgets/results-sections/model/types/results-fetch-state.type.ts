@@ -9,4 +9,5 @@ export type ResultsFetchState = Readonly<{
   totalCount: number;
   hasNextPage: boolean;
   hasPreviousPage: boolean;
+  refetch: () => void;
 }>;
