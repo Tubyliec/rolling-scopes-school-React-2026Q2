@@ -1,5 +1,6 @@
-import type { ResultsFetchState } from '@widgets/results-sections/model/types/results-fetch-state.type.ts';
 import { useParams } from 'react-router-dom';
+
+import type { ResultsFetchState } from '@widgets/results-sections/model/types/results-fetch-state.type.ts';
 
 import { useSearchStore } from '@/core/store/search-store.ts';
 import { usePeopleQuery } from '@/core/swapi/hooks/use-people-query.ts';

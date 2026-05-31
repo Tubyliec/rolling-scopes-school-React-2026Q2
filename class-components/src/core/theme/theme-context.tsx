@@ -1,7 +1,8 @@
+import { createContext, type JSX, useEffect, useState } from 'react';
+
 import type { Theme } from '@core/theme/model/types/theme.type.ts';
 import type { ThemeContextValue } from '@core/theme/model/types/theme-context-value.ts';
 import type { ThemeProviderProps } from '@core/theme/model/types/theme-provider-props.ts';
-import { createContext, type JSX, useEffect, useState } from 'react';
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
 

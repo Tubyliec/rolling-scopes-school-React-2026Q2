@@ -1,8 +1,8 @@
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-import { KEY_SEARCH_TERM } from '@/shared/constants/search-constants.ts';
-
 import { useSearchStore } from './search-store';
+
+import { KEY_SEARCH_TERM } from '@/shared/constants/search-constants.ts';
 
 describe('useSearchStore', () => {
   beforeEach(() => {

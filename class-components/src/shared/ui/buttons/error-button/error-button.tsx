@@ -1,6 +1,6 @@
-import './error-button.scss';
-
 import { type JSX, useState } from 'react';
+
+import './error-button.scss';
 export function ErrorButton(): JSX.Element {
   const [shouldThrowError, setShouldThrowError] = useState(false);
 

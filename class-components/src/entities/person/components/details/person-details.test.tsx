@@ -1,14 +1,15 @@
+import { MemoryRouter, Route, Routes } from 'react-router-dom';
+
 import { QueryClientProvider } from '@tanstack/react-query';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
-import { MemoryRouter, Route, Routes } from 'react-router-dom';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+import PersonDetail from './person-details';
 
 import {
   createCachingQueryClient,
   createTestQueryClient,
 } from '@/test/query-test-utils.tsx';
-
-import PersonDetail from './person-details';
 
 const mockGetPerson = vi.fn();
 vi.mock('@/core/swapi/swapi-service.ts', () => ({

@@ -1,7 +1,8 @@
-import './person-details.scss';
+import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import type { JSX } from 'react';
-import { useLocation, useNavigate, useParams } from 'react-router-dom';
+
+import './person-details.scss';
 
 import { usePersonQuery } from '@/core/swapi/hooks/use-person-query.ts';
 import Spinner from '@/shared/ui/spinner/spinner.tsx';

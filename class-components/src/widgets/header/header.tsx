@@ -1,8 +1,10 @@
-import './header.scss';
+import { NavLink } from 'react-router-dom';
+
+import type { JSX } from 'react';
 
 import { useTheme } from '@core/theme/use-theme.tsx';
-import type { JSX } from 'react';
-import { NavLink } from 'react-router-dom';
+
+import './header.scss';
 
 function Header(): JSX.Element {
   const { theme, toggleTheme } = useTheme();

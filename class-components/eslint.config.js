@@ -29,7 +29,31 @@ export default defineConfig([
     },
     rules: {
       'react-hooks/set-state-in-effect': 'off',
-      'simple-import-sort/imports': 'error',
+      'simple-import-sort/imports': [
+        'error',
+        {
+          groups: [
+            ['^\\u0000'],
+            ['^react$', '^react-dom$', '^react-router-dom$'],
+            [
+              '^(?!@core|@shared|@widgets|@entities|@features|@pages|@app)(@?\\w)',
+            ],
+            ['^@app/'],
+            ['^@pages/'],
+            ['^@widgets/'],
+            ['^@features/'],
+            ['^@entities/'],
+            ['^@shared/'],
+            ['^@core/'],
+
+            ['^\\.\\.(?!/?$)', '^\\.\\./?$'],
+            ['^\\./(?=.*/)(?!/?$)', '^\\.(?!/?$)', '^\\./?$'],
+            ['^.+\\.module\\.(css|scss)$'],
+            ['^.+\\.(svg|png|jpe?g|gif|webp)$'],
+            ['^.+\\.(css|scss)$'],
+          ],
+        },
+      ],
       'simple-import-sort/exports': 'error',
     },
     settings: {

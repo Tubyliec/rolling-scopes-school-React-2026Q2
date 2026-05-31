@@ -1,5 +1,6 @@
-import type { Person } from '@entities/person/model/types/person.type.ts';
 import { useQuery } from '@tanstack/react-query';
+
+import type { Person } from '@entities/person/model/types/person.type.ts';
 
 import { queryKeys } from '@/core/query/query-keys.ts';
 import { getPerson } from '@/core/swapi/swapi-service.ts';

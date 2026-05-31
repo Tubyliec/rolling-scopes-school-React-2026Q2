@@ -1,6 +1,6 @@
-import './spinner.scss';
-
 import type { JSX } from 'react';
+
+import './spinner.scss';
 
 function Spinner(): JSX.Element {
   return (

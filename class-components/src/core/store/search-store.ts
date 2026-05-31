@@ -1,5 +1,6 @@
-import type { SearchState } from '@core/store/model/types/search-state.type.ts';
 import { create } from 'zustand';
+
+import type { SearchState } from '@core/store/model/types/search-state.type.ts';
 
 import { KEY_SEARCH_TERM } from '@/shared/constants/search-constants.ts';
 

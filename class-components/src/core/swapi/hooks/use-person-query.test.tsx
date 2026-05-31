@@ -3,12 +3,12 @@ import { renderHook, waitFor } from '@testing-library/react';
 import type { ReactNode } from 'react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
+import { usePersonQuery } from './use-person-query';
+
 import {
   createCachingQueryClient,
   createTestQueryClient,
 } from '@/test/query-test-utils.tsx';
-
-import { usePersonQuery } from './use-person-query';
 
 const mockGetPerson = vi.fn();
 vi.mock('@/core/swapi/swapi-service.ts', () => ({

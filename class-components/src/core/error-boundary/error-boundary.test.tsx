@@ -1,6 +1,7 @@
+import { Component, type JSX } from 'react';
+
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-import { Component, type JSX } from 'react';
 import { describe, expect, it, vi } from 'vitest';
 
 import ErrorBoundary from './error-boundary';

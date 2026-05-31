@@ -1,10 +1,14 @@
-import './main-page.scss';
+import { Outlet, useNavigate, useParams } from 'react-router-dom';
+
+import type { JSX } from 'react';
+
+import { Layout } from '@widgets/layout/layout.tsx';
+
+import { ErrorButton } from '@shared/ui/buttons/error-button/error-button.tsx';
 
 import { useTheme } from '@core/theme/use-theme.tsx';
-import { ErrorButton } from '@shared/ui/buttons/error-button/error-button.tsx';
-import { Layout } from '@widgets/layout/layout.tsx';
-import type { JSX } from 'react';
-import { Outlet, useNavigate, useParams } from 'react-router-dom';
+
+import './main-page.scss';
 
 import Flyout from '@/widgets/flyout/flyout.tsx';
 import Header from '@/widgets/header/header.tsx';
