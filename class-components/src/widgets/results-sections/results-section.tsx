@@ -45,30 +45,18 @@ function ResultsSection(): JSX.Element {
     navigate(`${AppRoute.Main}/${newPage}${detailsId ? `/${detailsId}` : ''}`);
   };
 
-  const renderContent = (): JSX.Element => {
-    if (isLoading) {
-      return <Spinner />;
-    }
-
-    if (error !== null) {
-      return <ErrorDisplay message={error} />;
-    }
-
-    return (
-      <ResultsTable
-        results={results}
-        onSelect={handleSelect}
-        onCheckboxToggle={toggleItem}
-        isChecked={isSelected}
-        selectedId={detailsId}
-      />
-    );
-  };
-
   return (
     <section className="results-section">
       <div className="results__wrapper wrapper" onClick={stopPropagation}>
-        {renderContent()}
+        {isLoading && <Spinner />}
+        {error && <ErrorDisplay message={error} />}
+        <ResultsTable
+          results={results}
+          onSelect={handleSelect}
+          onCheckboxToggle={toggleItem}
+          isChecked={isSelected}
+          selectedId={detailsId}
+        />
         {shouldShowPagination && (
           <Pagination
             currentPage={currentPage}
