@@ -139,9 +139,7 @@ describe('ResultsSection', () => {
     mockSearchPeople.mockResolvedValue({ message: 'err' });
     renderSection();
     await screen.findByText('REQUEST FAILED');
-    expect(
-      screen.getByRole('button', { name: /refresh results/i })
-    ).toBeInTheDocument();
+    expect(screen.getByText('↻ Refresh')).toBeInTheDocument();
   });
 
   it('Refresh button triggers a new fetch', async () => {
@@ -156,7 +154,7 @@ describe('ResultsSection', () => {
     await screen.findByText('Luke Skywalker');
     const callsAfterLoad = mockSearchPeople.mock.calls.length;
 
-    fireEvent.click(screen.getByRole('button', { name: /refresh results/i }));
+    fireEvent.click(screen.getByText('↻ Refresh'));
 
     await waitFor(() =>
       expect(mockSearchPeople.mock.calls.length).toBeGreaterThan(callsAfterLoad)

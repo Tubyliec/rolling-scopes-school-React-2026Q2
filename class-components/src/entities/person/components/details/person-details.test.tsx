@@ -76,7 +76,7 @@ describe('PersonDetail', () => {
     mockGetPerson.mockResolvedValue({ message: 'err' });
     renderDetail('/main/3/123');
     await screen.findByText('err');
-    fireEvent.click(screen.getByLabelText('Close details'));
+    fireEvent.click(screen.getByText('✕'));
     await waitFor(() =>
       expect(screen.getByText('MAIN PAGE')).toBeInTheDocument()
     );
@@ -86,7 +86,7 @@ describe('PersonDetail', () => {
     mockGetPerson.mockResolvedValue(mockPerson);
     renderDetail();
     await screen.findByText('Test');
-    expect(screen.getByLabelText('Refresh details')).toBeInTheDocument();
+    expect(screen.getByText('↻ Refresh')).toBeInTheDocument();
   });
 
   it('Refresh button triggers a new fetch', async () => {
@@ -95,7 +95,7 @@ describe('PersonDetail', () => {
     await screen.findByText('Test');
     const callsAfterLoad = mockGetPerson.mock.calls.length;
 
-    fireEvent.click(screen.getByLabelText('Refresh details'));
+    fireEvent.click(screen.getByText('↻ Refresh'));
 
     await waitFor(() =>
       expect(mockGetPerson.mock.calls.length).toBeGreaterThan(callsAfterLoad)
