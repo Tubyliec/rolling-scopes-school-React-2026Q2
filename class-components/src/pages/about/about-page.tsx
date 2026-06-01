@@ -1,6 +1,8 @@
 import type { JSX } from 'react';
 import { Link } from 'react-router-dom';
 
+import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
+
 import './about-page.scss';
 
 function AboutPage(): JSX.Element {
@@ -33,7 +35,7 @@ function AboutPage(): JSX.Element {
           </p>
         </section>
 
-        <Link className="about-page__back" to="/main">
+        <Link className="about-page__back" to={AppRoute.Main}>
           ← Back to Search
         </Link>
       </div>

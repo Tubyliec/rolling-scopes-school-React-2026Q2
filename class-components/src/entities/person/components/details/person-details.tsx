@@ -3,6 +3,7 @@ import { useLocation, useNavigate, useParams } from 'react-router-dom';
 
 import { usePersonQuery } from '@/core/swapi/hooks/use-person-query.ts';
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
+import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
 
 import './person-details.scss';
 
@@ -16,7 +17,7 @@ function PersonDetail(): JSX.Element {
   const { data: person, isLoading, error, refetch } = usePersonQuery(detailsId);
 
   const handleClose = (): void => {
-    navigate(`/main/${page}`);
+    navigate(`${AppRoute.Main}/${page}`);
   };
 
   const renderContent = (): JSX.Element => {

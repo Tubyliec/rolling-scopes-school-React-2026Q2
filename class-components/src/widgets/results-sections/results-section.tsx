@@ -7,6 +7,7 @@ import ResultsTable from '@/shared/ui/results-table/results-table.tsx';
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
 import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
 import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';
+import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
 import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';
 
 import type { Person } from '@entities/person/model/types/person.type.ts';
@@ -33,11 +34,11 @@ function ResultsSection(): JSX.Element {
 
   const handleSelect = (person: Person): void => {
     const id = extractPersonId(person.url);
-    navigate(`/main/${currentPage}/${id}`);
+    navigate(`${AppRoute.Main}/${currentPage}/${id}`);
   };
 
   const handlePageChange = (newPage: number): void => {
-    navigate(`/main/${newPage}${detailsId ? `/${detailsId}` : ''}`);
+    navigate(`${AppRoute.Main}/${newPage}${detailsId ? `/${detailsId}` : ''}`);
   };
 
   const renderContent = (): JSX.Element => {
