@@ -14,7 +14,8 @@ function Flyout(): JSX.Element | null {
     downloadSelectedAsCsv(selectedItems);
   };
 
-  const itemsText = selectedItems.length === 1 ? ' item selected' : ' items selected';
+  const itemsText =
+    selectedItems.length === 1 ? ' item selected' : ' items selected';
 
   return (
     <div

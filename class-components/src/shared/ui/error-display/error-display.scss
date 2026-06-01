@@ -1,0 +1,29 @@
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/placeholders' as *;
+
+.error-display {
+  display: flex;
+  align-items: center;
+  gap: $spacing-md;
+  padding: $spacing-lg;
+  color: $color-text-dim;
+
+  &__icon {
+    font-size: $font-size-2xl;
+    color: $color-red;
+  }
+
+  &__title {
+    @extend %label-text;
+    color: $color-red;
+    margin-bottom: $spacing-xs;
+
+    &:empty {
+      display: none;
+    }
+  }
+
+  &__message {
+    font-size: $font-size-sm;
+  }
+}

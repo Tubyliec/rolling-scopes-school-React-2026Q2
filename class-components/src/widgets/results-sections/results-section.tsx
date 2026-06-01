@@ -2,6 +2,7 @@ import type { JSX } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { useSelectionStore } from '@/core/store/selection-store.ts';
+import { ErrorDisplay } from '@/shared/ui/error-display/error-display.tsx';
 import Pagination from '@/shared/ui/pagination/pagination.tsx';
 import ResultsTable from '@/shared/ui/results-table/results-table.tsx';
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
@@ -50,15 +51,7 @@ function ResultsSection(): JSX.Element {
     }
 
     if (error !== null) {
-      return (
-        <div className="results-section__error">
-          <span className="results-section__error-icon">✖</span>
-          <div>
-            <div className="results-section__error-title">REQUEST FAILED</div>
-            <div className="results-section__error-msg">{error}</div>
-          </div>
-        </div>
-      );
+      return <ErrorDisplay message={error} />;
     }
 
     return (
