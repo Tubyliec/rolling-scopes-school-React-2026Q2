@@ -21,13 +21,13 @@ function MainPage(): JSX.Element {
     if (detailsId) navigate(AppRoute.Main);
   };
 
+  const bodyClassName = `main-layout__body${detailsId ? ' main-layout__body--split' : ''}`;
+
   return (
     <Layout data-theme={theme}>
       <Header />
       <SearchSection />
-      <div
-        className={`main-layout__body${detailsId ? ' main-layout__body--split' : ''}`}
-      >
+      <div className={bodyClassName}>
         <div className="main-layout__results" onClick={handleCloseDetails}>
           <ResultsSection />
         </div>

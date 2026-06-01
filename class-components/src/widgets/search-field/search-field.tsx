@@ -20,6 +20,8 @@ function SearchField({
     }
   };
 
+  const buttonText = isLoading ? 'FETCHING…' : 'SEARCH';
+
   return (
     <div className="search-field">
       <div className="search-field__group">
@@ -45,7 +47,7 @@ function SearchField({
         onClick={onSearch}
         disabled={isLoading}
       >
-        {isLoading ? 'FETCHING…' : 'SEARCH'}
+        {buttonText}
       </button>
     </div>
   );

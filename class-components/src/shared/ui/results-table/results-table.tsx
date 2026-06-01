@@ -29,11 +29,12 @@ function ResultsTable({
     const id = extractPersonId(person.url);
     const isActive = id === selectedId;
     const checked = isChecked(person.url);
+    const rowClassName = `results-table__row results-table__row--clickable${isActive ? ' results-table__row--active' : ''}${checked ? ' results-table__row--selected' : ''}`;
 
     return (
       <tr
         key={index}
-        className={`results-table__row results-table__row--clickable${isActive ? ' results-table__row--active' : ''}${checked ? ' results-table__row--selected' : ''}`}
+        className={rowClassName}
         onClick={(e) => {
           stopPropagation(e);
           onSelect(person);

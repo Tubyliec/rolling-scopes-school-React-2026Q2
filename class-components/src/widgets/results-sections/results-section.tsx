@@ -33,6 +33,8 @@ function ResultsSection(): JSX.Element {
 
   const { toggleItem, isSelected } = useSelectionStore();
 
+  const shouldShowPagination = totalCount > 0;
+
   const handleSelect = (person: Person): void => {
     const id = extractPersonId(person.url);
     navigate(`${AppRoute.Main}/${currentPage}/${id}`);
@@ -74,7 +76,7 @@ function ResultsSection(): JSX.Element {
     <section className="results-section">
       <div className="results__wrapper wrapper" onClick={stopPropagation}>
         {renderContent()}
-        {totalCount > 0 && (
+        {shouldShowPagination && (
           <Pagination
             currentPage={currentPage}
             totalPages={totalPages}

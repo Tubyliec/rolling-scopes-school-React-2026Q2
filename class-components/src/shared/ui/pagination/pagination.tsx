@@ -30,14 +30,15 @@ function Pagination({
     const endPage = Math.min(totalPages, currentPage + 2);
 
     for (let i = startPage; i <= endPage; i++) {
+      const isPageActive = i === currentPage;
       pages.push(
         <button
           key={i}
-          className={`pagination__page ${i === currentPage ? 'pagination__page--active' : ''}`}
+          className={`pagination__page ${isPageActive ? 'pagination__page--active' : ''}`}
           onClick={() => {
             if (i !== currentPage) onPageChange(i);
           }}
-          disabled={i === currentPage}
+          disabled={isPageActive}
         >
           {i}
         </button>

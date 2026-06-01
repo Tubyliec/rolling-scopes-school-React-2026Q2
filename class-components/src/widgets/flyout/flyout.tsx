@@ -14,6 +14,8 @@ function Flyout(): JSX.Element | null {
     downloadSelectedAsCsv(selectedItems);
   };
 
+  const itemsText = selectedItems.length === 1 ? ' item selected' : ' items selected';
+
   return (
     <div
       className="flyout"
@@ -23,7 +25,7 @@ function Flyout(): JSX.Element | null {
       <div className="flyout__wrapper wrapper">
         <span className="flyout__count">
           <span className="flyout__count-number">{selectedItems.length}</span>
-          {selectedItems.length === 1 ? ' item selected' : ' items selected'}
+          {itemsText}
         </span>
         <div className="flyout__actions">
           <button
