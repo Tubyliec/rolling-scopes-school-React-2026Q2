@@ -13,7 +13,6 @@
 
   &__close {
     @extend %flex-row-center;
-    position: absolute;
     top: $spacing-sm;
     right: $spacing-sm;
     background: none;
@@ -79,5 +78,9 @@
   &__empty {
     opacity: $opacity-sm;
     font-size: $font-size-base;
+  }
+
+  &__actions {
+    @extend %flex-row-space-between-center;
   }
 }

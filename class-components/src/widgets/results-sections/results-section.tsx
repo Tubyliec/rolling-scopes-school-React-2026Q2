@@ -8,6 +8,7 @@ import Spinner from '@/shared/ui/spinner/spinner.tsx';
 import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
 import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';
 import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
+import { RefreshButton } from '@shared/ui/buttons/refresh-button/refresh-button.tsx';
 import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';
 
 import type { Person } from '@entities/person/model/types/person.type.ts';
@@ -84,13 +85,7 @@ function ResultsSection(): JSX.Element {
           />
         )}
         <div className="results-section__toolbar">
-          <button
-            className="results-section__refresh"
-            onClick={() => refetch()}
-            type="button"
-          >
-            ↻ Refresh
-          </button>
+          <RefreshButton onClick={() => refetch()} />
         </div>
       </div>
     </section>
