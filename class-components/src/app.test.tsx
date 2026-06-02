@@ -223,7 +223,7 @@ describe('App', () => {
       hasNextPage: false,
       hasPreviousPage: true,
     });
-    await user.click(screen.getByText('Next →'));
+    await user.click(screen.getByText('→'));
     await waitFor(() =>
       expect(screen.getByText('Page 2 of 2')).toBeInTheDocument()
     );

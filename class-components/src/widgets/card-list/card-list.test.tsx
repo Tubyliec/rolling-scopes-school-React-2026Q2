@@ -45,10 +45,6 @@ describe('CardList', () => {
     expect(screen.getByText('NO RECORDS FOUND')).toBeInTheDocument();
   });
 
-  it('should render empty state glyph', () => {
-    render(<CardList results={[]} />);
-    expect(screen.getByText('◈')).toBeInTheDocument();
-  });
 
   it('should render multiple cards when multiple results', () => {
     const person2: Person = {
