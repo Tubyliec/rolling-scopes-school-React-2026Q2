@@ -65,12 +65,6 @@
     font-size: $font-size-sm;
     letter-spacing: $letter-spacing-md;
   }
-
-  &__empty-glyph {
-    font-size: $font-size-3xl;
-    margin-bottom: $spacing-md;
-    opacity: $opacity-2xs;
-  }
 }
 
 .results-table__row--clickable {

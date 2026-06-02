@@ -18,11 +18,7 @@ function Flyout(): JSX.Element | null {
     selectedItems.length === 1 ? ' item selected' : ' items selected';
 
   return (
-    <div
-      className="flyout"
-      role="complementary"
-      aria-label="Selected items actions"
-    >
+    <div className="flyout" role="complementary">
       <div className="flyout__wrapper wrapper">
         <span className="flyout__count">
           <span className="flyout__count-number">{selectedItems.length}</span>
