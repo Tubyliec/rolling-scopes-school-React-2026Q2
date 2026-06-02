@@ -10,3 +10,9 @@
   gap: 1rem;
   @extend %flex-center-column;
 }
+
+.results-section__toolbar {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 2rem;
+}
