@@ -1,0 +1,24 @@
+@use '../../../styles/variables' as *;
+
+.pagination__btn {
+  padding: $padding-base;
+  background: $color-surface;
+  border: $border-base;
+  border-radius: $radius-sm;
+  color: $color-text;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition:
+    border-color $transition-base,
+    background $transition-base;
+
+  &:hover:not(:disabled) {
+    border-color: $color-border-bright;
+    background: $color-border-bright;
+  }
+
+  &:disabled {
+    opacity: $opacity-xs;
+    cursor: not-allowed;
+  }
+}
