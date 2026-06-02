@@ -18,6 +18,10 @@
     text-transform: uppercase;
   }
 
+  &__nav {
+    @extend %flex-row-space-between-center;
+  }
+
   &__nav-link {
     @extend %label-text;
     opacity: $opacity-lg;
@@ -27,16 +31,15 @@
 
     &:hover,
     &--active {
-      opacity: $opacity-lg;
+      border-color: $color-amber;
+      color: $color-amber;
     }
   }
 }
 
 .theme-toggle {
-  font-family: $font-mono;
-  font-size: $font-size-xs;
-  letter-spacing: $letter-spacing-lg;
-  text-transform: uppercase;
+  @extend %label-text;
+  white-space: nowrap;
   cursor: pointer;
   background: transparent;
   border: $border-base;

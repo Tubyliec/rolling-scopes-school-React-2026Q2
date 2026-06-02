@@ -26,6 +26,10 @@
   .app-header__nav-link {
     border-color: $color-border-light;
     color: $color-text-dim-light;
+    &:hover {
+      border-color: $color-amber;
+      color: $color-amber;
+    }
   }
 
   .theme-toggle {
