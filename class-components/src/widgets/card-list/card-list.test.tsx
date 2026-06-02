@@ -45,7 +45,6 @@ describe('CardList', () => {
     expect(screen.getByText('NO RECORDS FOUND')).toBeInTheDocument();
   });
 
-
   it('should render multiple cards when multiple results', () => {
     const person2: Person = {
       name: 'Darth Vader',
