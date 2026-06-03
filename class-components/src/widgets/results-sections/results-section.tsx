@@ -68,7 +68,7 @@ function ResultsSection(): JSX.Element {
           />
         )}
         <div className="results-section__toolbar">
-          <RefreshButton onClick={() => refetch()} />
+          <RefreshButton onClick={refetch} />
         </div>
       </div>
     </section>

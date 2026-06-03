@@ -72,7 +72,7 @@ function PersonDetail(): JSX.Element {
   return (
     <aside className="person-details">
       <div className="person-details__actions">
-        <RefreshButton onClick={() => refetch()} />
+        <RefreshButton onClick={refetch} />
         <button className="person-details__close" onClick={handleClose}>
           ✕
         </button>

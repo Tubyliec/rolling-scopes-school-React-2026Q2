@@ -1,11 +1,8 @@
 import type { JSX } from 'react';
 
-import './refresh-button.scss';
+import type { RefreshButtonProps } from '@shared/ui/buttons/refresh-button/model/types/refresh-button-props.type.ts';
 
-interface RefreshButtonProps {
-  onClick: () => void;
-  className?: string;
-}
+import './refresh-button.scss';
 
 export function RefreshButton({
   onClick,
