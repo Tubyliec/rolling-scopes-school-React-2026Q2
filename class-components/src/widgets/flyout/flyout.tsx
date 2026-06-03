@@ -10,7 +10,7 @@ function Flyout(): JSX.Element | null {
 
   if (selectedItems.length === 0) return null;
 
-  const useDownload = (): void => {
+  const handleDownload = (): void => {
     downloadSelectedAsCsv(selectedItems);
   };
 
@@ -34,7 +34,7 @@ function Flyout(): JSX.Element | null {
           </button>
           <button
             className="flyout__btn flyout__btn--primary"
-            onClick={useDownload}
+            onClick={handleDownload}
             type="button"
           >
             ↓ Download

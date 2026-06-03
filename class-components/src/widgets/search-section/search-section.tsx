@@ -15,7 +15,7 @@ function SearchSection(): JSX.Element {
 
   const [inputValue, setInputValue] = useState<string>(term);
 
-  const useSearch = (): void => {
+  const handleSearch = (): void => {
     const trimmed = inputValue.trim();
     setInputValue(trimmed);
     setTerm(trimmed);
@@ -29,7 +29,7 @@ function SearchSection(): JSX.Element {
           value={inputValue}
           isLoading={isFetching}
           onChange={setInputValue}
-          onSearch={useSearch}
+          onSearch={handleSearch}
         />
       </div>
     </section>
