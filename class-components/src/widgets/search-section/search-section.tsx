@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router-dom';
 import { useSearchStore } from '@/core/store/search-store.ts';
 import SearchField from '@/widgets/search-field/search-field.tsx';
 import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
+import { PAGE_NUMBERS } from '@shared/constants/page-constants.ts';
 import { useIsFetching } from '@tanstack/react-query';
 
 import './search-section.scss';
@@ -19,7 +20,7 @@ function SearchSection(): JSX.Element {
     const trimmed = inputValue.trim();
     setInputValue(trimmed);
     setTerm(trimmed);
-    navigate(`${AppRoute.Main}/1`);
+    navigate(`${AppRoute.Main}/${PAGE_NUMBERS.firstPage}`);
   };
 
   return (
