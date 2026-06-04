@@ -14,17 +14,9 @@ function Pagination({
   onPageChange,
   count,
 }: PaginationProps): JSX.Element {
-  const handlePrevious = (): void => {
-    if (hasPrevious && currentPage > 1) {
-      onPageChange(currentPage - 1);
-    }
-  };
+  const handlePrevious = (): void => onPageChange(currentPage - 1);
 
-  const handleNext = (): void => {
-    if (hasNext && currentPage < totalPages) {
-      onPageChange(currentPage + 1);
-    }
-  };
+  const handleNext = (): void => onPageChange(currentPage + 1);
 
   const renderPageNumbers = (): JSX.Element[] => {
     const pages: JSX.Element[] = [];
