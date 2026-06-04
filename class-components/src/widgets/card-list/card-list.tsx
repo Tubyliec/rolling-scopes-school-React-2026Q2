@@ -14,8 +14,8 @@ function CardList({ results }: CardListProps): JSX.Element {
 
   return (
     <div className="card-list">
-      {results.map((person, index) => (
-        <Card key={index} person={person} />
+      {results.map((person) => (
+        <Card key={person.url} person={person} />
       ))}
     </div>
   );
