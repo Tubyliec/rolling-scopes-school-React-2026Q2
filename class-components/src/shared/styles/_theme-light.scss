@@ -1,0 +1,159 @@
+@use './variables' as *;
+
+[data-theme='light'] {
+  body {
+    background: $color-bg-light;
+    color: $color-text-light;
+
+    &::after {
+      display: none;
+    }
+  }
+
+  .app-header {
+    background: $color-surface-light;
+    border-bottom: $border-light;
+  }
+
+  .header__wrapper {
+    border-bottom: $border-light;
+  }
+
+  .app-header__logo {
+    color: $color-amber;
+  }
+
+  .app-header__nav-link {
+    border-color: $color-border-light;
+    color: $color-text-dim-light;
+    &:hover {
+      border-color: $color-amber;
+      color: $color-amber;
+    }
+  }
+
+  .theme-toggle {
+    background: transparent;
+    border-color: $color-border-light;
+    color: $color-text-dim-light;
+
+    &:hover {
+      border-color: $color-amber;
+      color: $color-amber;
+    }
+  }
+
+  .results-table {
+    &__head tr {
+      border-bottom: $border-amber;
+    }
+
+    &__th {
+      color: $color-amber;
+    }
+
+    &__row {
+      border-bottom: $border-light;
+
+      &:hover {
+        background: $color-amber-glow-light-xs;
+      }
+      &--active {
+        background: $color-amber-glow-light-md;
+      }
+      &--selected {
+        background: $color-amber-glow-light;
+      }
+    }
+
+    &__cell--name {
+      color: $color-text-light;
+    }
+    &__description {
+      color: $color-text-dim-light;
+    }
+    &__empty {
+      color: $color-text-muted;
+    }
+
+    &__badge {
+      border-color: $color-border-light;
+      color: $color-text-muted;
+    }
+
+    &__checkbox {
+      accent-color: $color-amber-light;
+    }
+  }
+
+  .results-section__error {
+    color: $color-red-light;
+  }
+
+  .search-field {
+    &__input {
+      background: $color-surface-light;
+      border-color: $color-border-light;
+      color: $color-text-light;
+
+      &:focus {
+        border-color: $color-amber-light;
+      }
+    }
+
+    &__btn {
+      background: $color-amber-light;
+      color: $color-surface-light;
+    }
+  }
+
+  .flyout {
+    background: $color-surface-light;
+    border-top: $border-light-amber;
+    box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.15);
+
+    &__count {
+      color: $color-text-dim-light;
+    }
+    &__btn--secondary {
+      border-color: $color-border-light;
+      color: $color-text-dim-light;
+    }
+    &__btn--primary {
+      background: $color-amber-light;
+      color: $color-surface-light;
+    }
+  }
+
+  .pagination {
+    button,
+    .pagination__btn {
+      background: $color-surface-light;
+      border-color: $color-border-light;
+      color: $color-text-dim-light;
+
+      &:hover {
+        border-color: $color-amber-light;
+        color: $color-amber-light;
+      }
+      &:disabled {
+        opacity: $opacity-xs;
+      }
+    }
+  }
+
+  .spinner {
+    border-color: $color-amber-dim-light;
+    border-top-color: $color-amber-light;
+  }
+
+  .error-boundary {
+    background: $color-bg-light;
+    color: $color-text-light;
+  }
+
+  .not-found-page,
+  .about-page {
+    color: $color-text-light;
+  }
+}

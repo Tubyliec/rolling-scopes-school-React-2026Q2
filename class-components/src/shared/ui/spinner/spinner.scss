@@ -1,0 +1,41 @@
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/placeholders' as *;
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    opacity: 0.4;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+.spinner {
+  @extend %flex-center-column;
+  gap: $spacing-md;
+  padding: $spacing-3xl;
+
+  &__track {
+    width: $size-2xl;
+    height: $size-2xl;
+    border: $border-width-sm solid $color-border-bright;
+    border-top-color: $color-amber;
+    border-radius: 50%;
+    animation: spin $duration-spin linear infinite;
+  }
+
+  &__label {
+    font-size: $font-size-xs;
+    letter-spacing: $letter-spacing-xl;
+    color: $color-text-dim;
+    text-transform: uppercase;
+    animation: pulse $duration-pulse ease-in-out infinite;
+  }
+}
