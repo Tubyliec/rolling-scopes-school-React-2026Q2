@@ -58,26 +58,15 @@
     font-size: $font-size-base;
   }
 
-  &__error {
-    display: flex;
-    flex-direction: column;
-    gap: $grid-gap-md;
-    align-items: flex-start;
-  }
-
-  &__error-icon {
-    font-size: $font-size-lg;
-    color: $color-red;
-  }
-
-  &__error-msg {
-    font-size: $font-size-base;
-    opacity: $opacity-xs;
-  }
-
   &__empty {
     opacity: $opacity-sm;
     font-size: $font-size-base;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
   }
 
   &__actions {

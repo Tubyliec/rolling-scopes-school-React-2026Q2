@@ -1,3 +1,5 @@
+import { PAGE_NUMBERS } from '@shared/constants/page-constants.ts';
+
 import type { Person } from '@entities/person/model/types/person.type.ts';
 
 import { extractPersonId } from './extract-person-id.ts';
@@ -23,7 +25,9 @@ function escapeCell(value: string): string {
 
 function buildDetailsUrl(url: string): string {
   const id = extractPersonId(url);
-  return id ? `${window.location.origin}/main/1/${id}` : url;
+  return id
+    ? `${window.location.origin}/main/${PAGE_NUMBERS.firstPage}/${id}`
+    : url;
 }
 
 function personToRow(person: Person): string {

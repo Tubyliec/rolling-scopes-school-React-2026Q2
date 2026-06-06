@@ -38,25 +38,25 @@ describe('Pagination', () => {
 
   it('should disable previous button when hasPrevious is false', () => {
     render(<Pagination {...defaultProps} />);
-    const prevButton = screen.getByText('← Previous');
+    const prevButton = screen.getByText('←');
     expect(prevButton).toBeDisabled();
   });
 
   it('should enable previous button when hasPrevious is true', () => {
     render(<Pagination {...defaultProps} hasPrevious={true} />);
-    const prevButton = screen.getByText('← Previous');
+    const prevButton = screen.getByText('←');
     expect(prevButton).not.toBeDisabled();
   });
 
   it('should disable next button when hasNext is false', () => {
     render(<Pagination {...defaultProps} hasNext={false} />);
-    const nextButton = screen.getByText('Next →');
+    const nextButton = screen.getByText('→');
     expect(nextButton).toBeDisabled();
   });
 
   it('should enable next button when hasNext is true', () => {
     render(<Pagination {...defaultProps} hasNext={true} />);
-    const nextButton = screen.getByText('Next →');
+    const nextButton = screen.getByText('→');
     expect(nextButton).not.toBeDisabled();
   });
 
@@ -64,7 +64,7 @@ describe('Pagination', () => {
     const user = userEvent.setup();
     render(<Pagination {...defaultProps} hasPrevious={true} currentPage={2} />);
 
-    const prevButton = screen.getByText('← Previous');
+    const prevButton = screen.getByText('←');
     await user.click(prevButton);
 
     expect(mockOnPageChange).toHaveBeenCalledWith(1);
@@ -74,7 +74,7 @@ describe('Pagination', () => {
     const user = userEvent.setup();
     render(<Pagination {...defaultProps} hasNext={true} />);
 
-    const nextButton = screen.getByText('Next →');
+    const nextButton = screen.getByText('→');
     await user.click(nextButton);
 
     expect(mockOnPageChange).toHaveBeenCalledWith(2);

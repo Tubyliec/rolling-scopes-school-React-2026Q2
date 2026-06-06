@@ -1,6 +1,8 @@
 import type { JSX } from 'react';
 
-import type { PaginationProps } from './model/interfaces/pagination.interface.ts';
+import { PaginationButton } from '@shared/ui/buttons/pagination-button/pagination-button.tsx';
+
+import type { PaginationProps } from '@shared/ui/pagination/model/types/pagination.type.ts';
 
 import './pagination.scss';
 
@@ -12,17 +14,9 @@ function Pagination({
   onPageChange,
   count,
 }: PaginationProps): JSX.Element {
-  const handlePrevious = (): void => {
-    if (hasPrevious && currentPage > 1) {
-      onPageChange(currentPage - 1);
-    }
-  };
+  const handlePrevious = (): void => onPageChange(currentPage - 1);
 
-  const handleNext = (): void => {
-    if (hasNext && currentPage < totalPages) {
-      onPageChange(currentPage + 1);
-    }
-  };
+  const handleNext = (): void => onPageChange(currentPage + 1);
 
   const renderPageNumbers = (): JSX.Element[] => {
     const pages: JSX.Element[] = [];
@@ -59,23 +53,23 @@ function Pagination({
       </div>
 
       <div className="pagination__controls">
-        <button
-          className="pagination__btn pagination__btn--prev"
+        <PaginationButton
+          direction="prev"
           onClick={handlePrevious}
           disabled={!hasPrevious}
         >
-          ← Previous
-        </button>
+          ←
+        </PaginationButton>
 
         <div className="pagination__numbers">{renderPageNumbers()}</div>
 
-        <button
-          className="pagination__btn pagination__btn--next"
+        <PaginationButton
+          direction="next"
           onClick={handleNext}
           disabled={!hasNext}
         >
-          Next →
-        </button>
+          →
+        </PaginationButton>
       </div>
     </div>
   );

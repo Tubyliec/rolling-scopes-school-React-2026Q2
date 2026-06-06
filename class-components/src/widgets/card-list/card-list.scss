@@ -5,18 +5,4 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax($grid-min-card-width, 1fr));
   gap: $grid-gap-lg;
-
-  &__empty {
-    @extend %flex-center-column;
-    padding: $spacing-2xl;
-    color: $color-text-dim;
-    font-size: $font-size-md;
-    letter-spacing: $letter-spacing-md;
-  }
-
-  &__empty-glyph {
-    font-size: $font-size-3xl;
-    margin-bottom: $grid-gap-lg;
-    color: $color-amber;
-  }
 }
