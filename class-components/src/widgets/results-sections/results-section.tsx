@@ -2,7 +2,7 @@ import type { JSX } from 'react';
 import { useNavigate, useParams } from 'react-router-dom';
 
 import { useSelectionStore } from '@/core/store/selection-store.ts';
-import Pagination from '@/shared/ui/pagination/pagination.tsx';
+import Pagination from '@/features/pagination/pagination.tsx';
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
 import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
 import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';

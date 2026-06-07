@@ -2,7 +2,7 @@ import type { JSX } from 'react';
 
 import { PaginationButton } from '@shared/ui/buttons/pagination-button/pagination-button.tsx';
 
-import type { PaginationProps } from '@shared/ui/pagination/model/types/pagination.type.ts';
+import type { PaginationProps } from '@/features/pagination/model/types/pagination.type.ts';
 
 import './pagination.scss';
 
