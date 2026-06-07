@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
 
-import { getPasswordStrength } from '@/features/forms/components/password-strength/get-password-strength.ts';
+import { getPasswordStrength } from '@/features/forms/utilities/get-password-strength.ts';
 
 import type { PasswordStrengthProps } from '@/features/forms/model/types/password-strength-props.type.ts';
 
