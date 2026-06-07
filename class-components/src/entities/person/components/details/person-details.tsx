@@ -3,7 +3,7 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { usePersonQuery } from '@/core/swapi/hooks/use-person-query.ts';
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
-import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
+import { AppRoute } from '@core/router/model/constants/app-route.ts';
 import { RefreshButton } from '@shared/ui/buttons/refresh-button/refresh-button.tsx';
 import { ErrorDisplay } from '@shared/ui/errors/error-display/error-display.tsx';
 

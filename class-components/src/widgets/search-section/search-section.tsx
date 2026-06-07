@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 import { useSearchStore } from '@/core/store/search-store.ts';
 import SearchField from '@/widgets/search-field/search-field.tsx';
-import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
+import { AppRoute } from '@core/router/model/constants/app-route.ts';
 import { PAGE_NUMBERS } from '@shared/constants/page-constants.ts';
 import { useIsFetching } from '@tanstack/react-query';
 

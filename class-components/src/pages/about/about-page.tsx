@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
 import { Link } from 'react-router-dom';
 
-import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
+import { AppRoute } from '@core/router/model/constants/app-route.ts';
 
 import './about-page.scss';
 
