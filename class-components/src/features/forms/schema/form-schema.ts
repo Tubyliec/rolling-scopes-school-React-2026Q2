@@ -37,8 +37,7 @@ export const formSchema = z
           if (parts.length !== 2) return false;
           const [local, domain] = parts;
           if (!local || local.length === 0) return false;
-          if (!domain || !domain.includes('.')) return false;
-          return true;
+          return domain && domain.includes('.');
         },
         { message: 'Invalid email address' }
       ),
