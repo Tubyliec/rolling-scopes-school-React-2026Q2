@@ -40,5 +40,25 @@
     overflow-y: auto;
     padding: $spacing-xl;
     flex: 1;
+
+    scrollbar-width: thin;
+    scrollbar-color: $color-border-bright transparent;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $color-border-bright;
+      border-radius: 3px;
+
+      &:hover {
+        background: $color-amber-dim;
+      }
+    }
   }
 }
