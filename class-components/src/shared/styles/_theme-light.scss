@@ -156,4 +156,132 @@
   .about-page {
     color: $color-text-light;
   }
+
+  .modal {
+    background: $color-surface-light;
+    border-color: $color-border-light;
+
+    &__header {
+      border-bottom-color: $color-border-light;
+    }
+
+    &__title {
+      color: $color-text-light;
+    }
+
+    &__close {
+      color: $color-text-dim-light;
+
+      &:hover {
+        color: $color-text-light;
+        background: $color-border-light;
+      }
+    }
+  }
+
+  .form {
+    &__label {
+      color: $color-text-dim-light;
+    }
+
+    &__cancel {
+      color: $color-text-dim-light;
+      border-color: $color-border-light;
+
+      &:hover {
+        color: $color-text-light;
+        border-color: $color-amber-light;
+      }
+    }
+  }
+
+  .form-input {
+    background: $color-surface-light;
+    border-color: $color-border-light;
+    color: $color-text-light;
+
+    &:focus {
+      border-color: $color-amber-light;
+    }
+
+    option {
+      background: $color-surface-light;
+    }
+  }
+
+  .form-checkbox {
+    &__label {
+      color: $color-text-dim-light;
+    }
+  }
+
+  .field-error {
+    color: $color-red-light;
+  }
+
+  .submission-card {
+    background: $color-surface-light;
+    border-color: $color-border-light;
+
+    &__image-wrap {
+      background: $color-bg-light;
+      border-bottom-color: $color-border-light;
+    }
+    &__name {
+      color: $color-amber-light;
+    }
+    &__row {
+      border-bottom-color: $color-border-light;
+    }
+    &__term {
+      color: $color-text-dim-light;
+    }
+    &__value {
+      color: $color-text-dim-light;
+    }
+  }
+
+  .country-autocomplete {
+    &__list {
+      background: $color-surface-light;
+      border-color: $color-border-light;
+    }
+
+    &__option {
+      color: $color-text-dim-light;
+
+      &:hover,
+      &--highlighted {
+        background: $color-bg-light;
+        color: $color-text-light;
+      }
+    }
+  }
+
+  .forms-page {
+    &__title {
+      color: $color-text-light;
+    }
+
+    &__open-btn {
+      color: $color-text-dim-light;
+      border-color: $color-border-light;
+
+      &:hover {
+        color: $color-text-light;
+        border-color: $color-amber-light;
+        background: $color-amber-glow-light;
+      }
+
+      &--rhf {
+        border-color: $color-amber-light;
+        color: $color-amber-light;
+      }
+    }
+
+    &__empty {
+      color: $color-text-muted;
+      border-color: $color-border-light;
+    }
+  }
 }

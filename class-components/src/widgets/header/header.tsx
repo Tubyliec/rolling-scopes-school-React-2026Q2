@@ -1,7 +1,7 @@
 import type { JSX } from 'react';
 import { NavLink } from 'react-router-dom';
 
-import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
+import { AppRoute } from '@core/router/model/constants/app-route.ts';
 import { useTheme } from '@core/theme/use-theme.tsx';
 
 import './header.scss';
@@ -23,6 +23,14 @@ function Header(): JSX.Element {
             }
           >
             About
+          </NavLink>
+          <NavLink
+            to="/forms"
+            className={({ isActive }) =>
+              `app-header__nav-link${isActive ? ' app-header__nav-link--active' : ''}`
+            }
+          >
+            Forms
           </NavLink>
           <button className="theme-toggle" onClick={toggleTheme} type="button">
             {theme === 'dark' ? '☀ Light' : '☾ Dark'}
