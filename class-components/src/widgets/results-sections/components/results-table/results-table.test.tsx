@@ -2,7 +2,7 @@ import { fireEvent, render, screen } from '@testing-library/react';
 
 import type { Person } from '@entities/person/model/types/person.type.ts';
 
-import ResultsTable from './results-table';
+import ResultsTable from './results-table.tsx';
 
 import { describe, expect, it, vi } from 'vitest';
 

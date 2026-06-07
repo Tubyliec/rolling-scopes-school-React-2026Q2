@@ -3,13 +3,13 @@ import { useNavigate, useParams } from 'react-router-dom';
 
 import { useSelectionStore } from '@/core/store/selection-store.ts';
 import Pagination from '@/shared/ui/pagination/pagination.tsx';
-import ResultsTable from '@/shared/ui/results-table/results-table.tsx';
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
 import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
 import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';
 import { AppRoute } from '@core/router/model/enums/app-route.enum.ts';
 import { RefreshButton } from '@shared/ui/buttons/refresh-button/refresh-button.tsx';
 import { ErrorDisplay } from '@shared/ui/errors/error-display/error-display.tsx';
+import ResultsTable from '@widgets/results-sections/components/results-table/results-table.tsx';
 import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';
 
 import type { Person } from '@entities/person/model/types/person.type.ts';

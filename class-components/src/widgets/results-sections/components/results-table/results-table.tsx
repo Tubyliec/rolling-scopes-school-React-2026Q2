@@ -1,11 +1,11 @@
 import type { JSX } from 'react';
 
-import { buildDescription } from '@/shared/utilities/build-descriptions.ts';
-import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
-import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';
 import { ResultsEmpty } from '@shared/ui/errors/results-empty/results-empty.tsx';
+import { buildDescription } from '@shared/utilities/build-descriptions.ts';
+import { extractPersonId } from '@shared/utilities/extract-person-id.ts';
+import { stopPropagation } from '@shared/utilities/stop-propagation.ts';
 
-import type { ResultsTableProps } from '@shared/ui/results-table/model/types/results-table.type.ts';
+import type { ResultsTableProps } from '@widgets/results-sections/components/results-table/model/types/results-table.type.ts';
 
 import './results-table.scss';
 
