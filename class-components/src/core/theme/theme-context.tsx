@@ -1,6 +1,7 @@
 import { createContext, type JSX, useEffect, useState } from 'react';
 
-import type { Theme } from '@core/theme/model/types/theme.type.ts';
+import { APP_THEME, type Theme } from '@core/theme/model/types/theme.type.ts';
+
 import type { ThemeContextValue } from '@core/theme/model/types/theme-context-value.ts';
 import type { ThemeProviderProps } from '@core/theme/model/types/theme-provider-props.ts';
 
@@ -14,7 +15,9 @@ export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   }, [theme]);
 
   const toggleTheme = (): void => {
-    setTheme((prev) => (prev === 'dark' ? 'light' : 'dark'));
+    setTheme((prev) =>
+      prev === APP_THEME.dark ? APP_THEME.light : APP_THEME.dark
+    );
   };
 
   return (
