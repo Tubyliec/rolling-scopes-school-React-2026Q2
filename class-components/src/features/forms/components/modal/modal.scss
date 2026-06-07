@@ -36,27 +36,6 @@
     margin: 0;
   }
 
-  &__close {
-    @extend %flex-row-center;
-    background: none;
-    border: none;
-    color: $color-text-dim;
-    font-size: $font-size-md;
-    cursor: pointer;
-    padding: $padding-xs;
-    border-radius: $radius-sm;
-    transition:
-      color $transition-fast,
-      background $transition-fast;
-    width: $size-page-btn;
-    height: $size-page-btn;
-
-    &:hover {
-      color: $color-text-bright;
-      background: $color-border;
-    }
-  }
-
   &__body {
     overflow-y: auto;
     padding: $spacing-xl;

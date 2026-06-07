@@ -1,5 +1,7 @@
 import { type JSX, type MouseEvent } from 'react';
 
+import { CloseButton } from '@shared/ui/buttons/close-button/close-button.tsx';
+
 import type { ModalProps } from '@/features/forms/model/types/modal-props.type.ts';
 
 import { useFocusTrap } from '../use-focus-trap.ts';
@@ -30,9 +32,7 @@ function Modal({
           <h2 className="modal__title" id="modal-title">
             {title}
           </h2>
-          <button className="modal__close" onClick={onClose} type="button">
-            ✕
-          </button>
+          <CloseButton onClick={onClose} className="modal__close" />
         </div>
         <div className="modal__body">{children}</div>
       </div>
