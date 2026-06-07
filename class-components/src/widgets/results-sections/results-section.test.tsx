@@ -15,9 +15,9 @@ import ResultsSection from './results-section';
 
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
-const mockSearchPeople = vi.fn();
+const mockGetPeople = vi.fn();
 vi.mock('@/core/swapi/swapi-service.ts', () => ({
-  searchPeople: (...args: unknown[]) => mockSearchPeople(...args),
+  getPeople: (...args: unknown[]) => mockGetPeople(...args),
 }));
 
 const mockPerson: Person = {
@@ -49,19 +49,19 @@ const renderSection = (
 
 describe('ResultsSection', () => {
   beforeEach(() => {
-    mockSearchPeople.mockClear();
+    mockGetPeople.mockClear();
     useSearchStore.setState({ term: '' });
     useSelectionStore.setState({ selectedItems: [] });
   });
 
   it('renders spinner while loading', async () => {
-    mockSearchPeople.mockImplementation(() => new Promise(() => {}));
+    mockGetPeople.mockImplementation(() => new Promise(() => {}));
     renderSection();
     expect(await screen.findByText('LOADING DATA')).toBeInTheDocument();
   });
 
   it('renders results when fetch resolves', async () => {
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [mockPerson],
       totalCount: 1,
       totalPages: 1,
@@ -73,20 +73,20 @@ describe('ResultsSection', () => {
   });
 
   it('renders error state when API returns message', async () => {
-    mockSearchPeople.mockResolvedValue({ message: 'Network error' });
+    mockGetPeople.mockResolvedValue({ message: 'Network error' });
     renderSection();
     expect(await screen.findByText('REQUEST FAILED')).toBeInTheDocument();
     expect(screen.getByText('Network error')).toBeInTheDocument();
   });
 
   it('renders error icon on failure', async () => {
-    mockSearchPeople.mockResolvedValue({ message: 'err' });
+    mockGetPeople.mockResolvedValue({ message: 'err' });
     renderSection();
     expect(await screen.findByText('✖')).toBeInTheDocument();
   });
 
   it('renders empty state when no results', async () => {
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [],
       totalCount: 0,
       totalPages: 0,
@@ -98,7 +98,7 @@ describe('ResultsSection', () => {
   });
 
   it('renders pagination when totalCount > 0', async () => {
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [mockPerson],
       totalCount: 20,
       totalPages: 2,
@@ -110,7 +110,7 @@ describe('ResultsSection', () => {
   });
 
   it('does not render pagination when totalCount is 0', async () => {
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [],
       totalCount: 0,
       totalPages: 0,
@@ -122,9 +122,9 @@ describe('ResultsSection', () => {
     expect(screen.queryByText(/Page/)).not.toBeInTheDocument();
   });
 
-  it('calls searchPeople with term from store', async () => {
+  it('calls getPeople with term from store', async () => {
     useSearchStore.setState({ term: 'Luke' });
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [mockPerson],
       totalCount: 1,
       totalPages: 1,
@@ -132,18 +132,18 @@ describe('ResultsSection', () => {
       hasPreviousPage: false,
     });
     renderSection();
-    expect(mockSearchPeople).toHaveBeenCalledWith({ term: 'Luke', page: 1 });
+    expect(mockGetPeople).toHaveBeenCalledWith({ term: 'Luke', page: 1 });
   });
 
   it('renders Refresh button', async () => {
-    mockSearchPeople.mockResolvedValue({ message: 'err' });
+    mockGetPeople.mockResolvedValue({ message: 'err' });
     renderSection();
     await screen.findByText('REQUEST FAILED');
     expect(screen.getByText('↻ Refresh')).toBeInTheDocument();
   });
 
   it('Refresh button triggers a new fetch', async () => {
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [mockPerson],
       totalCount: 1,
       totalPages: 1,
@@ -152,17 +152,17 @@ describe('ResultsSection', () => {
     });
     renderSection();
     await screen.findByText('Luke Skywalker');
-    const callsAfterLoad = mockSearchPeople.mock.calls.length;
+    const callsAfterLoad = mockGetPeople.mock.calls.length;
 
     fireEvent.click(screen.getByText('↻ Refresh'));
 
     await waitFor(() =>
-      expect(mockSearchPeople.mock.calls.length).toBeGreaterThan(callsAfterLoad)
+      expect(mockGetPeople.mock.calls.length).toBeGreaterThan(callsAfterLoad)
     );
   });
 
   it('reuses cached data for the same query key', async () => {
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [mockPerson],
       totalCount: 1,
       totalPages: 1,
@@ -172,11 +172,11 @@ describe('ResultsSection', () => {
     const client = createCachingQueryClient();
     const { unmount } = renderSection('/main/1', client);
     await screen.findByText('Luke Skywalker');
-    const firstCallCount = mockSearchPeople.mock.calls.length;
+    const firstCallCount = mockGetPeople.mock.calls.length;
     unmount();
 
     renderSection('/main/1', client);
     await screen.findByText('Luke Skywalker');
-    expect(mockSearchPeople.mock.calls.length).toBe(firstCallCount);
+    expect(mockGetPeople.mock.calls.length).toBe(firstCallCount);
   });
 });

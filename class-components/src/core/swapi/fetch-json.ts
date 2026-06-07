@@ -1,4 +1,4 @@
-import type { SearchError } from '@/core/swapi/model/interfaces/search-error.interface.ts';
+import type { SearchError } from '@core/swapi/model/interfaces/search-error.interface.ts';
 
 export async function fetchJson<T>(url: string): Promise<T | SearchError> {
   try {

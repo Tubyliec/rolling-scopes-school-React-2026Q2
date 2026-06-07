@@ -1,7 +1,7 @@
 import { API_BASE_URL } from '@/shared/constants/api-constants';
 import { RESULTS_PER_PAGE } from '@/shared/constants/page-constants';
 import { buildSearchUrl } from '@/shared/utilities/build-search-url';
-import { fetchJson } from '@/shared/utilities/fetch-json';
+import { fetchJson } from '@core/swapi/fetch-json.ts';
 
 import type { SearchError } from './model/interfaces/search-error.interface';
 import type { SearchParams } from './model/interfaces/search-params.interface';
@@ -9,9 +9,7 @@ import type { SearchResponse } from './model/interfaces/search-response.interfac
 import type { Person } from '@entities/person/model/types/person.type.ts';
 import type { PersonResponse } from '@entities/person/model/types/person-response.type.ts';
 
-export async function searchPeople(
-  params: SearchParams
-): Promise<SearchResponse> {
+export async function getPeople(params: SearchParams): Promise<SearchResponse> {
   const { term, page } = params;
   const data = await fetchJson<PersonResponse>(buildSearchUrl(term, page));
 

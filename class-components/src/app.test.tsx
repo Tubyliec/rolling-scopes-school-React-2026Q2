@@ -11,10 +11,10 @@ import App from './app';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-const mockSearchPeople = vi.fn();
+const mockGetPeople = vi.fn();
 
 vi.mock('./core/swapi/swapi-service', () => ({
-  searchPeople: (...args: unknown[]) => mockSearchPeople(...args),
+  getPeople: (...args: unknown[]) => mockGetPeople(...args),
   getPerson: vi.fn(),
 }));
 
@@ -29,7 +29,7 @@ const renderApp = (initialPath = '/main/1') =>
 
 describe('App', () => {
   beforeEach(() => {
-    mockSearchPeople.mockClear();
+    mockGetPeople.mockClear();
     useSearchStore.setState({ term: '' });
     useSelectionStore.setState({ selectedItems: [] });
     vi.spyOn(Storage.prototype, 'setItem');
@@ -41,7 +41,7 @@ describe('App', () => {
   });
 
   it('should render without crashing', async () => {
-    mockSearchPeople.mockResolvedValue({ message: 'Test error' });
+    mockGetPeople.mockResolvedValue({ message: 'Test error' });
     await act(async () => {
       renderApp();
     });
@@ -49,7 +49,7 @@ describe('App', () => {
   });
 
   it('should render header', async () => {
-    mockSearchPeople.mockResolvedValue({ message: 'Test error' });
+    mockGetPeople.mockResolvedValue({ message: 'Test error' });
     await act(async () => {
       renderApp();
     });
@@ -57,16 +57,16 @@ describe('App', () => {
   });
 
   it('should render search section', async () => {
-    mockSearchPeople.mockResolvedValue({ message: 'Test error' });
+    mockGetPeople.mockResolvedValue({ message: 'Test error' });
     await act(async () => {
       renderApp();
     });
     expect(screen.getByLabelText('Search term')).toBeInTheDocument();
   });
 
-  it('should call searchPeople on mount with saved term', async () => {
+  it('should call getPeople on mount with saved term', async () => {
     useSearchStore.setState({ term: 'Luke' });
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [],
       totalCount: 0,
       totalPages: 1,
@@ -76,11 +76,11 @@ describe('App', () => {
     await act(async () => {
       renderApp();
     });
-    expect(mockSearchPeople).toHaveBeenCalledWith({ term: 'Luke', page: 1 });
+    expect(mockGetPeople).toHaveBeenCalledWith({ term: 'Luke', page: 1 });
   });
 
-  it('should call searchPeople on mount with empty term', async () => {
-    mockSearchPeople.mockResolvedValue({
+  it('should call getPeople on mount with empty term', async () => {
+    mockGetPeople.mockResolvedValue({
       results: [],
       totalCount: 0,
       totalPages: 1,
@@ -90,12 +90,12 @@ describe('App', () => {
     await act(async () => {
       renderApp();
     });
-    expect(mockSearchPeople).toHaveBeenCalledWith({ term: '', page: 1 });
+    expect(mockGetPeople).toHaveBeenCalledWith({ term: '', page: 1 });
   });
 
   it('should save search term to localStorage when searching', async () => {
     const user = userEvent.setup();
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [],
       totalCount: 0,
       totalPages: 1,
@@ -115,7 +115,7 @@ describe('App', () => {
 
   it('should display results after successful search', async () => {
     const user = userEvent.setup();
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [
         {
           name: 'Luke Skywalker',
@@ -146,7 +146,7 @@ describe('App', () => {
 
   it('should display error message when API call fails', async () => {
     const user = userEvent.setup();
-    mockSearchPeople.mockResolvedValue({ message: 'Server error 500' });
+    mockGetPeople.mockResolvedValue({ message: 'Server error 500' });
     await act(async () => {
       renderApp();
     });
@@ -160,7 +160,7 @@ describe('App', () => {
 
   it('should show loading state during search', async () => {
     const user = userEvent.setup();
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [],
       totalCount: 0,
       totalPages: 1,
@@ -170,7 +170,7 @@ describe('App', () => {
     await act(async () => {
       renderApp();
     });
-    mockSearchPeople.mockImplementation(() => new Promise(() => {}));
+    mockGetPeople.mockImplementation(() => new Promise(() => {}));
     await user.type(screen.getByLabelText('Search term'), 'Luke');
     await user.click(screen.getByText('SEARCH'));
     expect(screen.getByText('LOADING DATA')).toBeInTheDocument();
@@ -178,7 +178,7 @@ describe('App', () => {
 
   it('should handle pagination page change', async () => {
     const user = userEvent.setup();
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [
         {
           name: 'Luke Skywalker',
@@ -204,7 +204,7 @@ describe('App', () => {
       expect(screen.getByText('Page 1 of 2')).toBeInTheDocument()
     );
 
-    mockSearchPeople.mockResolvedValue({
+    mockGetPeople.mockResolvedValue({
       results: [
         {
           name: 'Darth Vader',
@@ -227,6 +227,6 @@ describe('App', () => {
     await waitFor(() =>
       expect(screen.getByText('Page 2 of 2')).toBeInTheDocument()
     );
-    expect(mockSearchPeople).toHaveBeenCalledWith({ term: '', page: 2 });
+    expect(mockGetPeople).toHaveBeenCalledWith({ term: '', page: 2 });
   });
 });

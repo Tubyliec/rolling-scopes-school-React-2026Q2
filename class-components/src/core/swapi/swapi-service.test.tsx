@@ -1,8 +1,8 @@
-import { searchPeople } from './swapi-service';
+import { getPeople } from './swapi-service';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
-describe('searchPeople', () => {
+describe('getPeople', () => {
   beforeEach(() => {
     vi.stubGlobal('fetch', vi.fn());
   });
@@ -34,7 +34,7 @@ describe('searchPeople', () => {
     });
     vi.stubGlobal('fetch', mockFetch);
 
-    const result = await searchPeople({ term: 'Luke', page: 1 });
+    const result = await getPeople({ term: 'Luke', page: 1 });
 
     expect('results' in result).toBe(true);
     if ('results' in result) {
@@ -54,7 +54,7 @@ describe('searchPeople', () => {
     });
     vi.stubGlobal('fetch', mockFetch);
 
-    const result = await searchPeople({ term: 'Luke', page: 1 });
+    const result = await getPeople({ term: 'Luke', page: 1 });
 
     expect('message' in result).toBe(true);
     if ('message' in result) {
@@ -66,7 +66,7 @@ describe('searchPeople', () => {
     const mockFetch = vi.fn().mockRejectedValue(new Error('Failed to fetch'));
     vi.stubGlobal('fetch', mockFetch);
 
-    const result = await searchPeople({ term: 'Luke', page: 1 });
+    const result = await getPeople({ term: 'Luke', page: 1 });
 
     expect('message' in result).toBe(true);
     if ('message' in result) {
@@ -78,7 +78,7 @@ describe('searchPeople', () => {
     const mockFetch = vi.fn().mockRejectedValue(new Error('Some other error'));
     vi.stubGlobal('fetch', mockFetch);
 
-    const result = await searchPeople({ term: 'Luke', page: 1 });
+    const result = await getPeople({ term: 'Luke', page: 1 });
 
     expect('message' in result).toBe(true);
     if ('message' in result) {
@@ -90,7 +90,7 @@ describe('searchPeople', () => {
     const mockFetch = vi.fn().mockRejectedValue('unknown');
     vi.stubGlobal('fetch', mockFetch);
 
-    const result = await searchPeople({ term: 'Luke', page: 1 });
+    const result = await getPeople({ term: 'Luke', page: 1 });
 
     expect('message' in result).toBe(true);
     if ('message' in result) {
@@ -110,7 +110,7 @@ describe('searchPeople', () => {
     });
     vi.stubGlobal('fetch', mockFetch);
 
-    const result = await searchPeople({ term: 'a', page: 1 });
+    const result = await getPeople({ term: 'a', page: 1 });
 
     expect('results' in result).toBe(true);
     if ('results' in result) {
@@ -132,7 +132,7 @@ describe('searchPeople', () => {
     });
     vi.stubGlobal('fetch', mockFetch);
 
-    const result = await searchPeople({ term: 'a', page: 2 });
+    const result = await getPeople({ term: 'a', page: 2 });
 
     expect('results' in result).toBe(true);
     if ('results' in result) {
