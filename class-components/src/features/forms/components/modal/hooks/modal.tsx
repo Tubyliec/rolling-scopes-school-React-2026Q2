@@ -1,4 +1,5 @@
 import { type JSX, type MouseEvent } from 'react';
+import { createPortal } from 'react-dom';
 
 import { CloseButton } from '@shared/ui/buttons/close-button/close-button.tsx';
 
@@ -7,7 +8,6 @@ import type { ModalProps } from '@/features/forms/model/types/modal-props.type.t
 import { useFocusTrap } from '../use-focus-trap.ts';
 
 import '../modal.scss';
-import { createPortal } from 'react-dom';
 
 function Modal({
   isOpen,

@@ -33,7 +33,7 @@ export default defineConfig([
         'error',
         {
           groups: [
-            ['^react\\u0000$', '^react$', '^react-router-dom$'],
+            ['^react\\u0000$', '^react$', '^react-router-dom$', '^react-dom'],
             ['^@'],
             ['^.+\\u0000$'],
             ['^\\.'],
