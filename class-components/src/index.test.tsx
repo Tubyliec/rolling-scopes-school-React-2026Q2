@@ -3,17 +3,17 @@ import { MemoryRouter } from 'react-router-dom';
 import { useSearchStore } from '@/core/store/search-store.ts';
 import { useSelectionStore } from '@/core/store/selection-store.ts';
 import { createTestQueryClient } from '@/test/query-test-utils.tsx';
+import AppRouter from '@core/router/app-router.tsx';
+import { ThemeProvider } from '@core/theme/theme-context.tsx';
 import { QueryClientProvider } from '@tanstack/react-query';
 import { act, render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
-
-import App from './app';
 
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockGetPeople = vi.fn();
 
-vi.mock('./core/swapi/swapi-service', () => ({
+vi.mock('@/core/swapi/swapi-service', () => ({
   getPeople: (...args: unknown[]) => mockGetPeople(...args),
   getPerson: vi.fn(),
 }));
@@ -22,12 +22,14 @@ const renderApp = (initialPath = '/main/1') =>
   render(
     <QueryClientProvider client={createTestQueryClient()}>
       <MemoryRouter initialEntries={[initialPath]}>
-        <App />
+        <ThemeProvider>
+          <AppRouter />
+        </ThemeProvider>
       </MemoryRouter>
     </QueryClientProvider>
   );
 
-describe('App', () => {
+describe('Index', () => {
   beforeEach(() => {
     mockGetPeople.mockClear();
     useSearchStore.setState({ term: '' });
