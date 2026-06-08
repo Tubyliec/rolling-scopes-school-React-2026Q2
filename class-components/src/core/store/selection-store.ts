@@ -4,26 +4,26 @@ import type { Person } from '@entities/person/model/types/person.type.ts';
 import { create } from 'zustand';
 
 export const useSelectionStore = create<SelectionState>((set, get) => ({
-  selectedItems: [],
+  selectedItems: new Map<string, Person>(),
 
   toggleItem: (person: Person): void => {
     const { selectedItems } = get();
-    const exists = selectedItems.some((item) => item.url === person.url);
+    const newMap = new Map(selectedItems);
 
-    if (exists) {
-      set({
-        selectedItems: selectedItems.filter((item) => item.url !== person.url),
-      });
+    if (newMap.has(person.url)) {
+      newMap.delete(person.url);
     } else {
-      set({ selectedItems: [...selectedItems, person] });
+      newMap.set(person.url, person);
     }
+
+    set({ selectedItems: newMap });
   },
 
   unselectAll: (): void => {
-    set({ selectedItems: [] });
+    set({ selectedItems: new Map() });
   },
 
   isSelected: (url: string): boolean => {
-    return get().selectedItems.some((person) => person.url === url);
+    return get().selectedItems.has(url);
   },
 }));

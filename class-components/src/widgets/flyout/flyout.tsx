@@ -9,20 +9,20 @@ import './flyout.scss';
 function Flyout(): JSX.Element | null {
   const { selectedItems, unselectAll } = useSelectionStore();
 
-  if (selectedItems.length === 0) return null;
+  if (selectedItems.size === 0) return null;
 
   const handleDownload = (): void => {
-    downloadSelectedAsCsv(selectedItems);
+    downloadSelectedAsCsv(Array.from(selectedItems.values()));
   };
 
   const itemsText =
-    selectedItems.length === 1 ? ' item selected' : ' items selected';
+    selectedItems.size === 1 ? ' item selected' : ' items selected';
 
   return (
     <div className="flyout" role="complementary">
       <div className="flyout__wrapper wrapper">
         <span className="flyout__count">
-          <span className="flyout__count-number">{selectedItems.length}</span>
+          <span className="flyout__count-number">{selectedItems.size}</span>
           {itemsText}
         </span>
         <div className="flyout__actions">
