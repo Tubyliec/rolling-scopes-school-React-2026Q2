@@ -53,7 +53,7 @@ describe('ResultsSection', () => {
   beforeEach(() => {
     mockGetPeople.mockClear();
     useSearchStore.setState({ term: '' });
-    useSelectionStore.setState({ selectedItems: [] });
+    useSelectionStore.setState({ selectedItems: new Map() });
   });
 
   it('renders spinner while loading', async () => {

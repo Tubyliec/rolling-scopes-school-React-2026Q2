@@ -36,7 +36,7 @@ describe('Index', () => {
   beforeEach(() => {
     mockGetPeople.mockClear();
     useSearchStore.setState({ term: '' });
-    useSelectionStore.setState({ selectedItems: [] });
+    useSelectionStore.setState({ selectedItems: new Map() });
     vi.spyOn(Storage.prototype, 'setItem');
     vi.spyOn(Storage.prototype, 'getItem').mockReturnValue(null);
   });

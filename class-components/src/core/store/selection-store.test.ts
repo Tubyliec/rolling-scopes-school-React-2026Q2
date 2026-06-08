@@ -18,39 +18,41 @@ const makePerson = (id: number): Person => ({
 
 describe('useSelectionStore', () => {
   beforeEach(() => {
-    useSelectionStore.setState({ selectedItems: [] });
+    useSelectionStore.setState({ selectedItems: new Map() });
   });
 
   it('starts with an empty selection', () => {
     const { selectedItems } = useSelectionStore.getState();
-    expect(selectedItems).toHaveLength(0);
+    expect(selectedItems.size).toBe(0);
   });
 
   it('toggleItem adds a person when not yet selected', () => {
     const person = makePerson(1);
     useSelectionStore.getState().toggleItem(person);
-    expect(useSelectionStore.getState().selectedItems).toHaveLength(1);
-    expect(useSelectionStore.getState().selectedItems[0].url).toBe(person.url);
+    expect(useSelectionStore.getState().selectedItems.size).toBe(1);
+    expect(
+      useSelectionStore.getState().selectedItems.get(person.url)?.url
+    ).toBe(person.url);
   });
 
   it('toggleItem removes a person when already selected', () => {
     const person = makePerson(1);
     useSelectionStore.getState().toggleItem(person);
     useSelectionStore.getState().toggleItem(person);
-    expect(useSelectionStore.getState().selectedItems).toHaveLength(0);
+    expect(useSelectionStore.getState().selectedItems.size).toBe(0);
   });
 
   it('toggleItem can hold multiple distinct items', () => {
     useSelectionStore.getState().toggleItem(makePerson(1));
     useSelectionStore.getState().toggleItem(makePerson(2));
-    expect(useSelectionStore.getState().selectedItems).toHaveLength(2);
+    expect(useSelectionStore.getState().selectedItems.size).toBe(2);
   });
 
   it('unselectAll clears all selected items', () => {
     useSelectionStore.getState().toggleItem(makePerson(1));
     useSelectionStore.getState().toggleItem(makePerson(2));
     useSelectionStore.getState().unselectAll();
-    expect(useSelectionStore.getState().selectedItems).toHaveLength(0);
+    expect(useSelectionStore.getState().selectedItems.size).toBe(0);
   });
 
   it('isSelected returns true for a selected person', () => {
@@ -74,7 +76,7 @@ describe('useSelectionStore', () => {
     useSelectionStore.getState().toggleItem(p2);
     useSelectionStore.getState().toggleItem(p1);
     const { selectedItems } = useSelectionStore.getState();
-    expect(selectedItems).toHaveLength(1);
-    expect(selectedItems[0].url).toBe(p2.url);
+    expect(selectedItems.size).toBe(1);
+    expect(selectedItems.get(p2.url)?.url).toBe(p2.url);
   });
 });

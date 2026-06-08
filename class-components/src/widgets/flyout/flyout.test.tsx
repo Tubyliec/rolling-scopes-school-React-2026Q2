@@ -24,7 +24,7 @@ const makePerson = (id: number): Person => ({
 
 describe('Flyout', () => {
   beforeEach(() => {
-    useSelectionStore.setState({ selectedItems: [] });
+    useSelectionStore.setState({ selectedItems: new Map() });
   });
 
   it('renders nothing when no items are selected', () => {
@@ -33,21 +33,26 @@ describe('Flyout', () => {
   });
 
   it('renders when at least one item is selected', () => {
-    useSelectionStore.setState({ selectedItems: [makePerson(1)] });
+    const map = new Map([[makePerson(1).url, makePerson(1)]]);
+    useSelectionStore.setState({ selectedItems: map });
     render(<Flyout />);
     expect(screen.getByRole('complementary')).toBeInTheDocument();
   });
 
   it('displays the correct item count', () => {
-    useSelectionStore.setState({
-      selectedItems: [makePerson(1), makePerson(2), makePerson(3)],
-    });
+    const map = new Map([
+      [makePerson(1).url, makePerson(1)],
+      [makePerson(2).url, makePerson(2)],
+      [makePerson(3).url, makePerson(3)],
+    ]);
+    useSelectionStore.setState({ selectedItems: map });
     render(<Flyout />);
     expect(screen.getByText('3')).toBeInTheDocument();
   });
 
   it('displays singular label for 1 item', () => {
-    useSelectionStore.setState({ selectedItems: [makePerson(1)] });
+    const map = new Map([[makePerson(1).url, makePerson(1)]]);
+    useSelectionStore.setState({ selectedItems: map });
     const { container } = render(<Flyout />);
     expect(container.querySelector('.flyout__count')?.textContent).toContain(
       '1'
@@ -58,9 +63,11 @@ describe('Flyout', () => {
   });
 
   it('displays plural label for multiple items', () => {
-    useSelectionStore.setState({
-      selectedItems: [makePerson(1), makePerson(2)],
-    });
+    const map = new Map([
+      [makePerson(1).url, makePerson(1)],
+      [makePerson(2).url, makePerson(2)],
+    ]);
+    useSelectionStore.setState({ selectedItems: map });
     const { container } = render(<Flyout />);
     expect(container.querySelector('.flyout__count')?.textContent).toContain(
       '2'
@@ -71,28 +78,33 @@ describe('Flyout', () => {
   });
 
   it('renders Unselect all button', () => {
-    useSelectionStore.setState({ selectedItems: [makePerson(1)] });
+    const map = new Map([[makePerson(1).url, makePerson(1)]]);
+    useSelectionStore.setState({ selectedItems: map });
     render(<Flyout />);
     expect(screen.getByText('Unselect all')).toBeInTheDocument();
   });
 
   it('renders Download button', () => {
-    useSelectionStore.setState({ selectedItems: [makePerson(1)] });
+    const map = new Map([[makePerson(1).url, makePerson(1)]]);
+    useSelectionStore.setState({ selectedItems: map });
     render(<Flyout />);
     expect(screen.getByText('↓ Download')).toBeInTheDocument();
   });
 
   it('clicking Unselect all clears the selection store', () => {
-    useSelectionStore.setState({
-      selectedItems: [makePerson(1), makePerson(2)],
-    });
+    const map = new Map([
+      [makePerson(1).url, makePerson(1)],
+      [makePerson(2).url, makePerson(2)],
+    ]);
+    useSelectionStore.setState({ selectedItems: map });
     render(<Flyout />);
     fireEvent.click(screen.getByText('Unselect all'));
-    expect(useSelectionStore.getState().selectedItems).toHaveLength(0);
+    expect(useSelectionStore.getState().selectedItems.size).toBe(0);
   });
 
   it('flyout disappears after Unselect all is clicked', () => {
-    useSelectionStore.setState({ selectedItems: [makePerson(1)] });
+    const map = new Map([[makePerson(1).url, makePerson(1)]]);
+    useSelectionStore.setState({ selectedItems: map });
     render(<Flyout />);
     fireEvent.click(screen.getByText('Unselect all'));
     expect(screen.queryByRole('complementary')).not.toBeInTheDocument();
@@ -100,7 +112,11 @@ describe('Flyout', () => {
 
   it('clicking Download calls downloadSelectedAsCsv with selected items', () => {
     const items = [makePerson(1), makePerson(2)];
-    useSelectionStore.setState({ selectedItems: items });
+    const map = new Map([
+      [makePerson(1).url, makePerson(1)],
+      [makePerson(2).url, makePerson(2)],
+    ]);
+    useSelectionStore.setState({ selectedItems: map });
     const spy = vi
       .spyOn(downloadUtils, 'downloadSelectedAsCsv')
       .mockImplementation(() => {});
