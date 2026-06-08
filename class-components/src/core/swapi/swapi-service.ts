@@ -1,7 +1,8 @@
+import { fetchJson } from '@core/swapi/fetch-json.ts';
+
 import { API_BASE_URL } from '@/shared/constants/api-constants';
 import { RESULTS_PER_PAGE } from '@/shared/constants/page-constants';
 import { buildSearchUrl } from '@/shared/utilities/build-search-url';
-import { fetchJson } from '@core/swapi/fetch-json.ts';
 
 import type { SearchError } from './model/interfaces/search-error.interface';
 import type { SearchParams } from './model/interfaces/search-params.interface';

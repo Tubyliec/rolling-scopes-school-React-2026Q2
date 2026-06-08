@@ -1,6 +1,7 @@
 import { MemoryRouter } from 'react-router-dom';
 
 import { ThemeProvider } from '@/core/theme/theme-context.tsx';
+
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import Header from './header';

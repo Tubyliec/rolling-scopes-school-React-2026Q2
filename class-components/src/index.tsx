@@ -2,11 +2,13 @@ import { StrictMode } from 'react';
 import { BrowserRouter } from 'react-router-dom';
 import { createRoot } from 'react-dom/client';
 
-import ErrorBoundary from '@/core/error-boundary/error-boundary.tsx';
-import { queryClient } from '@/core/query/query-client.ts';
+import { QueryClientProvider } from '@tanstack/react-query';
+
 import AppRouter from '@core/router/app-router.tsx';
 import { ThemeProvider } from '@core/theme/theme-context.tsx';
-import { QueryClientProvider } from '@tanstack/react-query';
+
+import ErrorBoundary from '@/core/error-boundary/error-boundary.tsx';
+import { queryClient } from '@/core/query/query-client.ts';
 
 import './index.scss';
 

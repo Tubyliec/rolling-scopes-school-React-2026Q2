@@ -10,8 +10,10 @@ import PasswordStrengthIndicator from '@/features/forms/components/password-stre
 import { formSchema } from '@/features/forms/schema/form-schema.ts';
 import { useFormsStore } from '@/features/forms/store/forms-store.ts';
 import { fileToBase64 } from '@/features/forms/utilities/file-to-base64.ts';
-import { zodResolver } from '@hookform/resolvers/zod';
+
 import { GENDER_OPTIONS } from '@shared/constants/gender-constants.ts';
+
+import { zodResolver } from '@hookform/resolvers/zod';
 
 import type { FormSubmission } from '@/features/forms/model/types/form-submission.type.ts';
 import type { FormSchema } from '@/features/forms/schema/form-schema.ts';

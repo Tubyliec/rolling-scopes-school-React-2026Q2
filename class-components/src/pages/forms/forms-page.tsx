@@ -1,14 +1,17 @@
 import { type JSX, useEffect, useState } from 'react';
 
+import { useTheme } from '@core/theme/use-theme.tsx';
+
 import Modal from '@/features/forms/components/modal/modal.tsx';
 import RhfForm from '@/features/forms/components/rhf-form/rhf-form.tsx';
 import SubmissionCard from '@/features/forms/components/submission-card/submission-card.tsx';
 import UncontrolledForm from '@/features/forms/components/uncontrolled-form/uncontrolled-form.tsx';
 import { useFormsStore } from '@/features/forms/store/forms-store.ts';
-import { useTheme } from '@core/theme/use-theme.tsx';
-import { FormOpenButton } from '@shared/ui/buttons/form-open-button/form-open-button.tsx';
+
 import Header from '@widgets/header/header.tsx';
 import { Layout } from '@widgets/layout/layout.tsx';
+
+import { FormOpenButton } from '@shared/ui/buttons/form-open-button/form-open-button.tsx';
 
 import type { ModalType } from '@pages/forms/model/types/modal.type.ts';
 

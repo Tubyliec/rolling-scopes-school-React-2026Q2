@@ -9,6 +9,7 @@ import PasswordStrengthIndicator from '@/features/forms/components/password-stre
 import { useFormsStore } from '@/features/forms/store/forms-store.ts';
 import { fileToBase64 } from '@/features/forms/utilities/file-to-base64.ts';
 import { validateFormData } from '@/features/forms/utilities/validate-form-data.ts';
+
 import { GENDER_OPTIONS } from '@shared/constants/gender-constants.ts';
 
 import type { UncontrolledFormProps } from '@/features/forms/model/types/form-props-uncontrolled.type.ts';

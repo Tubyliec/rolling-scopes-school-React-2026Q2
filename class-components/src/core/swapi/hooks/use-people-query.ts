@@ -1,6 +1,7 @@
+import { useQuery } from '@tanstack/react-query';
+
 import { queryKeys } from '@/core/query/query-keys.ts';
 import { getPeople } from '@/core/swapi/swapi-service.ts';
-import { useQuery } from '@tanstack/react-query';
 
 import type { SearchResult } from '@/core/swapi/model/interfaces/search-result.interface.ts';
 

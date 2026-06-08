@@ -1,5 +1,7 @@
 import { useSelectionStore } from '@/core/store/selection-store.ts';
+
 import * as downloadUtils from '@/shared/utilities/download-csv.ts';
+
 import { fireEvent, render, screen } from '@testing-library/react';
 
 import type { Person } from '@entities/person/model/types/person.type.ts';

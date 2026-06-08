@@ -1,8 +1,10 @@
 import { MemoryRouter } from 'react-router-dom';
 
-import { useSearchStore } from '@/core/store/search-store.ts';
-import { createTestQueryClient } from '@/test/query-test-utils.tsx';
 import { QueryClientProvider } from '@tanstack/react-query';
+
+import { useSearchStore } from '@/core/store/search-store.ts';
+
+import { createTestQueryClient } from '@/test/query-test-utils.tsx';
 import { render, screen, waitFor } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 

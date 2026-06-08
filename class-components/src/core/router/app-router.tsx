@@ -3,7 +3,9 @@ import { Navigate, Route, Routes } from 'react-router-dom';
 
 import { AppRoute } from '@core/router/model/constants/app-route.ts';
 import { AppRouteSegment } from '@core/router/model/constants/app-route-segment.ts';
+
 import PersonDetail from '@entities/person/components/details/person-details.tsx';
+
 import AboutPage from '@pages/about/about-page.tsx';
 import FormsPage from '@pages/forms/forms-page.tsx';
 import MainPage from '@pages/main/main-page.tsx';
