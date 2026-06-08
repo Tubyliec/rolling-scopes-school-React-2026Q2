@@ -145,7 +145,7 @@ function UncontrolledForm({ onSuccess }: UncontrolledFormProps): JSX.Element {
           value={countryValue}
           onChange={setCountryValue}
           errorId={errors['country'] ? 'uc-country-error' : undefined}
-          hasError={!!errors['country']}
+          hasError={Boolean(errors['country'])}
         />
         <FieldError message={errors['country']} id="uc-country-error" />
       </div>

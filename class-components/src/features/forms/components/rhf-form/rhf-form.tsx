@@ -148,7 +148,7 @@ function RhfForm({ onSuccess }: RhfFormProps): JSX.Element {
               value={field.value}
               onChange={field.onChange}
               errorId={errors.country ? 'rhf-country-error' : undefined}
-              hasError={!!errors.country}
+              hasError={Boolean(errors.country)}
             />
           )}
         />

@@ -19,6 +19,6 @@ export function usePersonQuery(id: string | undefined) {
   return useQuery({
     queryKey: queryKeys.person(id ?? ''),
     queryFn: () => fetchPerson(id!),
-    enabled: !!id,
+    enabled: Boolean(id),
   });
 }
