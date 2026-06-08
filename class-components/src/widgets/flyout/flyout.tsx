@@ -2,6 +2,7 @@ import type { JSX } from 'react';
 
 import { useSelectionStore } from '@/core/store/selection-store.ts';
 
+import { ActionButton } from '@/shared/ui/buttons/action-button/action-button.tsx';
 import { downloadSelectedAsCsv } from '@/shared/utilities/download-csv.ts';
 
 import './flyout.scss';
@@ -26,20 +27,12 @@ function Flyout(): JSX.Element | null {
           {itemsText}
         </span>
         <div className="flyout__actions">
-          <button
-            className="flyout__btn flyout__btn--secondary"
-            onClick={unselectAll}
-            type="button"
-          >
+          <ActionButton onClick={unselectAll} variant="secondary">
             Unselect all
-          </button>
-          <button
-            className="flyout__btn flyout__btn--primary"
-            onClick={handleDownload}
-            type="button"
-          >
+          </ActionButton>
+          <ActionButton onClick={handleDownload} variant="primary">
             ↓ Download
-          </button>
+          </ActionButton>
         </div>
       </div>
     </div>

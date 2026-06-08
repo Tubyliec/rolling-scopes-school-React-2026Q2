@@ -35,31 +35,4 @@
     display: flex;
     gap: $spacing-sm;
   }
-
-  &__btn {
-    font-family: $font-mono;
-    font-size: $font-size-xs;
-    letter-spacing: $letter-spacing-lg;
-    text-transform: uppercase;
-    cursor: pointer;
-    border: none;
-    padding: $padding-base;
-    transition: opacity $transition-fast;
-
-    &:hover {
-      opacity: $opacity-md;
-    }
-
-    &--secondary {
-      background: transparent;
-      border: $border-bright;
-      color: var(--flyout-btn-text, $color-text-dim);
-    }
-
-    &--primary {
-      background: $color-amber;
-      color: $color-bg;
-      font-weight: $font-weight-bold;
-    }
-  }
 }
