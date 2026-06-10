@@ -14,10 +14,11 @@ export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
     document.documentElement.setAttribute('data-theme', theme);
   }, [theme]);
 
+  const toggleThemeValue = (prev: Theme): Theme =>
+    prev === APP_THEME.dark ? APP_THEME.light : APP_THEME.dark;
+
   const toggleTheme = (): void => {
-    setTheme((prev) =>
-      prev === APP_THEME.dark ? APP_THEME.light : APP_THEME.dark
-    );
+    setTheme(toggleThemeValue);
   };
 
   return (

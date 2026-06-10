@@ -5,6 +5,7 @@ import { buildDescription } from '@shared/utilities/build-descriptions.ts';
 import { extractPersonId } from '@shared/utilities/extract-person-id.ts';
 import { stopPropagation } from '@shared/utilities/stop-propagation.ts';
 
+import type { Person } from '@entities/person/model/types/person.type.ts';
 import type { ResultsTableProps } from '@widgets/results-sections/components/results-table/model/types/results-table.type.ts';
 
 import './results-table.scss';
@@ -16,6 +17,18 @@ function ResultsTable({
   isChecked,
   selectedId,
 }: ResultsTableProps): JSX.Element {
+  const handleRowClick = (
+    e: React.MouseEvent<HTMLTableRowElement>,
+    person: Person
+  ): void => {
+    stopPropagation(e);
+    onSelect(person);
+  };
+
+  const handleCheckboxToggle = (person: Person): void => {
+    onCheckboxToggle(person);
+  };
+
   if (!results.length) {
     return <ResultsEmpty />;
   }
@@ -46,17 +59,14 @@ function ResultsTable({
             <tr
               key={person.url}
               className={rowClassName}
-              onClick={(e) => {
-                stopPropagation(e);
-                onSelect(person);
-              }}
+              onClick={(e) => handleRowClick(e, person)}
             >
               <td className="results-table__cell results-table__cell--checkbox">
                 <input
                   type="checkbox"
                   className="results-table__checkbox"
                   checked={checked}
-                  onChange={() => onCheckboxToggle(person)}
+                  onChange={() => handleCheckboxToggle(person)}
                   onClick={stopPropagation}
                 />
               </td>

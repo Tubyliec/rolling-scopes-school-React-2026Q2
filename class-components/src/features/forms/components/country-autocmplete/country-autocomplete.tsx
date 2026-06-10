@@ -39,6 +39,10 @@ function CountryAutocomplete({
     close
   );
 
+  const handleCountryMouseDown = (country: string): void => {
+    handleSelect(country);
+  };
+
   useClickOutside(containerRef, close);
 
   return (
@@ -65,7 +69,7 @@ function CountryAutocomplete({
               key={country}
               className={`country-autocomplete__option${index === highlightedIndex ? ' country-autocomplete__option--highlighted' : ''}`}
               role="option"
-              onMouseDown={(): void => handleSelect(country)}
+              onMouseDown={() => handleCountryMouseDown(country)}
             >
               {country}
             </li>

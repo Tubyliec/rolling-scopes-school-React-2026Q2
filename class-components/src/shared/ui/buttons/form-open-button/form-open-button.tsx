@@ -14,12 +14,12 @@ export function FormOpenButton({
     variant === 'rhf' ? ' forms-page__open-btn--rhf' : ''
   }`;
 
+  const handleClick = (): void => {
+    onClick(modalType);
+  };
+
   return (
-    <button
-      className={className}
-      type="button"
-      onClick={(): void => onClick(modalType)}
-    >
+    <button className={className} type="button" onClick={handleClick}>
       {label}
     </button>
   );

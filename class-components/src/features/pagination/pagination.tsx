@@ -18,6 +18,10 @@ function Pagination({
 
   const handleNext = (): void => onPageChange(currentPage + 1);
 
+  const handlePageClick = (page: number): void => {
+    if (page !== currentPage) onPageChange(page);
+  };
+
   const renderPageNumbers = (): JSX.Element[] => {
     const pages: JSX.Element[] = [];
     const startPage = Math.max(1, currentPage - 2);
@@ -29,9 +33,7 @@ function Pagination({
         <button
           key={i}
           className={`pagination__page ${isPageActive ? 'pagination__page--active' : ''}`}
-          onClick={() => {
-            if (i !== currentPage) onPageChange(i);
-          }}
+          onClick={() => handlePageClick(i)}
           disabled={isPageActive}
         >
           {i}

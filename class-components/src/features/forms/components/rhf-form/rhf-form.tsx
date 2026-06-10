@@ -1,5 +1,10 @@
 import { type JSX, useState } from 'react';
-import { Controller, useForm, useWatch } from 'react-hook-form';
+import {
+  Controller,
+  type ControllerRenderProps,
+  useForm,
+  useWatch,
+} from 'react-hook-form';
 
 import CountryAutocomplete from '@/features/forms/components/country-autocmplete/country-autocomplete.tsx';
 import FieldError from '@/features/forms/components/field-error/field-error.tsx';
@@ -43,6 +48,51 @@ function RhfForm({ onSuccess }: RhfFormProps): JSX.Element {
     name: 'password',
     defaultValue: '',
   });
+
+  const renderGenderField = ({
+    field,
+  }: {
+    field: ControllerRenderProps<FormSchema, 'gender'>;
+  }): JSX.Element => (
+    <FormSelect
+      id="rhf-gender"
+      label="Gender"
+      options={GENDER_OPTIONS}
+      placeholder="Select gender"
+      error={errors.gender?.message}
+      {...field}
+    />
+  );
+
+  const renderCountryField = ({
+    field,
+  }: {
+    field: ControllerRenderProps<FormSchema, 'country'>;
+  }): JSX.Element => (
+    <CountryAutocomplete
+      id="rhf-country"
+      value={field.value}
+      onChange={field.onChange}
+      errorId={errors.country ? 'rhf-country-error' : undefined}
+      hasError={Boolean(errors.country)}
+    />
+  );
+
+  const renderTermsField = ({
+    field: { value, onChange, ref, ...rest },
+  }: {
+    field: ControllerRenderProps<FormSchema, 'agreedToTerms'>;
+  }): JSX.Element => (
+    <FormCheckbox
+      id="rhf-terms"
+      label="I accept the Terms and Conditions"
+      checked={value}
+      onChange={onChange}
+      ref={ref}
+      error={errors.agreedToTerms?.message}
+      {...rest}
+    />
+  );
 
   const onSubmit = async (data: FormSchema): Promise<void> => {
     setIsSubmitting(true);
@@ -101,16 +151,7 @@ function RhfForm({ onSuccess }: RhfFormProps): JSX.Element {
         name="gender"
         control={control}
         defaultValue={'male'}
-        render={({ field }): JSX.Element => (
-          <FormSelect
-            id="rhf-gender"
-            label="Gender"
-            options={GENDER_OPTIONS}
-            placeholder="Select gender"
-            error={errors.gender?.message}
-            {...field}
-          />
-        )}
+        render={renderGenderField}
       />
 
       <div className="form__field">
@@ -142,15 +183,7 @@ function RhfForm({ onSuccess }: RhfFormProps): JSX.Element {
           name="country"
           control={control}
           defaultValue=""
-          render={({ field }): JSX.Element => (
-            <CountryAutocomplete
-              id="rhf-country"
-              value={field.value}
-              onChange={field.onChange}
-              errorId={errors.country ? 'rhf-country-error' : undefined}
-              hasError={Boolean(errors.country)}
-            />
-          )}
+          render={renderCountryField}
         />
         <FieldError message={errors.country?.message} id="rhf-country-error" />
       </div>
@@ -168,17 +201,7 @@ function RhfForm({ onSuccess }: RhfFormProps): JSX.Element {
         name="agreedToTerms"
         control={control}
         defaultValue={false}
-        render={({ field: { value, onChange, ref, ...rest } }): JSX.Element => (
-          <FormCheckbox
-            id="rhf-terms"
-            label="I accept the Terms and Conditions"
-            checked={value}
-            onChange={onChange}
-            ref={ref}
-            error={errors.agreedToTerms?.message}
-            {...rest}
-          />
-        )}
+        render={renderTermsField}
       />
 
       <div className="form__actions">

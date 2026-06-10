@@ -33,6 +33,12 @@ function UncontrolledForm({ onSuccess }: UncontrolledFormProps): JSX.Element {
   const [passwordValue, setPasswordValue] = useState('');
   const [countryValue, setCountryValue] = useState('');
 
+  const handlePasswordChange = (
+    e: React.ChangeEvent<HTMLInputElement>
+  ): void => {
+    setPasswordValue(e.target.value);
+  };
+
   const handleSubmit = async (
     event: React.FormEvent<HTMLFormElement>
   ): Promise<void> => {
@@ -122,7 +128,7 @@ function UncontrolledForm({ onSuccess }: UncontrolledFormProps): JSX.Element {
           type="password"
           placeholder="Enter password"
           error={errors['password']}
-          onChange={(e): void => setPasswordValue(e.target.value)}
+          onChange={handlePasswordChange}
         />
         <PasswordStrengthIndicator password={passwordValue} />
       </div>
