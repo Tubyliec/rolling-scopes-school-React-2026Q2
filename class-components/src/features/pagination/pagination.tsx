@@ -1,8 +1,10 @@
 import type { JSX } from 'react';
 
+import { generatePageNumbers } from '@features/pagination/generate-page-numbers.tsx';
+
 import { PaginationButton } from '@shared/ui/buttons/pagination-button/pagination-button.tsx';
 
-import type { PaginationProps } from '@/features/pagination/model/types/pagination.type.ts';
+import type { PaginationProps } from '@features/pagination/model/types/pagination.type.ts';
 
 import './pagination.scss';
 
@@ -22,27 +24,11 @@ function Pagination({
     if (page !== currentPage) onPageChange(page);
   };
 
-  const renderPageNumbers = (): JSX.Element[] => {
-    const pages: JSX.Element[] = [];
-    const startPage = Math.max(1, currentPage - 2);
-    const endPage = Math.min(totalPages, currentPage + 2);
-
-    for (let i = startPage; i <= endPage; i++) {
-      const isPageActive = i === currentPage;
-      pages.push(
-        <button
-          key={i}
-          className={`pagination__page ${isPageActive ? 'pagination__page--active' : ''}`}
-          onClick={() => handlePageClick(i)}
-          disabled={isPageActive}
-        >
-          {i}
-        </button>
-      );
-    }
-
-    return pages;
-  };
+  const pageNumbers = generatePageNumbers(
+    currentPage,
+    totalPages,
+    handlePageClick
+  );
 
   return (
     <div className="pagination">
@@ -63,7 +49,7 @@ function Pagination({
           ←
         </PaginationButton>
 
-        <div className="pagination__numbers">{renderPageNumbers()}</div>
+        <div className="pagination__numbers">{pageNumbers}</div>
 
         <PaginationButton
           direction="next"
