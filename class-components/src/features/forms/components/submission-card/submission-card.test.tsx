@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react';
 
-import type { FormSubmission } from '@/features/forms/model/types/form-submission.type.ts';
+import type { FormSubmission } from '@features/forms/model/types/form-submission.type.ts';
 
 import SubmissionCard from './submission-card.tsx';
 

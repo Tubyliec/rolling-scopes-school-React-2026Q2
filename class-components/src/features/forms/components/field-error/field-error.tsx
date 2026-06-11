@@ -1,6 +1,6 @@
 import type { JSX } from 'react';
 
-import type { FieldErrorProps } from '@/features/forms/model/types/field-error-props.type.ts';
+import type { FieldErrorProps } from '@features/forms/model/types/field-error-props.type.ts';
 
 import './field-error.scss';
 

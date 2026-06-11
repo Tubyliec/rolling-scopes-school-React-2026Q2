@@ -1,4 +1,4 @@
-import { fileToBase64 } from '@/features/forms/utilities/file-to-base64.ts';
+import { fileToBase64 } from '@features/forms/utilities/file-to-base64.ts';
 
 import { describe, expect, it } from 'vitest';
 

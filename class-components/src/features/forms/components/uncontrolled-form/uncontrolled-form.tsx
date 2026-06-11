@@ -1,19 +1,19 @@
 import { type JSX, useRef, useState } from 'react';
 
-import CountryAutocomplete from '@/features/forms/components/country-autocmplete/country-autocomplete.tsx';
-import FieldError from '@/features/forms/components/field-error/field-error.tsx';
-import FormCheckbox from '@/features/forms/components/form-checkbox/form-checkbox.tsx';
-import FormField from '@/features/forms/components/form-field/form-field.tsx';
-import FormSelect from '@/features/forms/components/form-select/form-select.tsx';
-import PasswordStrengthIndicator from '@/features/forms/components/password-strength/password-strength.tsx';
-import { useFormsStore } from '@/features/forms/store/forms-store.ts';
-import { fileToBase64 } from '@/features/forms/utilities/file-to-base64.ts';
-import { validateFormData } from '@/features/forms/utilities/validate-form-data.ts';
+import CountryAutocomplete from '@features/forms/components/country-autocmplete/country-autocomplete.tsx';
+import FieldError from '@features/forms/components/field-error/field-error.tsx';
+import FormCheckbox from '@features/forms/components/form-checkbox/form-checkbox.tsx';
+import FormField from '@features/forms/components/form-field/form-field.tsx';
+import FormSelect from '@features/forms/components/form-select/form-select.tsx';
+import PasswordStrengthIndicator from '@features/forms/components/password-strength/password-strength.tsx';
+import { useFormsStore } from '@features/forms/store/forms-store.ts';
+import { fileToBase64 } from '@features/forms/utilities/file-to-base64.ts';
+import { validateFormData } from '@features/forms/utilities/validate-form-data.ts';
 
 import { GENDER_OPTIONS } from '@shared/constants/gender-constants.ts';
 
-import type { UncontrolledFormProps } from '@/features/forms/model/types/form-props-uncontrolled.type.ts';
-import type { FormSubmission } from '@/features/forms/model/types/form-submission.type.ts';
+import type { UncontrolledFormProps } from '@features/forms/model/types/form-props-uncontrolled.type.ts';
+import type { FormSubmission } from '@features/forms/model/types/form-submission.type.ts';
 
 import '../../styles/form.scss';
 

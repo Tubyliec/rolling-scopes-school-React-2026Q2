@@ -6,22 +6,22 @@ import {
   useWatch,
 } from 'react-hook-form';
 
-import CountryAutocomplete from '@/features/forms/components/country-autocmplete/country-autocomplete.tsx';
-import FieldError from '@/features/forms/components/field-error/field-error.tsx';
-import FormCheckbox from '@/features/forms/components/form-checkbox/form-checkbox.tsx';
-import FormField from '@/features/forms/components/form-field/form-field.tsx';
-import FormSelect from '@/features/forms/components/form-select/form-select.tsx';
-import PasswordStrengthIndicator from '@/features/forms/components/password-strength/password-strength.tsx';
-import { formSchema } from '@/features/forms/schema/form-schema.ts';
-import { useFormsStore } from '@/features/forms/store/forms-store.ts';
-import { fileToBase64 } from '@/features/forms/utilities/file-to-base64.ts';
+import CountryAutocomplete from '@features/forms/components/country-autocmplete/country-autocomplete.tsx';
+import FieldError from '@features/forms/components/field-error/field-error.tsx';
+import FormCheckbox from '@features/forms/components/form-checkbox/form-checkbox.tsx';
+import FormField from '@features/forms/components/form-field/form-field.tsx';
+import FormSelect from '@features/forms/components/form-select/form-select.tsx';
+import PasswordStrengthIndicator from '@features/forms/components/password-strength/password-strength.tsx';
+import { formSchema } from '@features/forms/schema/form-schema.ts';
+import { useFormsStore } from '@features/forms/store/forms-store.ts';
+import { fileToBase64 } from '@features/forms/utilities/file-to-base64.ts';
 
 import { GENDER_OPTIONS } from '@shared/constants/gender-constants.ts';
 
 import { zodResolver } from '@hookform/resolvers/zod';
 
-import type { FormSubmission } from '@/features/forms/model/types/form-submission.type.ts';
-import type { FormSchema } from '@/features/forms/schema/form-schema.ts';
+import type { FormSubmission } from '@features/forms/model/types/form-submission.type.ts';
+import type { FormSchema } from '@features/forms/schema/form-schema.ts';
 
 import '../../styles/form.scss';
 

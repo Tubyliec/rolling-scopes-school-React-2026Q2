@@ -1,8 +1,8 @@
 import { forwardRef, type JSX } from 'react';
 
-import FieldError from '@/features/forms/components/field-error/field-error.tsx';
+import FieldError from '@features/forms/components/field-error/field-error.tsx';
 
-import type { FormFieldProps } from '@/features/forms/model/interfaces/form-field-props.interface.ts';
+import type { FormFieldProps } from '@features/forms/model/interfaces/form-field-props.interface.ts';
 
 const FormField = forwardRef<HTMLInputElement, FormFieldProps>(
   ({ id, label, error, className, ...rest }, ref): JSX.Element => {

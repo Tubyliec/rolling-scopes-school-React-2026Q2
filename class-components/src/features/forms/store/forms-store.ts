@@ -1,6 +1,6 @@
 import { COUNTRIES } from '@shared/constants/countries-constants.ts';
 
-import type { FormsState } from '@/features/forms/model/types/form-state.type.ts';
+import type { FormsState } from '@features/forms/model/types/form-state.type.ts';
 
 import { create } from 'zustand';
 

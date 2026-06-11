@@ -1,8 +1,8 @@
 import { type JSX, useRef } from 'react';
 
-import { useFormsStore } from '@/features/forms/store/forms-store.ts';
+import { useFormsStore } from '@features/forms/store/forms-store.ts';
 
-import type { CountryAutocompleteProps } from '@/features/forms/model/types/country-autocomplete-props.type.ts';
+import type { CountryAutocompleteProps } from '@features/forms/model/types/country-autocomplete-props.type.ts';
 
 import { useAutocomplete } from './hooks/use-autocomplete.ts';
 import { useClickOutside } from './hooks/use-click-outside.ts';

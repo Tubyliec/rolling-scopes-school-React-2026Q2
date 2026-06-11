@@ -1,8 +1,8 @@
 import { forwardRef, type JSX } from 'react';
 
-import FieldError from '@/features/forms/components/field-error/field-error.tsx';
+import FieldError from '@features/forms/components/field-error/field-error.tsx';
 
-import type { FormSelectProps } from '@/features/forms/model/interfaces/form-select-props.interface.ts';
+import type { FormSelectProps } from '@features/forms/model/interfaces/form-select-props.interface.ts';
 
 const FormSelect = forwardRef<HTMLSelectElement, FormSelectProps>(
   (

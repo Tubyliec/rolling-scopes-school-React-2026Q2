@@ -1,6 +1,6 @@
 import { type JSX, useEffect, useRef } from 'react';
 
-import type { SubmissionCardProps } from '@/features/forms/model/types/submission-card.type.ts';
+import type { SubmissionCardProps } from '@features/forms/model/types/submission-card.type.ts';
 
 import './submission-card.scss';
 

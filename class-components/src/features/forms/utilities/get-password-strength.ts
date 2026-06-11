@@ -1,4 +1,4 @@
-import type { PasswordStrength } from '@/features/forms/model/types/password-strength.type.ts';
+import type { PasswordStrength } from '@features/forms/model/types/password-strength.type.ts';
 
 export function getPasswordStrength(password: string): PasswordStrength {
   const hasUppercase = /[A-Z]/.test(password);

@@ -1,6 +1,6 @@
-import { formSchema } from '@/features/forms/schema/form-schema.ts';
+import { formSchema } from '@features/forms/schema/form-schema.ts';
 
-import type { ValidationResult } from '@/features/forms/model/types/validation-result.type.ts';
+import type { ValidationResult } from '@features/forms/model/types/validation-result.type.ts';
 
 export function validateFormData(
   data: Record<string, unknown>

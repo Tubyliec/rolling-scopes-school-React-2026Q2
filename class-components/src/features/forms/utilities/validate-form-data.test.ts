@@ -1,4 +1,4 @@
-import { validateFormData } from '@/features/forms/utilities/validate-form-data.ts';
+import { validateFormData } from '@features/forms/utilities/validate-form-data.ts';
 
 import { describe, expect, it } from 'vitest';
 

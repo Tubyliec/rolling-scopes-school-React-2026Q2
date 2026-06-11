@@ -1,4 +1,4 @@
-import { getPasswordStrength } from '@/features/forms/utilities/get-password-strength.ts';
+import { getPasswordStrength } from '@features/forms/utilities/get-password-strength.ts';
 
 import { describe, expect, it } from 'vitest';
 

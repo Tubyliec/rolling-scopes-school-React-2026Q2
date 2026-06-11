@@ -5,7 +5,7 @@ import { AppRoute } from '@core/router/model/constants/app-route.ts';
 
 import { useSelectionStore } from '@/core/store/selection-store.ts';
 
-import Pagination from '@/features/pagination/pagination.tsx';
+import Pagination from '@features/pagination/pagination.tsx';
 
 import ResultsTable from '@widgets/results-sections/components/results-table/results-table.tsx';
 import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';

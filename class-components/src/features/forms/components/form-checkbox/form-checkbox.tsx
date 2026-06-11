@@ -1,8 +1,8 @@
 import { forwardRef, type JSX } from 'react';
 
-import FieldError from '@/features/forms/components/field-error/field-error.tsx';
+import FieldError from '@features/forms/components/field-error/field-error.tsx';
 
-import type { FormCheckboxProps } from '@/features/forms/model/interfaces/form-checkbox-props.interface.ts';
+import type { FormCheckboxProps } from '@features/forms/model/interfaces/form-checkbox-props.interface.ts';
 
 const FormCheckbox = forwardRef<HTMLInputElement, FormCheckboxProps>(
   ({ id, label, error, ...rest }, ref): JSX.Element => {

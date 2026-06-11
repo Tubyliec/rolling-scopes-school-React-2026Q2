@@ -3,7 +3,7 @@ import { createPortal } from 'react-dom';
 
 import { CloseButton } from '@shared/ui/buttons/close-button/close-button.tsx';
 
-import type { ModalProps } from '@/features/forms/model/types/modal-props.type.ts';
+import type { ModalProps } from '@features/forms/model/types/modal-props.type.ts';
 
 import { useFocusTrap } from './hooks/use-focus-trap.ts';
 
