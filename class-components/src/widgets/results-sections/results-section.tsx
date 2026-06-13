@@ -60,7 +60,7 @@ function ResultsSection(): JSX.Element {
           onSelect={handleSelect}
           onCheckboxToggle={toggleItem}
           isChecked={isSelected}
-          selectedId={detailsId}
+          selectedId={detailsId ?? null}
         />
         {shouldShowPagination && (
           <Pagination

@@ -28,6 +28,7 @@ describe('ResultsTable', () => {
     onSelect: mockOnSelect,
     onCheckboxToggle: mockOnCheckboxToggle,
     isChecked: mockIsChecked,
+    selectedId: null,
   };
 
   beforeEach(() => {
@@ -86,6 +87,7 @@ describe('ResultsTable', () => {
         onSelect={mockOnSelect}
         onCheckboxToggle={mockOnCheckboxToggle}
         isChecked={mockIsChecked}
+        selectedId={null}
       />
     );
     expect(screen.getByText('NO RECORDS FOUND')).toBeInTheDocument();
