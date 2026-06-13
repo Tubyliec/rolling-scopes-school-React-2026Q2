@@ -7,7 +7,7 @@ import './index.css';
 import { scan } from 'react-scan';
 
 scan({
-  enabled: false,
+  enabled: true,
 });
 
 createRoot(document.getElementById('root')!).render(
