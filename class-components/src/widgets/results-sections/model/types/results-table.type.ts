@@ -5,5 +5,5 @@ export type ResultsTableProps = Readonly<{
   onSelect: (person: Person) => void;
   onCheckboxToggle: (person: Person) => void;
   isChecked: (url: string) => boolean;
-  selectedId?: string;
+  selectedId: string | null;
 }>;

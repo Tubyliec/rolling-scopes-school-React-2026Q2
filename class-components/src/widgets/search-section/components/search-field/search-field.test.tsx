@@ -1,7 +1,7 @@
 import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 
-import SearchField from './search-field';
+import SearchField from './search-field.tsx';
 
 import { describe, expect, it, vi } from 'vitest';
 

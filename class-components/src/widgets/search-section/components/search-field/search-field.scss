@@ -1,5 +1,5 @@
-@use '../../shared/styles/variables' as *;
-@use '../../shared/styles/placeholders' as *;
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/placeholders' as *;
 
 .search-field {
   @extend %flex-row-space-between;

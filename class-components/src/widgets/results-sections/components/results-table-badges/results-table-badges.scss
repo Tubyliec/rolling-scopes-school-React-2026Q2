@@ -1,0 +1,17 @@
+@use '../../../../shared/styles/variables' as *;
+
+.results-table {
+  &__badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: $grid-gap-sm;
+  }
+
+  &__badge {
+    display: inline-block;
+    font-size: $font-size-xs;
+    padding: $padding-xs;
+    border: $border-bright;
+    color: $color-text-dim;
+  }
+}

@@ -1,6 +1,6 @@
 import React, { type JSX } from 'react';
 
-import type { SearchFieldProps } from './model/interfaces/search-field.interface';
+import type { SearchFieldProps } from '../../model/interfaces/search-field.interface.ts';
 
 import './search-field.scss';
 

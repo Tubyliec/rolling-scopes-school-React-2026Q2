@@ -7,7 +7,7 @@ import { AppRoute } from '@core/router/model/constants/app-route.ts';
 
 import { useSearchStore } from '@/core/store/search-store.ts';
 
-import SearchField from '@/widgets/search-field/search-field.tsx';
+import SearchField from '@widgets/search-section/components/search-field/search-field.tsx';
 
 import { PAGE_NUMBERS } from '@shared/constants/page-constants.ts';
 
