@@ -1,6 +1,8 @@
 import type { Country } from '../../types';
+
 import { CountryCard } from '../country-card/country-card';
-import { getPopulationForYear, createYearDataMap } from '../../utils/data-transformers';
+
+import { createYearDataMap, getPopulationForYear } from '../../utils/data-transformers';
 
 import styles from './country-list.module.css';
 

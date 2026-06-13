@@ -1,4 +1,4 @@
-import type { YearData, Country } from '../types';
+import type { Country, YearData } from '../types';
 
 export const getAvailableColumns = (): string[] => {
   return [

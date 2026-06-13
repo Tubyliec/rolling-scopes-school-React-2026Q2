@@ -1,9 +1,11 @@
 import type { Country } from '../../types';
+
 import { DataTable } from '../data-table/data-table';
+
 import {
-  getPopulationForYear,
-  getCo2ForYear,
   createYearDataMap,
+  getCo2ForYear,
+  getPopulationForYear,
 } from '../../utils/data-transformers';
 import { formatNumber } from '../../utils/format-utils';
 

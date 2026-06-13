@@ -1,4 +1,5 @@
 import type { YearData } from '../../types';
+
 import { formatNumber } from '../../utils/format-utils';
 
 import styles from './data-table.module.css';

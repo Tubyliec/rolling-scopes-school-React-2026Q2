@@ -1,11 +1,14 @@
 import { useState } from 'react';
-import { useCo2Data } from '../../hooks/useCo2Data';
+
+import { ColumnModal } from '../column-modal/column-modal';
+import { CountryList } from '../country-list/country-list';
 import { LoadingSpinner } from '../loading-spinner/loading-spinner';
 import { SearchBar } from '../search-bar/search-bar';
 import { YearSelector } from '../year-selector/year-selector';
-import { CountryList } from '../country-list/country-list';
-import { ColumnModal } from '../column-modal/column-modal';
-import { getAvailableYears, getAvailableColumns } from '../../utils/data-transformers';
+
+import { useCo2Data } from '../../hooks/useCo2Data';
+
+import { getAvailableColumns, getAvailableYears } from '../../utils/data-transformers';
 
 import styles from './app.module.css';
 
