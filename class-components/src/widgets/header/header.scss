@@ -1,0 +1,56 @@
+@use '../../shared/styles/variables' as *;
+@use '../../shared/styles/placeholders' as *;
+
+.header__wrapper {
+  border-bottom: $border-base;
+  padding: $padding-2xl;
+  @extend %flex-row-space-between-center;
+  gap: $spacing-lg;
+}
+
+.app-header {
+  &__logo {
+    font-family: $font-display;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-black;
+    color: $color-amber;
+    letter-spacing: $letter-spacing-xs;
+    text-transform: uppercase;
+  }
+
+  &__nav {
+    @extend %flex-row-space-between-center;
+  }
+
+  &__nav-link {
+    @extend %label-text;
+    opacity: $opacity-lg;
+    border: $border-base;
+    padding: $padding-xs;
+    transition: opacity 0.15s;
+
+    &:hover,
+    &--active {
+      border-color: $color-amber;
+      color: $color-amber;
+    }
+  }
+}
+
+.theme-toggle {
+  @extend %label-text;
+  white-space: nowrap;
+  cursor: pointer;
+  background: transparent;
+  border: $border-base;
+  color: $color-text-dim;
+  padding: $padding-xs;
+  transition:
+    border-color $transition-fast,
+    color $transition-fast;
+
+  &:hover {
+    border-color: $color-amber;
+    color: $color-amber;
+  }
+}

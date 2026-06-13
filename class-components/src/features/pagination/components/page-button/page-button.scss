@@ -1,0 +1,34 @@
+@use '../../../../shared/styles/variables' as *;
+
+.pagination__page {
+  min-width: $size-page-btn;
+  height: $size-page-btn;
+  padding: $padding-sm;
+  background: $color-surface;
+  border: $border-base;
+  border-radius: $radius-sm;
+  color: $color-text-dim;
+  font-size: $font-size-base;
+  cursor: pointer;
+  transition:
+    border-color $transition-base,
+    color $transition-base,
+    background $transition-base;
+
+  &:hover:not(:disabled) {
+    border-color: $color-amber;
+    color: $color-amber;
+  }
+
+  &--active {
+    background: $color-amber;
+    border-color: $color-amber;
+    color: $color-text-bright;
+    cursor: default;
+  }
+
+  &:disabled {
+    opacity: $opacity-sm;
+    cursor: not-allowed;
+  }
+}

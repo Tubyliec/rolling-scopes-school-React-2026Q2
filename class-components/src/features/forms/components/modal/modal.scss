@@ -1,0 +1,64 @@
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/placeholders' as *;
+
+.modal-overlay {
+  @extend %flex-center-column;
+  position: fixed;
+  inset: 0;
+  background: $color-bg;
+  z-index: 1000;
+  padding: $spacing-md;
+}
+
+.modal {
+  background: $color-surface;
+  border: $border-bright;
+  border-radius: $radius-sm;
+  width: 100%;
+  max-width: $max-width-lg;
+  max-height: $max-height-lg;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+
+  &__header {
+    @extend %flex-row-space-between-center;
+    padding: $spacing-lg $spacing-xl;
+    border-bottom: $border-base;
+    flex-shrink: 0;
+  }
+
+  &__title {
+    font-family: $font-display;
+    font-size: $font-size-xl;
+    font-weight: $font-weight-bold;
+    color: $color-text-bright;
+    margin: 0;
+  }
+
+  &__body {
+    overflow-y: auto;
+    padding: $spacing-xl;
+    flex: 1;
+
+    scrollbar-width: thin;
+    scrollbar-color: $color-border-bright transparent;
+
+    &::-webkit-scrollbar {
+      width: 6px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background: transparent;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background: $color-border-bright;
+      border-radius: 3px;
+
+      &:hover {
+        background: $color-amber-dim;
+      }
+    }
+  }
+}

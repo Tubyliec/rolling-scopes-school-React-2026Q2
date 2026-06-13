@@ -1,0 +1,143 @@
+@use './_variables.scss' as *;
+
+%flex-column {
+  display: flex;
+  flex-direction: column;
+}
+
+%flex-center-column {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+%flex-row-start {
+  display: flex;
+  align-items: center;
+}
+
+%flex-row-center {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+%flex-row-end {
+  display: flex;
+  justify-content: flex-end;
+}
+
+%flex-row-space-between-center {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+%flex-row-space-between {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+}
+
+%flex-row-space-between-baseline {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+%flex-row-space-between-wrap {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+
+%flex-wrap {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+%full-width-overflow-hidden {
+  width: 100%;
+  overflow: hidden;
+}
+
+%full-size-cover-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+%margin-auto {
+  margin: 0 auto;
+}
+
+%flex-grow {
+  flex: 1;
+}
+
+%cursor-pointer {
+  cursor: pointer;
+}
+
+%text-center {
+  text-align: center;
+}
+
+%grid-auto-fill {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($grid-min-card-width, 1fr));
+  gap: $spacing-lg;
+}
+
+%label-text {
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  letter-spacing: $letter-spacing-lg;
+  color: $color-text-dim;
+}
+
+%title-text {
+  font-size: $font-size-2xl;
+  font-weight: $font-weight-extrabold;
+  text-transform: uppercase;
+  margin: 0 0 $spacing-xl;
+}
+
+%subtitle-text {
+  font-size: $font-size-xs;
+  text-transform: uppercase;
+  opacity: $opacity-sm;
+  margin: 0 0 $spacing-sm;
+}
+
+%text {
+  font-size: 1rem;
+  line-height: $line-height-lg;
+  margin: 0;
+}
+
+%error-text {
+  display: block;
+  font-size: $font-size-xs;
+  color: $color-red;
+  margin-top: $spacing-xxs;
+  min-height: $min-height-error;
+  line-height: $line-height-xs;
+}
+
+%button-back {
+  display: inline-flex;
+  align-items: center;
+  color: inherit;
+  text-decoration: none;
+  text-transform: uppercase;
+  opacity: $opacity-md;
+  border: $border-bright;
+  padding: $padding-base;
+
+  &:hover {
+    opacity: $opacity-lg;
+  }
+}

@@ -1,0 +1,54 @@
+@use '../../../../shared/styles/variables' as *;
+
+.results-table {
+  &__row {
+    border-bottom: $border-base;
+    transition: background $transition-fast;
+
+    &:hover {
+      background: $color-amber-glow;
+    }
+
+    &--clickable {
+      cursor: pointer;
+    }
+
+    &--selected {
+      background-color: $color-amber-glow;
+    }
+
+    &--active {
+      background-color: $color-amber-glow;
+    }
+  }
+
+  &__cell {
+    padding: $padding-2xl;
+    vertical-align: top;
+
+    &--name {
+      color: $color-text-bright;
+      font-weight: $font-weight-medium;
+      font-size: $font-size-base;
+    }
+
+    &--checkbox {
+      padding: $padding-2xl;
+      width: 5vw;
+    }
+  }
+
+  &__checkbox {
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    accent-color: $color-amber;
+  }
+
+  &__description {
+    color: $color-text;
+    font-size: $font-size-sm;
+    line-height: $line-height-lg;
+    margin-bottom: $grid-gap-sm;
+  }
+}

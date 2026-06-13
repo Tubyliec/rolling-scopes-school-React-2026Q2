@@ -1,0 +1,129 @@
+import type { ReactNode } from 'react';
+
+import { QueryClientProvider } from '@tanstack/react-query';
+
+import {
+  createCachingQueryClient,
+  createTestQueryClient,
+} from '@/test/query-test-utils.tsx';
+import { renderHook, waitFor } from '@testing-library/react';
+
+import { usePeopleQuery } from './use-people-query';
+
+import { beforeEach, describe, expect, it, vi } from 'vitest';
+
+const mockGetPeople = vi.fn();
+vi.mock('@/core/swapi/swapi-service.ts', () => ({
+  getPeople: (...args: unknown[]) => mockGetPeople(...args),
+}));
+
+const successResponse = {
+  results: [
+    {
+      name: 'Luke Skywalker',
+      height: '172',
+      mass: '77',
+      hair_color: 'blond',
+      skin_color: 'fair',
+      eye_color: 'blue',
+      birth_year: '19BBY',
+      gender: 'male',
+      url: 'https://swapi.dev/api/people/1/',
+    },
+  ],
+  totalCount: 1,
+  totalPages: 1,
+  currentPage: 1,
+  hasNextPage: false,
+  hasPreviousPage: false,
+};
+
+describe('usePeopleQuery', () => {
+  beforeEach(() => {
+    mockGetPeople.mockClear();
+  });
+
+  const makeWrapper = (client = createTestQueryClient()) => {
+    const Wrapper = ({ children }: { children: ReactNode }) => (
+      <QueryClientProvider client={client}>{children}</QueryClientProvider>
+    );
+    Wrapper.displayName = 'QueryClientWrapper';
+    return Wrapper;
+  };
+
+  it('starts in loading state', () => {
+    mockGetPeople.mockResolvedValue(successResponse);
+    const { result } = renderHook(() => usePeopleQuery('', 1), {
+      wrapper: makeWrapper(),
+    });
+    expect(result.current.isLoading).toBe(true);
+  });
+
+  it('resolves to success state with data', async () => {
+    mockGetPeople.mockResolvedValue(successResponse);
+    const { result } = renderHook(() => usePeopleQuery('', 1), {
+      wrapper: makeWrapper(),
+    });
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    expect(result.current.data?.results[0].name).toBe('Luke Skywalker');
+  });
+
+  it('calls getPeople with correct params', async () => {
+    mockGetPeople.mockResolvedValue(successResponse);
+    const { result } = renderHook(() => usePeopleQuery('Luke', 2), {
+      wrapper: makeWrapper(),
+    });
+    await waitFor(() => expect(result.current.isSuccess).toBe(true));
+    expect(mockGetPeople).toHaveBeenCalledWith({ term: 'Luke', page: 2 });
+  });
+
+  it('enters error state when API returns a message', async () => {
+    mockGetPeople.mockResolvedValue({ message: 'Not found' });
+    const { result } = renderHook(() => usePeopleQuery('unknown', 1), {
+      wrapper: makeWrapper(),
+    });
+    await waitFor(() => expect(result.current.isError).toBe(true));
+    expect(result.current.error?.message).toBe('Not found');
+  });
+
+  it('enters error state when fetch rejects', async () => {
+    mockGetPeople.mockRejectedValue(new Error('Network failure'));
+    const { result } = renderHook(() => usePeopleQuery('', 1), {
+      wrapper: makeWrapper(),
+    });
+    await waitFor(() => expect(result.current.isError).toBe(true));
+    expect(result.current.error?.message).toBe('Network failure');
+  });
+
+  it('serves cached data for the same query key without refetching', async () => {
+    mockGetPeople.mockResolvedValue(successResponse);
+    const client = createCachingQueryClient();
+    const wrapper = makeWrapper(client);
+
+    const { result: r1 } = renderHook(() => usePeopleQuery('', 1), { wrapper });
+    await waitFor(() => expect(r1.current.isSuccess).toBe(true));
+    expect(mockGetPeople).toHaveBeenCalledTimes(1);
+
+    const { result: r2 } = renderHook(() => usePeopleQuery('', 1), { wrapper });
+    await waitFor(() => expect(r2.current.isSuccess).toBe(true));
+    expect(mockGetPeople).toHaveBeenCalledTimes(1);
+  });
+
+  it('fetches again for a different query key', async () => {
+    mockGetPeople.mockResolvedValue(successResponse);
+    const client = createCachingQueryClient();
+    const wrapper = makeWrapper(client);
+
+    const { result: r1 } = renderHook(() => usePeopleQuery('Luke', 1), {
+      wrapper,
+    });
+    await waitFor(() => expect(r1.current.isSuccess).toBe(true));
+
+    const { result: r2 } = renderHook(() => usePeopleQuery('Vader', 1), {
+      wrapper,
+    });
+    await waitFor(() => expect(r2.current.isSuccess).toBe(true));
+
+    expect(mockGetPeople).toHaveBeenCalledTimes(2);
+  });
+});

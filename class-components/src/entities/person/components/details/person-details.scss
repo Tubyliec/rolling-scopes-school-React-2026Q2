@@ -1,0 +1,75 @@
+@use '../../../../shared/styles/_variables.scss' as *;
+@use '../../../../shared/styles/_placeholders.scss' as *;
+
+.person-details {
+  position: relative;
+  min-width: $max-width-xs;
+  max-width: $max-width-sm;
+  border-left: $border-bright;
+  padding: $spacing-lg $spacing-md;
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  &__close {
+    @extend %flex-row-center;
+    top: $spacing-sm;
+    right: $spacing-sm;
+    background: none;
+    border: $border-bright;
+    color: inherit;
+    font-size: $font-size-base;
+    width: $spacing-lg;
+    height: $spacing-lg;
+    cursor: pointer;
+    opacity: $opacity-xs;
+    transition: opacity $transition-fast;
+
+    &:hover {
+      opacity: 1;
+    }
+  }
+
+  &__name {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    letter-spacing: $letter-spacing-sm;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+
+  &__item {
+    @extend %flex-row-space-between-center;
+    border-bottom: $border-bright;
+    padding-bottom: $spacing-sm;
+  }
+
+  &__label {
+    @extend %label-text;
+  }
+
+  &__value {
+    font-size: $font-size-base;
+  }
+
+  &__empty {
+    opacity: $opacity-sm;
+    font-size: $font-size-base;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-md;
+  }
+
+  &__actions {
+    @extend %flex-row-space-between-center;
+  }
+}

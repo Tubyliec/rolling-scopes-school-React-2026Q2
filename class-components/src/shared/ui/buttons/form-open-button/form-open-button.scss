@@ -1,0 +1,33 @@
+@use '../../../styles/variables' as *;
+@use '../../../styles/placeholders' as *;
+
+.form-open-button {
+  background: $color-transparent;
+  border: $border-bright;
+  border-radius: $radius-sm;
+  color: $color-text;
+  font-family: $font-mono;
+  font-size: $font-size-sm;
+  padding: $padding-base;
+  @extend %cursor-pointer;
+  letter-spacing: $letter-spacing-sm;
+  transition:
+    color $transition-fast,
+    border-color $transition-fast,
+    background $transition-fast;
+
+  &:hover {
+    color: $color-text-bright;
+    border-color: $color-amber-dim;
+    background: $color-amber-glow;
+  }
+
+  &--rhf {
+    border-color: $color-amber-dim;
+    color: $color-amber;
+
+    &:hover {
+      background: $color-amber-glow;
+    }
+  }
+}

@@ -1,0 +1,36 @@
+@use './_variables.scss' as *;
+
+body {
+  background: $color-bg;
+  color: $color-text;
+  font-family: $font-mono;
+  font-size: $font-size-base;
+  line-height: $line-height-md;
+  min-height: 100vh;
+
+  &::after {
+    content: '';
+    position: fixed;
+    inset: 0;
+    background: repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(0, 0, 0, 0.03) 2px,
+      rgba(0, 0, 0, 0.03) 4px
+    );
+    pointer-events: none;
+    z-index: 9999;
+  }
+}
+
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.wrapper {
+  margin: 0 auto;
+  max-width: 60%;
+}

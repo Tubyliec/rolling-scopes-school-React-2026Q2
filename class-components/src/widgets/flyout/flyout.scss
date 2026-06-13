@@ -1,0 +1,38 @@
+@use '../../shared/styles/variables' as *;
+@use '../../shared/styles/placeholders' as *;
+
+.flyout {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  z-index: 100;
+  border-top: $border-amber;
+  background: var(--flyout-bg, $color-surface);
+  backdrop-filter: blur(8px);
+  box-shadow: 0 -4px 24px rgba(0, 0, 0, 0.4);
+
+  &__wrapper {
+    @extend %flex-row-space-between-center;
+    padding: $padding-base;
+    gap: $spacing-lg;
+  }
+
+  &__count {
+    font-size: $font-size-sm;
+    letter-spacing: $letter-spacing-md;
+    text-transform: uppercase;
+    color: var(--flyout-text, $color-text-dim);
+  }
+
+  &__count-number {
+    color: $color-amber;
+    font-weight: $font-weight-bold;
+    font-size: $font-size-md;
+  }
+
+  &__actions {
+    display: flex;
+    gap: $spacing-sm;
+  }
+}

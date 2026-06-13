@@ -1,0 +1,8 @@
+@use '../../shared/styles/variables' as *;
+@use '../../shared/styles/placeholders' as *;
+
+.card-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax($grid-min-card-width, 1fr));
+  gap: $grid-gap-lg;
+}
