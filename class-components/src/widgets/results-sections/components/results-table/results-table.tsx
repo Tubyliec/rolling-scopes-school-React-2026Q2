@@ -6,6 +6,8 @@ import { ResultsEmpty } from '@shared/ui/errors/results-empty/results-empty.tsx'
 
 import type { ResultsTableProps } from '@widgets/results-sections/model/types/results-table.type.ts';
 
+import './results-table.scss';
+
 function ResultsTable({
   results,
   onSelect,
