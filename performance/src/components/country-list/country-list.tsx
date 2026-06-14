@@ -1,10 +1,14 @@
 import { memo, useMemo } from 'react';
-import { List, type RowComponentProps } from 'react-window';
+
 import type { Country } from '../../types';
+
 import { CountryCard } from '../country-card/country-card';
+
 import { createYearDataMap, getPopulationForYear } from '../../utils/data-transformers';
 
 import styles from './country-list.module.css';
+
+import { List, type RowComponentProps } from 'react-window';
 
 const CARD_BASE_HEIGHT = 130;
 const ROW_HEIGHT_PER_COLUMN = 36;
