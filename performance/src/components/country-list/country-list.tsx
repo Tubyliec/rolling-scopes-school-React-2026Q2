@@ -1,16 +1,11 @@
 import { memo, useMemo } from 'react';
-
+import { List, type RowComponentProps } from 'react-window';
 import type { Country } from '../../types';
-
 import { CountryCard } from '../country-card/country-card';
-
 import { createYearDataMap, getPopulationForYear } from '../../utils/data-transformers';
 
 import styles from './country-list.module.css';
 
-import { List, type RowComponentProps } from 'react-window';
-
-const LIST_HEIGHT = 800;
 const CARD_BASE_HEIGHT = 130;
 const ROW_HEIGHT_PER_COLUMN = 36;
 const CARD_GAP = 16;
@@ -28,7 +23,7 @@ const Row = ({
   selectedYear,
   selectedColumns,
 }: RowComponentProps<RowProps>) => (
-  <div style={{ ...style, paddingBottom: CARD_GAP }}>
+  <div style={{ ...style, padding: '0 16px 16px' }}>
     <CountryCard
       country={countries[index]}
       selectedYear={selectedYear}
@@ -97,18 +92,16 @@ export const CountryList = memo(
     );
 
     return (
-      <div className={styles.countryList}>
-        <List<RowProps>
-          style={{ width: '100%' }}
-          defaultHeight={LIST_HEIGHT}
-          rowCount={filteredCountries.length}
-          rowHeight={rowHeight}
-          rowComponent={Row}
-          rowProps={rowProps}
-        >
-          {null}
-        </List>
-      </div>
+      <List<RowProps>
+        className={styles.countryList}
+        defaultHeight={800}
+        rowCount={filteredCountries.length}
+        rowHeight={rowHeight}
+        rowComponent={Row}
+        rowProps={rowProps}
+      >
+        {null}
+      </List>
     );
   }
 );
