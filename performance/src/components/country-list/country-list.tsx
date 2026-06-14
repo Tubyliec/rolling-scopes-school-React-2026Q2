@@ -8,6 +8,35 @@ import { createYearDataMap, getPopulationForYear } from '../../utils/data-transf
 
 import styles from './country-list.module.css';
 
+import { List, type RowComponentProps } from 'react-window';
+
+const LIST_HEIGHT = 800;
+const CARD_BASE_HEIGHT = 130;
+const ROW_HEIGHT_PER_COLUMN = 36;
+const CARD_GAP = 16;
+
+type RowProps = {
+  countries: Country[];
+  selectedYear: number;
+  selectedColumns: string[];
+};
+
+const Row = ({
+  style,
+  index,
+  countries,
+  selectedYear,
+  selectedColumns,
+}: RowComponentProps<RowProps>) => (
+  <div style={{ ...style, paddingBottom: CARD_GAP }}>
+    <CountryCard
+      country={countries[index]}
+      selectedYear={selectedYear}
+      selectedColumns={selectedColumns}
+    />
+  </div>
+);
+
 type CountryListProps = {
   countries: Country[];
   searchQuery: string;
@@ -55,26 +84,30 @@ export const CountryList = memo(
           const popB = populationByCountry.get(b.id) ?? 0;
           return sortOrder === 'asc' ? popA - popB : popB - popA;
         });
-    }, [
-      countries,
-      searchQuery,
-      selectedRegion,
-      selectedYear,
-      sortField,
-      sortOrder,
-      populationByCountry,
-    ]);
+    }, [countries, searchQuery, selectedRegion, sortField, sortOrder, populationByCountry]);
+
+    const rowHeight = useMemo(
+      () => CARD_BASE_HEIGHT + selectedColumns.length * ROW_HEIGHT_PER_COLUMN + CARD_GAP,
+      [selectedColumns.length]
+    );
+
+    const rowProps = useMemo(
+      () => ({ selectedYear, selectedColumns, countries: filteredCountries }),
+      [selectedYear, selectedColumns, filteredCountries]
+    );
 
     return (
       <div className={styles.countryList}>
-        {filteredCountries.map((country) => (
-          <CountryCard
-            key={country.id}
-            country={country}
-            selectedYear={selectedYear}
-            selectedColumns={selectedColumns}
-          />
-        ))}
+        <List<RowProps>
+          style={{ width: '100%' }}
+          defaultHeight={LIST_HEIGHT}
+          rowCount={filteredCountries.length}
+          rowHeight={rowHeight}
+          rowComponent={Row}
+          rowProps={rowProps}
+        >
+          {null}
+        </List>
       </div>
     );
   }
