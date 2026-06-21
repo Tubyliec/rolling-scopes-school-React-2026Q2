@@ -1,0 +1,57 @@
+{
+  "navigation": {
+    "home": "Home",
+    "about": "About",
+    "search": "Search"
+  },
+  "about": {
+    "title": "About",
+    "application": {
+      "title": "Application",
+      "description": "Star Wars API Search is an application that lets you explore characters from the Star Wars universe using the SWAPI public API."
+    },
+    "course": {
+      "title": "Course",
+      "description": "Built for ",
+      "link": "https://rs.school/courses/reactjs"
+    },
+    "back": "← Back to Search"
+  },
+  "not-found": {
+    "title": "Page Not Found",
+    "description": "The page you are looking for does not exist or has been moved.",
+    "back": "Return to Search"
+  },
+  "search": {
+    "label": "Search term",
+    "placeholder": "e.g. Luke Skywalker…",
+    "button": "SEARCH",
+    "loading": "FETCHING…"
+  },
+  "results": {
+    "empty": "No results found",
+    "total": "total records",
+    "page": "Page",
+    "of": "of",
+    "name": "Name",
+    "description": "Description",
+    "height": "Height",
+    "mass": "Mass",
+    "birthYear": "Birth Year",
+    "gender": "Gender",
+    "hair": "Hair",
+    "eyes": "Eyes",
+    "skin": "Skin"
+  },
+  "pagination": {
+    "itemsSelected": "items selected",
+    "download": "↓ Download",
+    "unselectAll": "Unselect all"
+  },
+  "error": {
+    "title": "Error",
+    "systemFailure": "SYSTEM FAILURE",
+    "message": "An unexpected error occurred in the application runtime. The error has been logged to the console.",
+    "reset": "RESET APP"
+  }
+}

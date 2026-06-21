@@ -1,0 +1,57 @@
+{
+  "navigation": {
+    "home": "Галоўная старонка",
+    "about": "Пра праграму",
+    "search": "Пошук"
+  },
+  "about": {
+    "title": "Пра праграму",
+    "application": {
+      "title": "Праграма",
+      "description": "Star Wars API Search - гэта праграма, якая дае магчымасць вам вывучаць персонажаў Зорных войнаў з дапамогай публічнага API SWAPI."
+    },
+    "course": {
+      "title": "Курс",
+      "description": "Створана для ",
+      "link": "https://rs.school/courses/reactjs"
+    },
+    "back": "← Вярнуцца да пошуку"
+  },
+  "not-found": {
+    "title": "Старонка не знойдзена",
+    "description": "Старонка, якую вы шукаеце, не існуе або была перамешчана.",
+    "back": "Вярнуцца да пошуку"
+  },
+  "search": {
+    "label": "Тэрмін пошуку",
+    "placeholder": "напр. Luke Skywalker…",
+    "button": "ПОШУК",
+    "loading": "ЗАГРУЗКА…"
+  },
+  "results": {
+    "empty": "Вынікаў няма",
+    "total": "агулам запісаў",
+    "page": "Старонка",
+    "of": "з",
+    "name": "Імя",
+    "description": "Апісанне",
+    "height": "Рост",
+    "mass": "Маса",
+    "birthYear": "Год нараджэння",
+    "gender": "Пол",
+    "hair": "Валасы",
+    "eyes": "Вочы",
+    "skin": "Скура"
+  },
+  "pagination": {
+    "itemsSelected": "элементаў выбрана",
+    "download": "↓ Загрузіць",
+    "unselectAll": "Скасаваць выбар"
+  },
+  "error": {
+    "title": "Памылка",
+    "systemFailure": "СІСТЭМНЫ ЗБОЙ",
+    "message": "Адбылася нечаканая памылка. Памылка была запісана ў журнал.",
+    "reset": "ПЕРАЗАГРУЗІЦЬ"
+  }
+}
