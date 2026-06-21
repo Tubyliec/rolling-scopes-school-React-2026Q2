@@ -1,6 +1,0 @@
-@use '../../../../shared/styles/variables' as *;
-@use '../../../../shared/styles/placeholders' as *;
-
-.field-error {
-  @extend %error-text;
-}

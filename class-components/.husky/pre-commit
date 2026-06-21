@@ -1,1 +1,0 @@
-cd class-components && npm run lint && npm run format:fix
