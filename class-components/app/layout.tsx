@@ -1,5 +1,6 @@
-import type { Metadata } from 'next';
 import type { ReactNode } from 'react';
+
+import type { Metadata } from 'next';
 
 import { RootLayoutProvider } from './root-layout-provider';
 
@@ -22,7 +23,7 @@ export async function RootLayout({
   const { locale } = await params;
 
   return (
-    <html lang={locale}>
+    <html lang={locale} data-scroll-behavior="smooth">
       <body>
         <RootLayoutProvider>{children}</RootLayoutProvider>
       </body>

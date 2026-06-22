@@ -1,10 +1,13 @@
 import type { ReactNode } from 'react';
+
 import { notFound } from 'next/navigation';
-import { getMessages } from 'next-intl/server';
+
 import { NextIntlClientProvider } from 'next-intl';
+import { getMessages } from 'next-intl/server';
+
+import ErrorBoundary from '@core/error-boundary/error-boundary';
 
 import { SUPPORTED_LOCALES } from '@/i18n.config';
-import ErrorBoundary from '@core/error-boundary/error-boundary';
 
 interface LocalizedLayoutProps {
   readonly children: ReactNode;
