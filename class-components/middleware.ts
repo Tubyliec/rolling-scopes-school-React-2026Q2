@@ -9,7 +9,5 @@ export const middleware = createMiddleware({
 });
 
 export const config = {
-  matcher: [
-    '/((?!api|_next|_vercel|favicon.ico|robots.txt|sitemap.xml).*)',
-  ],
+  matcher: ['/((?!api|_next|_vercel|favicon.ico|robots.txt|sitemap.xml).*)'],
 };
