@@ -1,3 +1,5 @@
+'use client';
+
 import type { JSX } from 'react';
 
 import PageButton from '@features/pagination/components/page-button/page-button.tsx';

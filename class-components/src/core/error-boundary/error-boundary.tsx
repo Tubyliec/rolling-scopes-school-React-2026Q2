@@ -1,3 +1,5 @@
+'use client';
+
 import { Component, type ErrorInfo, type JSX, type ReactNode } from 'react';
 
 import './error-boundary.scss';
@@ -47,7 +49,11 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             {error.message}
           </div>
         )}
-        <button className="error-boundary__reset" onClick={this.handleReset}>
+        <button
+          className="error-boundary__reset"
+          onClick={this.handleReset}
+          type="button"
+        >
           RESET APP
         </button>
       </div>

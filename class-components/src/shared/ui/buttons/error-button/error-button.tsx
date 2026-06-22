@@ -1,3 +1,5 @@
+'use client';
+
 import { type JSX, useState } from 'react';
 
 import './error-button.scss';

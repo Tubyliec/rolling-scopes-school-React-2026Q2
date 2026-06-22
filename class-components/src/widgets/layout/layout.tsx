@@ -1,3 +1,5 @@
+'use client';
+
 import { type JSX } from 'react';
 
 import type { LayoutProps } from '@widgets/layout/model/types/layout-props.ts';

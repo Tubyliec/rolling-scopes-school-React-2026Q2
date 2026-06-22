@@ -1,3 +1,5 @@
+'use client';
+
 import type { JSX } from 'react';
 
 import type { ActionButtonProps } from './model/types/action-button-props.type.ts';

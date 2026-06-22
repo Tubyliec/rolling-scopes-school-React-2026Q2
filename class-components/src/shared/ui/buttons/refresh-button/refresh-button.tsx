@@ -1,3 +1,5 @@
+'use client';
+
 import type { JSX } from 'react';
 
 import type { RefreshButtonProps } from '@shared/ui/buttons/refresh-button/model/types/refresh-button-props.type.ts';
