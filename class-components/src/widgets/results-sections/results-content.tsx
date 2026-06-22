@@ -22,10 +22,6 @@ export async function ResultsContent({
 }: ResultsContentProps): Promise<ReactNode> {
   const pageNum = parseInt(currentPage, 10) || 1;
 
-  if (!searchQuery.trim()) {
-    return <ResultsEmpty />;
-  }
-
   const result = await searchPeopleAction(searchQuery.trim(), pageNum);
 
   if ('error' in result) {

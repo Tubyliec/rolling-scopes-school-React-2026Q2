@@ -20,15 +20,22 @@ export async function getPeople(params: SearchParams): Promise<SearchResponse> {
 
   const results = Array.isArray(data) ? data : (data.results ?? []);
   const count = Array.isArray(data) ? results.length : (data.count ?? 0);
-  const totalPages = Math.ceil(count / RESULTS_PER_PAGE);
+  const totalPages = Math.max(1, Math.ceil(count / RESULTS_PER_PAGE));
+
+  const hasNextPage = Array.isArray(data)
+    ? page < totalPages
+    : Boolean(data.next) || page < totalPages;
+  const hasPreviousPage = Array.isArray(data)
+    ? page > 1
+    : Boolean(data.previous) || page > 1;
 
   return {
     results,
     totalCount: count,
     currentPage: page,
     totalPages,
-    hasNextPage: false,
-    hasPreviousPage: false,
+    hasNextPage,
+    hasPreviousPage,
   };
 }
 

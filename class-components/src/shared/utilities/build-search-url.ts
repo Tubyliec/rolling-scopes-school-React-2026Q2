@@ -12,5 +12,7 @@ export function buildSearchUrl(term: string, page: number = 1): string {
   }
 
   const queryString = params.toString();
-  return queryString ? `${API_BASE_URL}?${queryString}` : API_BASE_URL;
+  const url = queryString ? `${API_BASE_URL}?${queryString}` : API_BASE_URL;
+  console.log('buildSearchUrl - term:', term, 'page:', page, 'url:', url);
+  return url;
 }

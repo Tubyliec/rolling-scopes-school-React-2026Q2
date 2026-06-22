@@ -3,6 +3,5 @@ export type PaginationProps = Readonly<{
   totalPages: number;
   hasNext: boolean;
   hasPrevious: boolean;
-  onPageChange: (page: number) => void;
   count: number;
 }>;
