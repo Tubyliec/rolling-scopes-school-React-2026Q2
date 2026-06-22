@@ -1,10 +1,14 @@
 'use client';
 
 import type { ReactNode } from 'react';
+
 import Link from 'next/link';
+
 import { useLocale, useTranslations } from 'next-intl';
 
 import { MAIN_PAGE_ROUTE } from '@shared/constants/route-constants';
+
+import './page.scss';
 
 export function AboutPage(): ReactNode {
   const t = useTranslations('about');
@@ -39,7 +43,7 @@ export function AboutPage(): ReactNode {
           className="about-page__back"
           href={`/${locale}/${MAIN_PAGE_ROUTE}`}
         >
-          ← {t('back')}
+          {t('back')}
         </Link>
       </div>
     </div>

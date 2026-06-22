@@ -1,3 +1,5 @@
+'use client';
+
 import type { JSX } from 'react';
 
 import type { ResultsTableBadgesProps } from '@widgets/results-sections/model/types/results-table-badges-props.type.ts';

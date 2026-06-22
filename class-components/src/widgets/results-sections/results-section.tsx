@@ -1,82 +1,79 @@
+'use client';
+
 import type { JSX } from 'react';
-import { useNavigate, useParams } from 'react-router-dom';
-
-import { AppRoute } from '@core/router/model/constants/app-route.ts';
-
-import { useSelectionStore } from '@/core/store/selection-store.ts';
+import { Suspense } from 'react';
 
 import Pagination from '@features/pagination/pagination.tsx';
 
 import ResultsTable from '@widgets/results-sections/components/results-table/results-table.tsx';
-import { useResultsSection } from '@widgets/results-sections/hooks/use-results-section.ts';
 
 import { RefreshButton } from '@shared/ui/buttons/refresh-button/refresh-button.tsx';
 import { ErrorDisplay } from '@shared/ui/errors/error-display/error-display.tsx';
 
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
-import { extractPersonId } from '@/shared/utilities/extract-person-id.ts';
-import { stopPropagation } from '@/shared/utilities/stop-propagation.ts';
-
-import type { Person } from '@entities/person/model/types/person.type.ts';
 
 import './results-section.scss';
 
-function ResultsSection(): JSX.Element {
-  const { detailsId } = useParams();
-  const navigate = useNavigate();
+interface ResultsSectionProps {
+  readonly currentPage: string;
+  readonly detailsId?: string;
+}
 
-  const {
-    results,
-    isLoading,
-    error,
-    currentPage,
-    totalPages,
-    totalCount,
-    hasNextPage,
-    hasPreviousPage,
-    refetch,
-  } = useResultsSection();
+async function ResultsContent({
+  currentPage,
+  detailsId,
+}: ResultsSectionProps): Promise<JSX.Element> {
+  const pageNum = parseInt(currentPage, 10) || 1;
 
-  const { toggleItem, isSelected } = useSelectionStore();
-
-  const shouldShowPagination = totalCount > 0;
-
-  const handleSelect = (person: Person): void => {
-    const id = extractPersonId(person.url);
-    navigate(`${AppRoute.Main}/${currentPage}/${id}`);
-  };
-
-  const handlePageChange = (newPage: number): void => {
-    navigate(`${AppRoute.Main}/${newPage}${detailsId ? `/${detailsId}` : ''}`);
-  };
+  const results = [];
+  const isLoading = false;
+  const error = null;
+  const totalPages = 1;
+  const totalCount = 0;
+  const hasNextPage = false;
+  const hasPreviousPage = false;
 
   return (
     <section className="results-section">
-      <div className="results__wrapper wrapper" onClick={stopPropagation}>
+      <div className="results__wrapper wrapper">
         {isLoading && <Spinner />}
         {error && <ErrorDisplay message={error} />}
-        <ResultsTable
-          results={results}
-          onSelect={handleSelect}
-          onCheckboxToggle={toggleItem}
-          isChecked={isSelected}
-          selectedId={detailsId ?? null}
-        />
-        {shouldShowPagination && (
+        <ResultsTable results={results} selectedId={detailsId ?? null} />
+        {totalCount > 0 && (
           <Pagination
-            currentPage={currentPage}
+            currentPage={pageNum}
             totalPages={totalPages}
             hasNext={hasNextPage}
             hasPrevious={hasPreviousPage}
-            onPageChange={handlePageChange}
             count={totalCount}
           />
         )}
         <div className="results-section__toolbar">
-          <RefreshButton onClick={refetch} />
+          <RefreshButton onClick={() => {}} />
         </div>
       </div>
     </section>
+  );
+}
+
+function ResultsSectionLoading(): JSX.Element {
+  return (
+    <section className="results-section">
+      <div className="results__wrapper wrapper">
+        <Spinner />
+      </div>
+    </section>
+  );
+}
+
+export function ResultsSection({
+  currentPage,
+  detailsId,
+}: ResultsSectionProps): JSX.Element {
+  return (
+    <Suspense fallback={<ResultsSectionLoading />}>
+      <ResultsContent currentPage={currentPage} detailsId={detailsId} />
+    </Suspense>
   );
 }
 

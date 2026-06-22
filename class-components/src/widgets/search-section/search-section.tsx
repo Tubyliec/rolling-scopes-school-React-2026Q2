@@ -1,9 +1,12 @@
+'use client';
+
 import { type JSX, useState } from 'react';
-import { useNavigate } from 'react-router-dom';
+
+import { useRouter } from 'next/navigation';
+
+import { useLocale } from 'next-intl';
 
 import { useIsFetching } from '@tanstack/react-query';
-
-import { AppRoute } from '@core/router/model/constants/app-route.ts';
 
 import { useSearchStore } from '@/core/store/search-store.ts';
 
@@ -14,7 +17,8 @@ import { PAGE_NUMBERS } from '@shared/constants/page-constants.ts';
 import './search-section.scss';
 
 function SearchSection(): JSX.Element {
-  const navigate = useNavigate();
+  const router = useRouter();
+  const locale = useLocale();
   const isFetching = useIsFetching() > 0;
   const { term, setTerm } = useSearchStore();
 
@@ -24,7 +28,9 @@ function SearchSection(): JSX.Element {
     const trimmed = inputValue.trim();
     setInputValue(trimmed);
     setTerm(trimmed);
-    navigate(`${AppRoute.Main}/${PAGE_NUMBERS.firstPage}`);
+    router.push(
+      `/${locale}?page=${PAGE_NUMBERS.firstPage}&q=${encodeURIComponent(trimmed)}`
+    );
   };
 
   return (

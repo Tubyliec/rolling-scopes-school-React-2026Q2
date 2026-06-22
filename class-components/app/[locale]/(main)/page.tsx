@@ -1,12 +1,14 @@
 import type { ReactNode } from 'react';
 import { Suspense } from 'react';
 
+import PersonDetail from '@entities/person/components/details/person-details';
+
+import Flyout from '@widgets/flyout/flyout';
 import Header from '@widgets/header/header';
 import { Layout } from '@widgets/layout/layout';
-import SearchSection from '@widgets/search-section/search-section';
-import Flyout from '@widgets/flyout/flyout';
-import PersonDetail from '@entities/person/components/details/person-details';
 import { ResultsContent } from '@widgets/results-sections/results-content';
+import SearchSection from '@widgets/search-section/search-section';
+
 import Spinner from '@shared/ui/spinner/spinner';
 
 interface MainPageProps {
@@ -26,11 +28,11 @@ export async function MainPage({
   params,
   searchParams,
 }: MainPageProps): Promise<ReactNode> {
-  const { locale } = await params;
+  await params;
   const { page = '1', q = '', id } = await searchParams;
 
   const currentPage = typeof page === 'string' ? page : page[0];
-  const searchQuery = typeof q === 'string' ? q : q?.[0] ?? '';
+  const searchQuery = typeof q === 'string' ? q : (q?.[0] ?? '');
   const detailsId = typeof id === 'string' ? id : id?.[0];
 
   const bodyClassName = `main-layout__body${detailsId ? ' main-layout__body--split' : ''}`;

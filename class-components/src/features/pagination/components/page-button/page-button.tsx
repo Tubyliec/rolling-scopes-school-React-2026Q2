@@ -1,3 +1,5 @@
+'use client';
+
 import type { JSX } from 'react';
 
 import type { PageButtonProps } from '../../model/types/page-button-props.type.ts';

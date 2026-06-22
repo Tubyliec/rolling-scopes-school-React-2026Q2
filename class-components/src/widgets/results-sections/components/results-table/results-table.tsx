@@ -1,20 +1,25 @@
+'use client';
+
 import { type JSX } from 'react';
+
+import { useTranslations } from 'next-intl';
 
 import ResultsTableRow from '@widgets/results-sections/components/results-table-row/results-table-row.tsx';
 
 import { ResultsEmpty } from '@shared/ui/errors/results-empty/results-empty.tsx';
 
-import type { ResultsTableProps } from '@widgets/results-sections/model/types/results-table.type.ts';
+import type { Person } from '@entities/person/model/types/person.type.ts';
 
 import './results-table.scss';
 
-function ResultsTable({
-  results,
-  onSelect,
-  onCheckboxToggle,
-  isChecked,
-  selectedId,
-}: ResultsTableProps): JSX.Element {
+interface ResultsTableProps {
+  readonly results: readonly Person[];
+  readonly selectedId: string | null;
+}
+
+function ResultsTable({ results, selectedId }: ResultsTableProps): JSX.Element {
+  const t = useTranslations('results');
+
   if (!results.length) {
     return <ResultsEmpty />;
   }
@@ -24,8 +29,8 @@ function ResultsTable({
       <thead className="results-table__head">
         <tr>
           <th className="results-table__th results-table__th--checkbox" />
-          <th className="results-table__th">Name</th>
-          <th className="results-table__th">Description</th>
+          <th className="results-table__th">{t('name')}</th>
+          <th className="results-table__th">{t('description')}</th>
         </tr>
       </thead>
       <tbody>
@@ -34,9 +39,6 @@ function ResultsTable({
             key={person.url}
             person={person}
             selectedId={selectedId}
-            isChecked={isChecked}
-            onSelect={onSelect}
-            onCheckboxToggle={onCheckboxToggle}
           />
         ))}
       </tbody>

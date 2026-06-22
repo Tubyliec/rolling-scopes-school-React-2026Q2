@@ -1,4 +1,8 @@
+'use client';
+
 import React, { type JSX } from 'react';
+
+import { useTranslations } from 'next-intl';
 
 import type { SearchFieldProps } from '../../model/interfaces/search-field.interface.ts';
 
@@ -10,6 +14,8 @@ function SearchField({
   onChange,
   onSearch,
 }: SearchFieldProps): JSX.Element {
+  const t = useTranslations('search');
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(e.target.value);
   };
@@ -20,20 +26,20 @@ function SearchField({
     }
   };
 
-  const buttonText = isLoading ? 'FETCHING…' : 'SEARCH';
+  const buttonText = isLoading ? t('loading') : t('button');
 
   return (
     <div className="search-field">
       <div className="search-field__group">
         <label className="search-field__label" htmlFor="search-input">
-          Search term
+          {t('label')}
         </label>
         <div className="search-field__input-wrap">
           <input
             id="search-input"
             className="search-field__input"
             type="text"
-            placeholder="e.g. Luke Skywalker…"
+            placeholder={t('placeholder')}
             value={value}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
@@ -46,6 +52,7 @@ function SearchField({
         className="search-field__btn"
         onClick={onSearch}
         disabled={isLoading}
+        type="button"
       >
         {buttonText}
       </button>

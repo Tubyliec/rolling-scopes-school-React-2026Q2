@@ -27,12 +27,43 @@
     opacity: $opacity-lg;
     border: $border-base;
     padding: $padding-xs;
+    height: 32px;
+    display: inline-flex;
+    align-items: center;
     transition: opacity 0.15s;
 
     &:hover,
     &--active {
       border-color: $color-amber;
       color: $color-amber;
+    }
+  }
+
+  &__language-select {
+    @extend %label-text;
+    background: transparent;
+    border: $border-base;
+    color: $color-text-dim;
+    padding: $padding-xs;
+    cursor: pointer;
+    height: 32px;
+    transition:
+      border-color $transition-fast,
+      color $transition-fast;
+
+    &:hover {
+      border-color: $color-amber;
+      color: $color-amber;
+    }
+
+    &:focus {
+      outline: none;
+      border-color: $color-amber;
+    }
+
+    option {
+      background: $color-surface;
+      color: $color-text;
     }
   }
 }

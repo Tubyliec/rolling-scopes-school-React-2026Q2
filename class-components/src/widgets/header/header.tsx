@@ -1,40 +1,57 @@
-import type { JSX } from 'react';
-import { NavLink } from 'react-router-dom';
+'use client';
 
-import { AppRoute } from '@core/router/model/constants/app-route.ts';
-import { useTheme } from '@core/theme/use-theme.tsx';
+import type { JSX } from 'react';
+
+import Link from 'next/link';
+import { usePathname, useRouter } from 'next/navigation';
+
+import { useLocale, useTranslations } from 'next-intl';
+
+import { ROUTES } from '@shared/constants/route-constants';
+
+import { SUPPORTED_LOCALES } from '@/i18n.config';
 
 import './header.scss';
 
 function Header(): JSX.Element {
-  const { theme, toggleTheme } = useTheme();
+  const locale = useLocale();
+  const pathname = usePathname();
+  const router = useRouter();
+  const t = useTranslations('navigation');
+
+  const handleLanguageChange = (newLocale: string): void => {
+    const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
+    router.push(newPathname);
+  };
+
+  const getLocalizedPath = (path: string): string => {
+    return `/${locale}${path}`;
+  };
 
   return (
     <header className="app-header">
       <div className="header__wrapper wrapper">
-        <NavLink to={AppRoute.Main} className="app-header__logo">
+        <Link href={getLocalizedPath(ROUTES.main)} className="app-header__logo">
           Star Wars API search
-        </NavLink>
+        </Link>
         <nav className="app-header__nav">
-          <NavLink
-            to="/about"
-            className={({ isActive }) =>
-              `app-header__nav-link${isActive ? ' app-header__nav-link--active' : ''}`
-            }
+          <Link
+            href={getLocalizedPath(ROUTES.about)}
+            className="app-header__nav-link"
           >
-            About
-          </NavLink>
-          <NavLink
-            to="/forms"
-            className={({ isActive }) =>
-              `app-header__nav-link${isActive ? ' app-header__nav-link--active' : ''}`
-            }
+            {t('about')}
+          </Link>
+          <select
+            className="app-header__language-select"
+            value={locale}
+            onChange={(e) => handleLanguageChange(e.target.value)}
           >
-            Forms
-          </NavLink>
-          <button className="theme-toggle" onClick={toggleTheme} type="button">
-            {theme === 'dark' ? '☀ Light' : '☾ Dark'}
-          </button>
+            {SUPPORTED_LOCALES.map((loc) => (
+              <option key={loc} value={loc}>
+                {loc === 'be' ? 'БЕ' : 'EN'}
+              </option>
+            ))}
+          </select>
         </nav>
       </div>
     </header>

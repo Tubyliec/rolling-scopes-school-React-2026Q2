@@ -1,4 +1,10 @@
+'use client';
+
 import type { JSX } from 'react';
+
+import { useRouter, useSearchParams } from 'next/navigation';
+
+import { useLocale, useTranslations } from 'next-intl';
 
 import { generatePageNumbers } from '@features/pagination/generate-page-numbers.tsx';
 
@@ -13,15 +19,31 @@ function Pagination({
   totalPages,
   hasNext,
   hasPrevious,
-  onPageChange,
   count,
 }: PaginationProps): JSX.Element {
-  const handlePrevious = (): void => onPageChange(currentPage - 1);
+  const router = useRouter();
+  const locale = useLocale();
+  const searchParams = useSearchParams();
+  const t = useTranslations('results');
 
-  const handleNext = (): void => onPageChange(currentPage + 1);
+  const handlePrevious = (): void => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', String(currentPage - 1));
+    router.push(`/${locale}?${params.toString()}`);
+  };
+
+  const handleNext = (): void => {
+    const params = new URLSearchParams(searchParams);
+    params.set('page', String(currentPage + 1));
+    router.push(`/${locale}?${params.toString()}`);
+  };
 
   const handlePageClick = (page: number): void => {
-    if (page !== currentPage) onPageChange(page);
+    if (page !== currentPage) {
+      const params = new URLSearchParams(searchParams);
+      params.set('page', String(page));
+      router.push(`/${locale}?${params.toString()}`);
+    }
   };
 
   const pageNumbers = generatePageNumbers(
@@ -33,10 +55,12 @@ function Pagination({
   return (
     <div className="pagination">
       <div className="pagination__info">
-        <span className="pagination__count">{count} total records</span>
+        <span className="pagination__count">
+          {count} {t('total')}
+        </span>
         <span className="pagination__divider">|</span>
         <span className="pagination__pages">
-          Page {currentPage} of {totalPages}
+          {t('page')} {currentPage} {t('of')} {totalPages}
         </span>
       </div>
 

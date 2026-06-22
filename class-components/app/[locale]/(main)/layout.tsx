@@ -4,9 +4,7 @@ interface MainGroupLayoutProps {
   readonly children: ReactNode;
 }
 
-export function MainGroupLayout({
-  children,
-}: MainGroupLayoutProps): ReactNode {
+export function MainGroupLayout({ children }: MainGroupLayoutProps): ReactNode {
   return <>{children}</>;
 }
 

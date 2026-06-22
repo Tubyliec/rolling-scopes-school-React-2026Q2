@@ -15,3 +15,22 @@ body {
   display: flex;
   flex-direction: column;
 }
+
+.main-layout {
+  &__body {
+    margin: 0 3vw;
+    display: flex;
+    flex: 1;
+
+    &--split {
+      .main-layout__results {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__results {
+    flex: 1;
+    min-width: 0;
+  }
+}
