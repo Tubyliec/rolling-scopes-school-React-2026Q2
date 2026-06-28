@@ -29,7 +29,7 @@ function SearchSection(): JSX.Element {
     setInputValue(trimmed);
     setTerm(trimmed);
     router.push(
-      `/${locale}?page=${PAGE_NUMBERS.firstPage}&q=${encodeURIComponent(trimmed)}`
+      `/${locale}?page=${PAGE_NUMBERS.first}&q=${encodeURIComponent(trimmed)}`
     );
   };
 
