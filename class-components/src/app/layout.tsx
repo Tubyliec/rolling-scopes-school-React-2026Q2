@@ -13,22 +13,14 @@ export const metadata: Metadata = {
 
 interface RootLayoutProps {
   readonly children: ReactNode;
-  readonly params: Promise<{ locale: string }>;
 }
 
-export async function RootLayout({
-  children,
-  params,
-}: RootLayoutProps): Promise<ReactNode> {
-  const { locale } = await params;
-
+export default function RootLayout({ children }: RootLayoutProps): ReactNode {
   return (
-    <html lang={locale} data-scroll-behavior="smooth">
+    <html data-scroll-behavior="smooth">
       <body>
         <RootLayoutProvider>{children}</RootLayoutProvider>
       </body>
     </html>
   );
 }
-
-export default RootLayout;
