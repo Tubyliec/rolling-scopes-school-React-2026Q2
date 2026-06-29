@@ -1,5 +1,11 @@
 @use './_variables.scss' as *;
 
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
 body {
   background: $color-bg;
   color: $color-text;
@@ -24,7 +30,8 @@ body {
   }
 }
 
-#root {
+#root,
+#__next {
   min-height: 100vh;
   display: flex;
   flex-direction: column;
@@ -33,4 +40,23 @@ body {
 .wrapper {
   margin: 0 auto;
   max-width: 60%;
+}
+
+.main-layout {
+  &__body {
+    margin: 0 3vw;
+    display: flex;
+    flex: 1;
+
+    &--split {
+      .main-layout__results {
+        cursor: pointer;
+      }
+    }
+  }
+
+  &__results {
+    flex: 1;
+    min-width: 0;
+  }
 }

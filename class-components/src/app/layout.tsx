@@ -1,19 +1,14 @@
 import type { ReactNode } from 'react';
 
-import type { Metadata } from 'next';
+import { APP_METADATA } from '@shared/constants/metadata-constants.ts';
+
+import type { RootLayoutProps } from './model/interfaces/root-layout-props.interface.ts';
 
 import { RootLayoutProvider } from './root-layout-provider';
 
-import './globals.scss';
+import './app.scss';
 
-export const metadata: Metadata = {
-  title: 'Star Wars API Search',
-  description: 'Search Star Wars characters using SWAPI API',
-};
-
-interface RootLayoutProps {
-  readonly children: ReactNode;
-}
+export const metadata = APP_METADATA;
 
 export default function RootLayout({ children }: RootLayoutProps): ReactNode {
   return (
