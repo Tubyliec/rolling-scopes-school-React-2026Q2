@@ -9,17 +9,11 @@ import { Layout } from '@widgets/layout/layout';
 import { ResultsContent } from '@widgets/results-sections/results-content';
 import SearchSection from '@widgets/search-section/search-section';
 
-import Spinner from '@shared/ui/spinner/spinner';
+import { LAYOUT_CLASSES } from '@shared/constants/layout-classes';
+import { LoadingSpinner } from '@shared/ui/loading-spinner/loading-spinner';
+import { getFirstString } from '@shared/utilities/get-first-string';
 
 import type { MainPageProps } from '../model/types/main-page-props.type.ts';
-
-function LoadingSpinner(): ReactNode {
-  return (
-    <div className="results-loading">
-      <Spinner />
-    </div>
-  );
-}
 
 export async function MainPage({
   params,
@@ -28,11 +22,11 @@ export async function MainPage({
   await params;
   const { page = '1', q = '', id } = await searchParams;
 
-  const currentPage = typeof page === 'string' ? page : page[0];
-  const searchQuery = typeof q === 'string' ? q : (q?.[0] ?? '');
-  const detailsId = typeof id === 'string' ? id : id?.[0];
+  const currentPage = getFirstString(page) || '1';
+  const searchQuery = getFirstString(q);
+  const detailsId = getFirstString(id) || undefined;
 
-  const bodyClassName = `main-layout__body${detailsId ? ' main-layout__body--split' : ''}`;
+  const bodyClassName = `${LAYOUT_CLASSES.BODY}${detailsId ? ` ${LAYOUT_CLASSES.BODY_SPLIT}` : ''}`;
 
   return (
     <Layout data-theme="">
