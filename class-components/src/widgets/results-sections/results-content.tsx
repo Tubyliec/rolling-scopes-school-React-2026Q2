@@ -1,13 +1,13 @@
 import type { ReactNode } from 'react';
 
+import { searchPeopleAction } from '@core/swapi/actions/search-people';
+
 import Pagination from '@features/pagination/pagination';
 
 import ResultsTable from '@widgets/results-sections/components/results-table/results-table';
 
 import { ErrorDisplay } from '@shared/ui/errors/error-display/error-display';
 import { ResultsEmpty } from '@shared/ui/errors/results-empty/results-empty';
-
-import { searchPeopleAction } from '@/app/actions/search-people';
 
 import type { ResultsContentProps } from './model/types/results-content-props.type.ts';
 
