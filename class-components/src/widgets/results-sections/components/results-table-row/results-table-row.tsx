@@ -13,14 +13,9 @@ import ResultsTableBadges from '@widgets/results-sections/components/results-tab
 import { buildDescription } from '@shared/utilities/build-descriptions.ts';
 import { extractPersonId } from '@shared/utilities/extract-person-id.ts';
 
-import type { Person } from '@entities/person/model/types/person.type.ts';
+import type { ResultsTableRowProps } from '../../model/types/results-table-row-props.type.ts';
 
 import './results-table-row.scss';
-
-interface ResultsTableRowProps {
-  readonly person: Person;
-  readonly selectedId: string | null;
-}
 
 function ResultsTableRow({
   person,

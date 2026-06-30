@@ -2,7 +2,7 @@
 
 import { getPeople } from '@core/swapi/swapi-service';
 
-import type { SearchResult } from '@core/swapi/model/interfaces/search-result.interface';
+import type { SearchResult } from '@core/swapi/model/types/search-result.type';
 
 export async function searchPeopleAction(
   term: string,

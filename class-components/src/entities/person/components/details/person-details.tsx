@@ -8,16 +8,15 @@ import { useLocale, useTranslations } from 'next-intl';
 
 import { usePersonQuery } from '@/core/swapi/hooks/use-person-query.ts';
 
+import { CloseButton } from '@shared/ui/buttons/close-button/close-button.tsx';
 import { RefreshButton } from '@shared/ui/buttons/refresh-button/refresh-button.tsx';
 import { ErrorDisplay } from '@shared/ui/errors/error-display/error-display.tsx';
 
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
 
-import './person-details.scss';
+import type { PersonDetailsProps } from './model/types/person-details-props.type.ts';
 
-interface PersonDetailsProps {
-  readonly personId: string;
-}
+import './person-details.scss';
 
 function PersonDetail({ personId }: PersonDetailsProps): JSX.Element {
   const router = useRouter();
@@ -37,13 +36,7 @@ function PersonDetail({ personId }: PersonDetailsProps): JSX.Element {
     <aside className="person-details">
       <div className="person-details__actions">
         <RefreshButton onClick={refetch} />
-        <button
-          className="person-details__close"
-          onClick={handleClose}
-          type="button"
-        >
-          ✕
-        </button>
+        <CloseButton className="person-details__close" onClick={handleClose} />
       </div>
       {isLoading && <Spinner />}
       {error && <ErrorDisplay message={error.message} title="" />}

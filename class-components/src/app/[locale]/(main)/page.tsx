@@ -11,10 +11,7 @@ import SearchSection from '@widgets/search-section/search-section';
 
 import Spinner from '@shared/ui/spinner/spinner';
 
-interface MainPageProps {
-  readonly params: Promise<{ locale: string }>;
-  readonly searchParams: Promise<Record<string, string | string[] | undefined>>;
-}
+import type { MainPageProps } from '../model/types/main-page-props.type.ts';
 
 function LoadingSpinner(): ReactNode {
   return (

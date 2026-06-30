@@ -9,11 +9,7 @@ import { ResultsEmpty } from '@shared/ui/errors/results-empty/results-empty';
 
 import { searchPeopleAction } from '@/app/actions/search-people';
 
-interface ResultsContentProps {
-  readonly searchQuery: string;
-  readonly currentPage: string;
-  readonly selectedId: string | null;
-}
+import type { ResultsContentProps } from './model/types/results-content-props.type.ts';
 
 export async function ResultsContent({
   searchQuery,

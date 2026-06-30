@@ -9,10 +9,7 @@ import ErrorBoundary from '@core/error-boundary/error-boundary';
 
 import { SUPPORTED_LOCALES } from '@/i18n.config';
 
-interface LocalizedLayoutProps {
-  readonly children: ReactNode;
-  readonly params: Promise<{ locale: string }>;
-}
+import type { LocalizedLayoutProps } from './model/types/localized-layout-props.type.ts';
 
 export async function LocalizedLayout({
   children,

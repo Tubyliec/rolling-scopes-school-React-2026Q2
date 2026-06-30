@@ -2,7 +2,7 @@ import type { ReactNode } from 'react';
 
 import { APP_METADATA } from '@shared/constants/metadata-constants.ts';
 
-import type { RootLayoutProps } from './model/interfaces/root-layout-props.interface.ts';
+import type { RootLayoutProps } from './model/types/root-layout-props.type.ts';
 
 import { RootLayoutProvider } from './root-layout-provider';
 

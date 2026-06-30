@@ -5,7 +5,7 @@ import { useQuery } from '@tanstack/react-query';
 import { queryKeys } from '@/core/query/query-keys.ts';
 import { getPeople } from '@/core/swapi/swapi-service.ts';
 
-import type { SearchResult } from '@/core/swapi/model/interfaces/search-result.interface.ts';
+import type { SearchResult } from '@/core/swapi/model/types/search-result.type.ts';
 
 async function fetchPeople(term: string, page: number): Promise<SearchResult> {
   const result = await getPeople({ term, page });

@@ -2,12 +2,9 @@
 
 import type { JSX } from 'react';
 
-import './error-display.scss';
+import type { ErrorDisplayProps } from './model/types/error-display-props.type.ts';
 
-interface ErrorDisplayProps {
-  message: string;
-  title?: string;
-}
+import './error-display.scss';
 
 export function ErrorDisplay({
   message,

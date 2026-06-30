@@ -4,9 +4,9 @@ import { API_BASE_URL } from '@/shared/constants/api-constants';
 import { RESULTS_PER_PAGE } from '@/shared/constants/page-constants';
 import { buildSearchUrl } from '@/shared/utilities/build-search-url';
 
-import type { SearchError } from './model/interfaces/search-error.interface';
-import type { SearchParams } from './model/interfaces/search-params.interface';
-import type { SearchResponse } from './model/interfaces/search-response.interface';
+import type { SearchError } from './model/types/search-error.type';
+import type { SearchParams } from './model/types/search-params.type';
+import type { SearchResponse } from './model/types/search-response.type';
 import type { Person } from '@entities/person/model/types/person.type.ts';
 import type { PersonResponse } from '@entities/person/model/types/person-response.type.ts';
 

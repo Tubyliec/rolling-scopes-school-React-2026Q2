@@ -4,7 +4,7 @@ import React, { type JSX } from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import type { SearchFieldProps } from '../../model/interfaces/search-field.interface.ts';
+import type { SearchFieldProps } from '../../model/types/search-field.type.ts';
 
 import './search-field.scss';
 

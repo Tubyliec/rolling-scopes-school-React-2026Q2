@@ -8,14 +8,9 @@ import ResultsTableRow from '@widgets/results-sections/components/results-table-
 
 import { ResultsEmpty } from '@shared/ui/errors/results-empty/results-empty.tsx';
 
-import type { Person } from '@entities/person/model/types/person.type.ts';
+import type { ResultsTableProps } from '../../model/types/results-table.type.ts';
 
 import './results-table.scss';
-
-interface ResultsTableProps {
-  readonly results: readonly Person[];
-  readonly selectedId: string | null;
-}
 
 function ResultsTable({ results, selectedId }: ResultsTableProps): JSX.Element {
   const t = useTranslations('results');
