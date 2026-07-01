@@ -16,6 +16,8 @@ import Spinner from '@/shared/ui/spinner/spinner.tsx';
 
 import type { PersonDetailsProps } from './model/types/person-details-props.type.ts';
 
+import { PersonDetailItem } from './person-detail-item/person-detail-item';
+
 import './person-details.scss';
 
 function PersonDetail({ personId }: PersonDetailsProps): JSX.Element {
@@ -47,34 +49,19 @@ function PersonDetail({ personId }: PersonDetailsProps): JSX.Element {
         <div className="person-details__content">
           <h2 className="person-details__name">{person.name}</h2>
           <ul className="person-details__list">
-            <li className="person-details__item">
-              <span className="person-details__label">{t('height')}</span>
-              <span className="person-details__value">{person.height} cm</span>
-            </li>
-            <li className="person-details__item">
-              <span className="person-details__label">{t('mass')}</span>
-              <span className="person-details__value">{person.mass} kg</span>
-            </li>
-            <li className="person-details__item">
-              <span className="person-details__label">{t('birthYear')}</span>
-              <span className="person-details__value">{person.birth_year}</span>
-            </li>
-            <li className="person-details__item">
-              <span className="person-details__label">{t('gender')}</span>
-              <span className="person-details__value">{person.gender}</span>
-            </li>
-            <li className="person-details__item">
-              <span className="person-details__label">{t('hair')}</span>
-              <span className="person-details__value">{person.hair_color}</span>
-            </li>
-            <li className="person-details__item">
-              <span className="person-details__label">{t('eyes')}</span>
-              <span className="person-details__value">{person.eye_color}</span>
-            </li>
-            <li className="person-details__item">
-              <span className="person-details__label">{t('skin')}</span>
-              <span className="person-details__value">{person.skin_color}</span>
-            </li>
+            <PersonDetailItem
+              label={t('height')}
+              value={`${person.height} cm`}
+            />
+            <PersonDetailItem label={t('mass')} value={`${person.mass} kg`} />
+            <PersonDetailItem
+              label={t('birthYear')}
+              value={person.birth_year}
+            />
+            <PersonDetailItem label={t('gender')} value={person.gender} />
+            <PersonDetailItem label={t('hair')} value={person.hair_color} />
+            <PersonDetailItem label={t('eyes')} value={person.eye_color} />
+            <PersonDetailItem label={t('skin')} value={person.skin_color} />
           </ul>
         </div>
       )}
