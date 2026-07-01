@@ -10,6 +10,7 @@ import { ResultsContent } from '@widgets/results-sections/results-content';
 import SearchSection from '@widgets/search-section/search-section';
 
 import { LAYOUT_CLASSES } from '@shared/constants/layout-classes';
+import { ErrorButton } from '@shared/ui/buttons/error-button/error-button';
 import { LoadingSpinner } from '@shared/ui/loading-spinner/loading-spinner';
 import { getFirstString } from '@shared/utilities/get-first-string';
 
@@ -30,6 +31,7 @@ export async function MainPage({
 
   return (
     <Layout data-theme="">
+      <ErrorButton />
       <Header />
       <SearchSection />
       <div className={bodyClassName}>
