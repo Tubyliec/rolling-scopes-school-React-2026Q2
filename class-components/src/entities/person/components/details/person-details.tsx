@@ -8,8 +8,8 @@ import { useLocale, useTranslations } from 'next-intl';
 
 import { usePersonQuery } from '@/core/swapi/hooks/use-person-query.ts';
 
+import { BaseButton } from '@shared/ui/buttons/base-button/base-button.tsx';
 import { CloseButton } from '@shared/ui/buttons/close-button/close-button.tsx';
-import { RefreshButton } from '@shared/ui/buttons/refresh-button/refresh-button.tsx';
 import { ErrorDisplay } from '@shared/ui/errors/error-display/error-display.tsx';
 
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
@@ -35,7 +35,9 @@ function PersonDetail({ personId }: PersonDetailsProps): JSX.Element {
   return (
     <aside className="person-details">
       <div className="person-details__actions">
-        <RefreshButton onClick={refetch} />
+        <BaseButton className="refresh-button" onClick={refetch}>
+          ↻ Refresh
+        </BaseButton>
         <CloseButton className="person-details__close" onClick={handleClose} />
       </div>
       {isLoading && <Spinner />}

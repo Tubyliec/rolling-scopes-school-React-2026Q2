@@ -2,6 +2,8 @@
 
 import { Component, type ErrorInfo, type JSX, type ReactNode } from 'react';
 
+import { BaseButton } from '@shared/ui/buttons/base-button/base-button.tsx';
+
 import type { ErrorBoundaryProps } from './model/types/error-boundary-props.type.ts';
 import type { ErrorBoundaryState } from './model/types/error-boundary-state.type.ts';
 
@@ -43,13 +45,12 @@ class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
             {error.message}
           </div>
         )}
-        <button
+        <BaseButton
           className="error-boundary__reset"
           onClick={this.handleReset}
-          type="button"
         >
           RESET APP
-        </button>
+        </BaseButton>
       </div>
     );
   }

@@ -1,14 +1,13 @@
 @use '../../../../shared/styles/variables' as *;
 @use '../../../../shared/styles/placeholders' as *;
 
-.refresh-button {
+.base-button {
   font-size: $font-size-sm;
   font-weight: $font-weight-extrabold;
   letter-spacing: $letter-spacing-lg;
   text-transform: uppercase;
   background: $color-amber;
   color: $color-bg;
-  align-self: flex-end;
   padding: $padding-base;
   transition:
     background $transition-fast,
