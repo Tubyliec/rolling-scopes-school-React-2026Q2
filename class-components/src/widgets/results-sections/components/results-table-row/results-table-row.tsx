@@ -28,11 +28,12 @@ function ResultsTableRow({
 
   const id = extractPersonId(person.url);
   const checked = isSelected(person.url);
+  const isActive = id === selectedId;
 
   const rowClassName = [
     'results-table__row',
     'results-table__row--clickable',
-    id === selectedId && 'results-table__row--active',
+    isActive && 'results-table__row--active',
     checked && 'results-table__row--selected',
   ]
     .filter(Boolean)

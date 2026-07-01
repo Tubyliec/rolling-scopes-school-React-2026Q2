@@ -39,7 +39,8 @@ function Pagination({
   };
 
   const handlePageClick = (page: number): void => {
-    if (page !== currentPage) {
+    const isSamePage = page === currentPage;
+    if (!isSamePage) {
       const params = new URLSearchParams(searchParams);
       params.set('page', String(page));
       router.push(`/${locale}?${params.toString()}`);

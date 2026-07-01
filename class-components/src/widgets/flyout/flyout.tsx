@@ -29,8 +29,7 @@ function Flyout(): JSX.Element | null {
   };
 
   const itemCount = selectedItems.size;
-  const itemsText =
-    itemCount === 1 ? t('itemsSelected') : `${t('itemsSelected')}`;
+  const itemsText = t('itemsSelected');
 
   return (
     <div className="flyout" role="complementary">

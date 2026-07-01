@@ -27,9 +27,11 @@ export async function ResultsContent({
   const { results, totalPages, totalCount, hasNextPage, hasPreviousPage } =
     result;
 
+  const hasResults = results.length > 0;
+
   return (
     <>
-      {results.length > 0 ? (
+      {hasResults ? (
         <>
           <ResultsTable results={results} selectedId={selectedId} />
           <Pagination

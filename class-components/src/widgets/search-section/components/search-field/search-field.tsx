@@ -21,7 +21,8 @@ function SearchField({
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>): void => {
-    if (e.key === 'Enter') {
+    const isEnterKey = e.key === 'Enter';
+    if (isEnterKey) {
       onSearch();
     }
   };

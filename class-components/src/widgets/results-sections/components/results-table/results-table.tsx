@@ -15,7 +15,9 @@ import './results-table.scss';
 function ResultsTable({ results, selectedId }: ResultsTableProps): JSX.Element {
   const t = useTranslations('results');
 
-  if (!results.length) {
+  const isEmpty = !results.length;
+
+  if (isEmpty) {
     return <ResultsEmpty />;
   }
 
