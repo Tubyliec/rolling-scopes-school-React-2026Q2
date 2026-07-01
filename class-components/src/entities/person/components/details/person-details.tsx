@@ -10,6 +10,7 @@ import { usePersonQuery } from '@/core/swapi/hooks/use-person-query.ts';
 
 import { BaseButton } from '@shared/ui/buttons/base-button/base-button.tsx';
 import { CloseButton } from '@shared/ui/buttons/close-button/close-button.tsx';
+import { EmptyState } from '@shared/ui/empty-state/empty-state';
 import { ErrorDisplay } from '@shared/ui/errors/error-display/error-display.tsx';
 
 import Spinner from '@/shared/ui/spinner/spinner.tsx';
@@ -28,6 +29,8 @@ function PersonDetail({ personId }: PersonDetailsProps): JSX.Element {
 
   const { data: person, isLoading, error, refetch } = usePersonQuery(personId);
 
+  const shouldShowEmptyState = !isLoading && !error && !person;
+
   const handleClose = (): void => {
     const params = new URLSearchParams(searchParams);
     params.delete('id');
@@ -44,7 +47,7 @@ function PersonDetail({ personId }: PersonDetailsProps): JSX.Element {
       </div>
       {isLoading && <Spinner />}
       {error && <ErrorDisplay message={error.message} title="" />}
-      {!isLoading && !error && !person && <div>No data available.</div>}
+      {shouldShowEmptyState && <EmptyState />}
       {person && (
         <div className="person-details__content">
           <h2 className="person-details__name">{person.name}</h2>
