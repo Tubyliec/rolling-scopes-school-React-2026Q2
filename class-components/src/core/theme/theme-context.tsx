@@ -29,10 +29,6 @@ export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
     setTheme(toggleThemeValue);
   };
 
-  if (!mounted) {
-    return <>{children}</>;
-  }
-
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       {children}
