@@ -2,11 +2,9 @@
 
 import type { JSX } from 'react';
 
-import { useRouter, useSearchParams } from 'next/navigation';
-
-import { useLocale, useTranslations } from 'next-intl';
-
+import { PaginationInfo } from '@features/pagination/components/pagination-info/pagination-info';
 import { generatePageNumbers } from '@features/pagination/generate-page-numbers.tsx';
+import { usePaginationNavigation } from '@features/pagination/hooks/use-pagination-navigation';
 
 import { PaginationButton } from '@shared/ui/buttons/pagination-button/pagination-button.tsx';
 
@@ -21,31 +19,8 @@ function Pagination({
   hasPrevious,
   count,
 }: PaginationProps): JSX.Element {
-  const router = useRouter();
-  const locale = useLocale();
-  const searchParams = useSearchParams();
-  const t = useTranslations('results');
-
-  const handlePrevious = (): void => {
-    const params = new URLSearchParams(searchParams);
-    params.set('page', String(currentPage - 1));
-    router.push(`/${locale}?${params.toString()}`);
-  };
-
-  const handleNext = (): void => {
-    const params = new URLSearchParams(searchParams);
-    params.set('page', String(currentPage + 1));
-    router.push(`/${locale}?${params.toString()}`);
-  };
-
-  const handlePageClick = (page: number): void => {
-    const isSamePage = page === currentPage;
-    if (!isSamePage) {
-      const params = new URLSearchParams(searchParams);
-      params.set('page', String(page));
-      router.push(`/${locale}?${params.toString()}`);
-    }
-  };
+  const { handlePrevious, handleNext, handlePageClick } =
+    usePaginationNavigation(currentPage);
 
   const pageNumbers = generatePageNumbers(
     currentPage,
@@ -55,15 +30,11 @@ function Pagination({
 
   return (
     <div className="pagination">
-      <div className="pagination__info">
-        <span className="pagination__count">
-          {count} {t('total')}
-        </span>
-        <span className="pagination__divider">|</span>
-        <span className="pagination__pages">
-          {t('page')} {currentPage} {t('of')} {totalPages}
-        </span>
-      </div>
+      <PaginationInfo
+        count={count}
+        currentPage={currentPage}
+        totalPages={totalPages}
+      />
 
       <div className="pagination__controls">
         <PaginationButton
