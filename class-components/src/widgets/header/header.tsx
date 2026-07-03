@@ -3,12 +3,13 @@
 import type { JSX } from 'react';
 
 import Link from 'next/link';
-import { usePathname, useRouter } from 'next/navigation';
 
-import { useLocale, useTranslations } from 'next-intl';
+import { useTranslations } from 'next-intl';
 
+import { useLocalization } from '@core/hooks/use-localization';
 import { useTheme } from '@core/theme/use-theme';
 
+import { LOCALE_DISPLAY_NAMES } from '@shared/constants/locale-display-names';
 import { ROUTES } from '@shared/constants/route-constants';
 import { THEME_ICONS } from '@shared/constants/theme-icons';
 
@@ -17,20 +18,9 @@ import { SUPPORTED_LOCALES } from '@/i18n.config';
 import './header.scss';
 
 function Header(): JSX.Element {
-  const locale = useLocale();
-  const pathname = usePathname();
-  const router = useRouter();
-  const t = useTranslations('navigation');
+  const translation = useTranslations('navigation');
   const { theme, toggleTheme } = useTheme();
-
-  const handleLanguageChange = (newLocale: string): void => {
-    const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
-    router.push(newPathname);
-  };
-
-  const getLocalizedPath = (path: string): string => {
-    return `/${locale}${path}`;
-  };
+  const { locale, handleLanguageChange, getLocalizedPath } = useLocalization();
 
   return (
     <header className="app-header">
@@ -43,7 +33,7 @@ function Header(): JSX.Element {
             href={getLocalizedPath(ROUTES.about)}
             className="app-header__nav-link"
           >
-            {t('about')}
+            {translation('about')}
           </Link>
           <button
             className="app-header__theme-toggle"
@@ -59,7 +49,7 @@ function Header(): JSX.Element {
           >
             {SUPPORTED_LOCALES.map((loc) => (
               <option key={loc} value={loc}>
-                {loc === 'be' ? 'БЕ' : 'EN'}
+                {LOCALE_DISPLAY_NAMES[loc as keyof typeof LOCALE_DISPLAY_NAMES]}
               </option>
             ))}
           </select>
