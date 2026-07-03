@@ -7,7 +7,10 @@ import { usePathname, useRouter } from 'next/navigation';
 
 import { useLocale, useTranslations } from 'next-intl';
 
+import { useTheme } from '@core/theme/use-theme';
+
 import { ROUTES } from '@shared/constants/route-constants';
+import { THEME_ICONS } from '@shared/constants/theme-icons';
 
 import { SUPPORTED_LOCALES } from '@/i18n.config';
 
@@ -18,6 +21,7 @@ function Header(): JSX.Element {
   const pathname = usePathname();
   const router = useRouter();
   const t = useTranslations('navigation');
+  const { theme, toggleTheme } = useTheme();
 
   const handleLanguageChange = (newLocale: string): void => {
     const newPathname = pathname.replace(`/${locale}`, `/${newLocale}`);
@@ -41,6 +45,13 @@ function Header(): JSX.Element {
           >
             {t('about')}
           </Link>
+          <button
+            className="app-header__theme-toggle"
+            onClick={toggleTheme}
+            type="button"
+          >
+            {theme === 'dark' ? THEME_ICONS.SUN : THEME_ICONS.MOON}
+          </button>
           <select
             className="app-header__language-select"
             value={locale}

@@ -6,6 +6,7 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
 import ErrorBoundary from '@core/error-boundary/error-boundary';
+import { ThemeProvider } from '@core/theme/theme-context';
 
 import { SUPPORTED_LOCALES } from '@/i18n.config';
 
@@ -25,7 +26,9 @@ export async function LocalizedLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <ErrorBoundary>{children}</ErrorBoundary>
+      <ThemeProvider>
+        <ErrorBoundary>{children}</ErrorBoundary>
+      </ThemeProvider>
     </NextIntlClientProvider>
   );
 }

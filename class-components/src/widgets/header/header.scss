@@ -68,7 +68,7 @@
   }
 }
 
-.theme-toggle {
+.app-header__theme-toggle {
   @extend %label-text;
   white-space: nowrap;
   cursor: pointer;
@@ -76,6 +76,10 @@
   border: $border-base;
   color: $color-text-dim;
   padding: $padding-xs;
+  height: 32px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
   transition:
     border-color $transition-fast,
     color $transition-fast;
