@@ -6,7 +6,7 @@ import Link from 'next/link';
 
 import { useTranslations } from 'next-intl';
 
-import { useLocalization } from '@core/hooks/use-localization';
+import { useLocalization } from '@/i18n/hooks/use-localization';
 import { useTheme } from '@core/theme/use-theme';
 
 import { LOCALE_DISPLAY_NAMES } from '@shared/constants/locale-display-names';
