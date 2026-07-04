@@ -4,7 +4,7 @@ import type { JSX } from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import { useSelectionStore } from '@/core/store/selection-store.ts';
+import { useSelectionStore } from '@features/store/selection-store';
 
 import { ActionButton } from '@/shared/ui/buttons/action-button/action-button.tsx';
 import { generateCsvBlob } from '@/shared/utilities/generate-csv-blob.ts';

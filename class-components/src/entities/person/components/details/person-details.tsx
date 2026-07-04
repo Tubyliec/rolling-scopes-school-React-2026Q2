@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useLocale, useTranslations } from 'next-intl';
 
-import { usePersonQuery } from '@/core/swapi/hooks/use-person-query.ts';
+import { usePersonQuery } from '@features/swapi/hooks/use-person-query';
 
 import { BaseButton } from '@shared/ui/buttons/base-button/base-button.tsx';
 import { CloseButton } from '@shared/ui/buttons/close-button/close-button.tsx';

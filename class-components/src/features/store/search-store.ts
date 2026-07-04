@@ -1,4 +1,4 @@
-import type { SearchState } from '@core/store/model/types/search-state.type.ts';
+import type { SearchState } from './model/types/search-state.type';
 
 import { create } from 'zustand';
 

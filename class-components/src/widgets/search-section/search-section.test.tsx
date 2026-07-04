@@ -2,7 +2,7 @@ import { MemoryRouter } from 'react-router-dom';
 
 import { QueryClientProvider } from '@tanstack/react-query';
 
-import { useSearchStore } from '@/core/store/search-store.ts';
+import { useSearchStore } from '@features/store/search-store';
 
 import { createTestQueryClient } from '@/test/query-test-utils.tsx';
 import { render, screen, waitFor } from '@testing-library/react';

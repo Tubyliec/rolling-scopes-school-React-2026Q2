@@ -1,4 +1,4 @@
-import type { SelectionState } from '@core/store/model/types/selection-state.type.ts';
+import type { SelectionState } from './model/types/selection-state.type';
 import type { Person } from '@entities/person/model/types/person.type.ts';
 
 import { create } from 'zustand';

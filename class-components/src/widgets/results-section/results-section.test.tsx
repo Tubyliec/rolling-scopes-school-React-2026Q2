@@ -18,7 +18,7 @@ import ResultsSection from './results-section';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockGetPeople = vi.fn();
-vi.mock('@/core/swapi/swapi-service.ts', () => ({
+vi.mock('@features/swapi/swapi-service.ts', () => ({
   getPeople: (...args: unknown[]) => mockGetPeople(...args),
 }));
 

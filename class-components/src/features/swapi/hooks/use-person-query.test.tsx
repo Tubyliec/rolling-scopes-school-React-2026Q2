@@ -13,7 +13,7 @@ import { usePersonQuery } from './use-person-query';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 const mockGetPerson = vi.fn();
-vi.mock('@/core/swapi/swapi-service.ts', () => ({
+vi.mock('@features/swapi/swapi-service.ts', () => ({
   getPerson: (...args: unknown[]) => mockGetPerson(...args),
 }));
 

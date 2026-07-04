@@ -1,4 +1,4 @@
-import { useSelectionStore } from '@/core/store/selection-store.ts';
+import { useSelectionStore } from '@features/store/selection-store';
 
 import '@testing-library/jest-dom';
 import { beforeEach } from 'vitest';

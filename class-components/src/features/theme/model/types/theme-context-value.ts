@@ -1,4 +1,4 @@
-import type { Theme } from '@core/theme/model/types/theme.type.ts';
+import type { Theme } from './theme.type';
 
 export type ThemeContextValue = Readonly<{
   theme: Theme;

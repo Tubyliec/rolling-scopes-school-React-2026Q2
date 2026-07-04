@@ -1,8 +1,8 @@
 'use server';
 
-import { getPerson } from '@core/swapi/swapi-service';
-
 import type { Person } from '@entities/person/model/types/person.type';
+
+import { getPerson } from '../swapi-service';
 
 export async function getPersonDetailAction(
   id: string

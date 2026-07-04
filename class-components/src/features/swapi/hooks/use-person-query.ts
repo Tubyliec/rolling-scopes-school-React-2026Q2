@@ -2,10 +2,11 @@
 
 import { useQuery } from '@tanstack/react-query';
 
-import { queryKeys } from '@/core/query/query-keys.ts';
-import { getPerson } from '@/core/swapi/swapi-service.ts';
+import { queryKeys } from '@features/query/query-keys';
 
 import type { Person } from '@entities/person/model/types/person.type.ts';
+
+import { getPerson } from '../swapi-service';
 
 async function fetchPerson(id: string): Promise<Person> {
   const result = await getPerson(id);

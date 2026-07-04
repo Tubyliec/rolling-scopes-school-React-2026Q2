@@ -1,8 +1,8 @@
 'use server';
 
-import { getPeople } from '@core/swapi/swapi-service';
+import type { SearchResult } from '../model/types/search-result.type';
 
-import type { SearchResult } from '@core/swapi/model/types/search-result.type';
+import { getPeople } from '../swapi-service';
 
 export async function searchPeopleAction(
   term: string,

@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from 'next/navigation';
 
 import { useLocale } from 'next-intl';
 
-import { useSelectionStore } from '@/core/store/selection-store.ts';
+import { useSelectionStore } from '@features/store/selection-store';
 
 import ResultsTableBadges from '@widgets/results-section/components/results-table-badges/results-table-badges.tsx';
 

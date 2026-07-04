@@ -2,9 +2,9 @@
 
 import { createContext, type JSX, useEffect, useState } from 'react';
 
-import type { Theme } from '@core/theme/model/types/theme.type.ts';
-import type { ThemeContextValue } from '@core/theme/model/types/theme-context-value.ts';
-import type { ThemeProviderProps } from '@core/theme/model/types/theme-provider-props.ts';
+import type { Theme } from './model/types/theme.type';
+import type { ThemeContextValue } from './model/types/theme-context-value';
+import type { ThemeProviderProps } from './model/types/theme-provider-props';
 
 const APP_THEME = {
   dark: 'dark',

@@ -1,4 +1,4 @@
-import { useSelectionStore } from '@/core/store/selection-store.ts';
+import { useSelectionStore } from '@features/store/selection-store';
 
 import * as downloadUtils from '@/shared/utilities/download-csv.ts';
 

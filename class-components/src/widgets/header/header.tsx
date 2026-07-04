@@ -6,13 +6,13 @@ import Link from 'next/link';
 
 import { useTranslations } from 'next-intl';
 
-import { useLocalization } from '@/i18n/hooks/use-localization';
-import { useTheme } from '@core/theme/use-theme';
+import { useTheme } from '@features/theme/use-theme';
 
 import { LOCALE_DISPLAY_NAMES } from '@shared/constants/locale-display-names';
 import { ROUTES } from '@shared/constants/route-constants';
 import { THEME_ICONS } from '@shared/constants/theme-icons';
 
+import { useLocalization } from '@/i18n/hooks/use-localization';
 import { SUPPORTED_LOCALES } from '@/i18n/i18n.config';
 
 import './header.scss';

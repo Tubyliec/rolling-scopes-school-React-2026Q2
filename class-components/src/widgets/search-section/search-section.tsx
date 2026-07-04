@@ -8,7 +8,7 @@ import { useLocale } from 'next-intl';
 
 import { useIsFetching } from '@tanstack/react-query';
 
-import { useSearchStore } from '@/core/store/search-store.ts';
+import { useSearchStore } from '@features/store/search-store';
 
 import SearchField from '@widgets/search-section/components/search-field/search-field.tsx';
 

@@ -1,8 +1,7 @@
 import type { ReactNode } from 'react';
 
-import { searchPeopleAction } from '@core/swapi/actions/search-people';
-
 import Pagination from '@features/pagination/pagination';
+import { searchPeopleAction } from '@features/swapi/actions/search-people';
 
 import ResultsTable from '@widgets/results-section/components/results-table/results-table';
 
