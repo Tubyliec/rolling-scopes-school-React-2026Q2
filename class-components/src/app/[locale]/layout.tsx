@@ -10,7 +10,7 @@ import { ThemeProvider } from '@core/theme/theme-context';
 
 import { SUPPORTED_LOCALES } from '@/i18n/i18n.config';
 
-import type { LocalizedLayoutProps } from './model/types/localized-layout-props.type.ts';
+import type { LocalizedLayoutProps } from '../model/types/localized-layout-props.type.ts';
 
 export async function LocalizedLayout({
   children,

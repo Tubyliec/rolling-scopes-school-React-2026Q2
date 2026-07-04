@@ -14,7 +14,7 @@ import { ErrorButton } from '@shared/ui/buttons/error-button/error-button';
 import { LoadingSpinner } from '@shared/ui/loading-spinner/loading-spinner';
 import { getFirstString } from '@shared/utilities/get-first-string';
 
-import type { MainPageProps } from '../model/types/main-page-props.type.ts';
+import type { MainPageProps } from '../../model/types/main-page-props.type.ts';
 
 export async function MainPage({
   params,
