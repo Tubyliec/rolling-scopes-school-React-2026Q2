@@ -4,7 +4,7 @@ import { searchPeopleAction } from '@core/swapi/actions/search-people';
 
 import Pagination from '@features/pagination/pagination';
 
-import ResultsTable from '@widgets/results-sections/components/results-table/results-table';
+import ResultsTable from '@widgets/results-section/components/results-table/results-table';
 
 import { ErrorDisplay } from '@shared/ui/errors/error-display/error-display';
 import { ResultsEmpty } from '@shared/ui/errors/results-empty/results-empty';

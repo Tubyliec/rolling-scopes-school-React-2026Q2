@@ -4,7 +4,7 @@ import { type JSX } from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import ResultsTableRow from '@widgets/results-sections/components/results-table-row/results-table-row.tsx';
+import ResultsTableRow from '@widgets/results-section/components/results-table-row/results-table-row.tsx';
 
 import { ResultsEmpty } from '@shared/ui/errors/results-empty/results-empty.tsx';
 

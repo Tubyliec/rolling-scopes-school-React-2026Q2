@@ -6,7 +6,7 @@ import PersonDetail from '@entities/person/components/details/person-details';
 import Flyout from '@widgets/flyout/flyout';
 import Header from '@widgets/header/header';
 import { Layout } from '@widgets/layout/layout';
-import { ResultsContent } from '@widgets/results-sections/results-content';
+import { ResultsContent } from '@widgets/results-section/results-content';
 import SearchSection from '@widgets/search-section/search-section';
 
 import { LAYOUT_CLASSES } from '@shared/constants/layout-classes';

@@ -8,7 +8,7 @@ import { useLocale } from 'next-intl';
 
 import { useSelectionStore } from '@/core/store/selection-store.ts';
 
-import ResultsTableBadges from '@widgets/results-sections/components/results-table-badges/results-table-badges.tsx';
+import ResultsTableBadges from '@widgets/results-section/components/results-table-badges/results-table-badges.tsx';
 
 import { buildDescription } from '@shared/utilities/build-descriptions.ts';
 import { extractPersonId } from '@shared/utilities/extract-person-id.ts';
