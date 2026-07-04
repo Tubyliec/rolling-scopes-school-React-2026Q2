@@ -8,7 +8,7 @@ import { getMessages } from 'next-intl/server';
 import ErrorBoundary from '@core/error-boundary/error-boundary';
 import { ThemeProvider } from '@core/theme/theme-context';
 
-import { SUPPORTED_LOCALES } from '@/i18n.config';
+import { SUPPORTED_LOCALES } from '@/i18n/i18n.config';
 
 import type { LocalizedLayoutProps } from './model/types/localized-layout-props.type.ts';
 

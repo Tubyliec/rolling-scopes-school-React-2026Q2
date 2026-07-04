@@ -13,7 +13,7 @@ import { LOCALE_DISPLAY_NAMES } from '@shared/constants/locale-display-names';
 import { ROUTES } from '@shared/constants/route-constants';
 import { THEME_ICONS } from '@shared/constants/theme-icons';
 
-import { SUPPORTED_LOCALES } from '@/i18n.config';
+import { SUPPORTED_LOCALES } from '@/i18n/i18n.config';
 
 import './header.scss';
 

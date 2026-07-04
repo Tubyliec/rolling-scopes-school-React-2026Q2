@@ -2,7 +2,7 @@ import { NextResponse } from 'next/server';
 
 import createMiddleware from 'next-intl/middleware';
 
-import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@/i18n.config';
+import { DEFAULT_LOCALE, SUPPORTED_LOCALES } from '@/i18n/i18n.config';
 
 import type { NextRequest } from 'next/server';
 
