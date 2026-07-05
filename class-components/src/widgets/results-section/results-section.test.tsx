@@ -11,7 +11,7 @@ import {
 } from '@/test/query-test-utils.tsx';
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';
 
-import type { Person } from '@entities/person/model/types/person.type.ts';
+import type { Person } from '@features/swapi/model/types/person.type.ts';
 
 import ResultsSection from './results-section';
 

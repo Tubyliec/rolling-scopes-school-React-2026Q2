@@ -1,4 +1,4 @@
-import type { Person } from '@entities/person/model/types/person.type.ts';
+import type { Person } from './person.type.ts';
 
 export type SearchResult = Readonly<{
   results: Person[];

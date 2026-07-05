@@ -1,0 +1,22 @@
+@use '../../../shared/styles/_variables.scss' as *;
+@use '../../../shared/styles/_placeholders.scss' as *;
+
+.person-details-content {
+  display: flex;
+  flex-direction: column;
+  gap: $spacing-md;
+
+  &__name {
+    font-size: $font-size-lg;
+    font-weight: $font-weight-bold;
+    letter-spacing: $letter-spacing-sm;
+    text-transform: uppercase;
+  }
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-sm;
+  }
+}

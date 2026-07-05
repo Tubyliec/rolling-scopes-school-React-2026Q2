@@ -1,5 +1,5 @@
 import type { SelectionState } from './model/types/selection-state.type';
-import type { Person } from '@entities/person/model/types/person.type.ts';
+import type { Person } from '@features/swapi/model/types/person.type.ts';
 
 import { create } from 'zustand';
 

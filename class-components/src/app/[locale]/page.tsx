@@ -1,11 +1,10 @@
 import type { ReactNode } from 'react';
 import { Suspense } from 'react';
 
-import PersonDetail from '@entities/person/components/details/person-details';
-
 import Flyout from '@widgets/flyout/flyout';
 import Header from '@widgets/header/header';
 import { Layout } from '@widgets/layout/layout';
+import PersonDetails from '@widgets/person-details/person-details.tsx';
 import { ResultsContent } from '@widgets/results-section/results-content';
 import SearchSection from '@widgets/search-section/search-section';
 
@@ -46,7 +45,7 @@ export default async function MainPage({
         </div>
         {detailsId && (
           <Suspense fallback={<LoadingSpinner />}>
-            <PersonDetail personId={detailsId} />
+            <PersonDetails personId={detailsId} />
           </Suspense>
         )}
       </div>

@@ -1,5 +1,5 @@
-@use '../../../../shared/styles/_variables.scss' as *;
-@use '../../../../shared/styles/_placeholders.scss' as *;
+@use '../../shared/styles/_variables.scss' as *;
+@use '../../shared/styles/_placeholders.scss' as *;
 
 .person-details {
   position: relative;
@@ -30,20 +30,6 @@
     }
   }
 
-  &__name {
-    font-size: $font-size-lg;
-    font-weight: $font-weight-bold;
-    letter-spacing: $letter-spacing-sm;
-    text-transform: uppercase;
-  }
-
-  &__list {
-    list-style: none;
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-sm;
-  }
-
   &__item {
     @extend %flex-row-space-between-center;
     border-bottom: $border-bright;
@@ -61,12 +47,6 @@
   &__empty {
     opacity: $opacity-sm;
     font-size: $font-size-base;
-  }
-
-  &__content {
-    display: flex;
-    flex-direction: column;
-    gap: $spacing-md;
   }
 
   &__actions {

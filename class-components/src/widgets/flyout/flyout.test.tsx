@@ -4,7 +4,7 @@ import * as downloadUtils from '@/shared/utilities/download-csv.ts';
 
 import { fireEvent, render, screen } from '@testing-library/react';
 
-import type { Person } from '@entities/person/model/types/person.type.ts';
+import type { Person } from '@features/swapi/model/types/person.type.ts';
 
 import Flyout from './flyout';
 

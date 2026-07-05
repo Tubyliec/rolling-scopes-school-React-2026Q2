@@ -2,12 +2,12 @@
 
 import type { JSX } from 'react';
 
-import type { PersonDetailItemProps } from './model/types/person-detail-item-props.type.ts';
+import type { PersonDetailsItemProps } from './model/types/person-details-item-props.type.ts';
 
-export function PersonDetailItem({
+export function PersonDetailsItem({
   label,
   value,
-}: PersonDetailItemProps): JSX.Element {
+}: PersonDetailsItemProps): JSX.Element {
   return (
     <li className="person-details__item">
       <span className="person-details__label">{label}</span>

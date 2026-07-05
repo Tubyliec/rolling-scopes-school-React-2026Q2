@@ -1,6 +1,6 @@
 'use server';
 
-import type { Person } from '@entities/person/model/types/person.type';
+import type { Person } from '../model/types/person.type.ts';
 
 import { getPerson } from '../swapi-service';
 

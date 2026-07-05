@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "ES2020",
-    "lib": [
-      "ES2020",
-      "DOM",
-      "DOM.Iterable"
-    ],
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
     "jsx": "preserve",
     "module": "ESNext",
     "moduleResolution": "bundler",
@@ -29,24 +25,11 @@
     "baseUrl": ".",
     "ignoreDeprecations": "6.0",
     "paths": {
-      "@/*": [
-        "./src/*"
-      ],
-      "@features/*": [
-        "./src/features/*"
-      ],
-      "@pages/*": [
-        "./src/pages/*"
-      ],
-      "@widgets/*": [
-        "./src/widgets/*"
-      ],
-      "@entities/*": [
-        "./src/entities/*"
-      ],
-      "@shared/*": [
-        "./src/shared/*"
-      ]
+      "@/*": ["./src/*"],
+      "@features/*": ["./src/features/*"],
+      "@pages/*": ["./src/pages/*"],
+      "@widgets/*": ["./src/widgets/*"],
+      "@shared/*": ["./src/shared/*"]
     },
     "incremental": true,
     "plugins": [
@@ -64,8 +47,5 @@
     ".next/types/**/*.ts",
     "css-modules.d.ts"
   ],
-  "exclude": [
-    "node_modules",
-    "src/test"
-  ]
+  "exclude": ["node_modules", "src/test"]
 }
