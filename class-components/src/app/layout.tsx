@@ -4,7 +4,7 @@ import { APP_METADATA } from '@shared/constants/metadata-constants.ts';
 
 import type { RootLayoutProps } from './model/types/root-layout-props.type.ts';
 
-import { RootLayoutProvider } from './root-layout-provider';
+import { RootLayoutProvider } from './providers/root-layout-provider';
 
 import './app.scss';
 

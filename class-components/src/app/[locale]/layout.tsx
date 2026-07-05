@@ -6,13 +6,12 @@ import { NextIntlClientProvider } from 'next-intl';
 import { getMessages } from 'next-intl/server';
 
 import ErrorBoundary from '@features/error-boundary/error-boundary';
-import { ThemeProvider } from '@features/theme/theme-context';
 
 import { SUPPORTED_LOCALES } from '@/i18n/i18n.config';
 
 import type { LocalizedLayoutProps } from '../model/types/localized-layout-props.type.ts';
 
-export async function LocalizedLayout({
+export default async function LocalizedLayout({
   children,
   params,
 }: LocalizedLayoutProps): Promise<ReactNode> {
@@ -26,14 +25,10 @@ export async function LocalizedLayout({
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <ThemeProvider>
-        <ErrorBoundary>{children}</ErrorBoundary>
-      </ThemeProvider>
+      <ErrorBoundary>{children}</ErrorBoundary>
     </NextIntlClientProvider>
   );
 }
-
-export default LocalizedLayout;
 
 export function generateStaticParams() {
   return SUPPORTED_LOCALES.map((locale) => ({ locale }));

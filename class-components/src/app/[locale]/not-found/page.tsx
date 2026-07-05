@@ -8,7 +8,7 @@ import { useLocale, useTranslations } from 'next-intl';
 
 import { MAIN_PAGE_ROUTE } from '@shared/constants/route-constants';
 
-export function NotFoundPage(): ReactNode {
+export default function NotFoundPage(): ReactNode {
   const t = useTranslations('not-found');
   const locale = useLocale();
 
@@ -26,5 +26,3 @@ export function NotFoundPage(): ReactNode {
     </div>
   );
 }
-
-export default NotFoundPage;

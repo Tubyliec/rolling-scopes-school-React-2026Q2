@@ -1,4 +1,7 @@
-import type { SelectOption } from '@features/forms/model/types/select-options.type.ts';
+export type SelectOption = Readonly<{
+  value: string;
+  label: string;
+}>;
 
 export const GENDER_OPTIONS: SelectOption[] = [
   { value: 'male', label: 'Male' },

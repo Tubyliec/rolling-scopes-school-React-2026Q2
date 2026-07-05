@@ -10,7 +10,7 @@ import { MAIN_PAGE_ROUTE } from '@shared/constants/route-constants';
 
 import './page.scss';
 
-export function AboutPage(): ReactNode {
+export default function AboutPage(): ReactNode {
   const t = useTranslations('about');
   const locale = useLocale();
 
@@ -49,5 +49,3 @@ export function AboutPage(): ReactNode {
     </div>
   );
 }
-
-export default AboutPage;
