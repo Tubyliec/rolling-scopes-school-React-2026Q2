@@ -4,15 +4,11 @@ import type { JSX } from 'react';
 
 import { useTranslations } from 'next-intl';
 
-import type { Person } from '@features/swapi/model/types/person.type.ts';
+import type { PersonDetailsContentProps } from '@widgets/person-details/model/types/person-details-content-props.type.ts';
 
 import { PersonDetailsItem } from '../person-details-item/person-details-item';
 
 import './person-details-content.scss';
-
-type PersonDetailsContentProps = Readonly<{
-  person: Person;
-}>;
 
 export function PersonDetailsContent({
   person,
