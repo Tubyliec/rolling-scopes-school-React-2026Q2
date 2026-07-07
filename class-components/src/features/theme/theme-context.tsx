@@ -2,16 +2,15 @@
 
 import { createContext, type JSX, useEffect, useState } from 'react';
 
+import { APP_THEME } from '@shared/constants/theme-constants';
+
 import type { Theme } from './model/types/theme.type';
 import type { ThemeContextValue } from './model/types/theme-context-value';
 import type { ThemeProviderProps } from './model/types/theme-provider-props';
 
-const APP_THEME = {
-  dark: 'dark',
-  light: 'light',
-} as const;
-
 const ThemeContext = createContext<ThemeContextValue | null>(null);
+
+export default ThemeContext;
 
 export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
   const [theme, setTheme] = useState<Theme>('dark');
@@ -33,5 +32,3 @@ export function ThemeProvider({ children }: ThemeProviderProps): JSX.Element {
     </ThemeContext.Provider>
   );
 }
-
-export default ThemeContext;
