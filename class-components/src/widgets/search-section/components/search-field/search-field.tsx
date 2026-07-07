@@ -14,7 +14,7 @@ function SearchField({
   onChange,
   onSearch,
 }: SearchFieldProps): JSX.Element {
-  const t = useTranslations('search');
+  const translation = useTranslations('search');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>): void => {
     onChange(e.target.value);
@@ -27,20 +27,20 @@ function SearchField({
     }
   };
 
-  const buttonText = isLoading ? t('loading') : t('button');
+  const buttonText = isLoading ? translation('loading') : translation('button');
 
   return (
     <div className="search-field">
       <div className="search-field__group">
         <label className="search-field__label" htmlFor="search-input">
-          {t('label')}
+          {translation('label')}
         </label>
         <div className="search-field__input-wrap">
           <input
             id="search-input"
             className="search-field__input"
             type="text"
-            placeholder={t('placeholder')}
+            placeholder={translation('placeholder')}
             value={value}
             onChange={handleChange}
             onKeyDown={handleKeyDown}

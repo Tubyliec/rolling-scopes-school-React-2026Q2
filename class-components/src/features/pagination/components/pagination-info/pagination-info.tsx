@@ -13,16 +13,16 @@ export function PaginationInfo({
   currentPage,
   totalPages,
 }: PaginationInfoProps): JSX.Element {
-  const t = useTranslations('results');
+  const translation = useTranslations('results');
 
   return (
     <div className="pagination__info">
       <span className="pagination__count">
-        {count} {t('total')}
+        {count} {translation('total')}
       </span>
       <span className="pagination__divider">|</span>
       <span className="pagination__pages">
-        {t('page')} {currentPage} {t('of')} {totalPages}
+        {translation('page')} {currentPage} {translation('of')} {totalPages}
       </span>
     </div>
   );

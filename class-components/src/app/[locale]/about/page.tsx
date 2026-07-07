@@ -11,26 +11,32 @@ import { MAIN_PAGE_ROUTE } from '@shared/constants/route-constants';
 import './page.scss';
 
 export default function AboutPage(): ReactNode {
-  const t = useTranslations('about');
+  const translation = useTranslations('about');
   const locale = useLocale();
 
   return (
     <div className="about-page">
       <div className="about-page__wrapper wrapper">
-        <h1 className="about-page__title">{t('title')}</h1>
+        <h1 className="about-page__title">{translation('title')}</h1>
 
         <section className="about-page__section">
-          <h2 className="about-page__subtitle">{t('application.title')}</h2>
-          <p className="about-page__text">{t('application.description')}</p>
+          <h2 className="about-page__subtitle">
+            {translation('application.title')}
+          </h2>
+          <p className="about-page__text">
+            {translation('application.description')}
+          </p>
         </section>
 
         <section className="about-page__section">
-          <h2 className="about-page__subtitle">{t('course.title')}</h2>
+          <h2 className="about-page__subtitle">
+            {translation('course.title')}
+          </h2>
           <p className="about-page__text">
-            {t('course.description')}
+            {translation('course.description')}
             <a
               className="about-page__link"
-              href={t('course.link')}
+              href={translation('course.link')}
               target="_blank"
               rel="noreferrer"
             >
@@ -43,7 +49,7 @@ export default function AboutPage(): ReactNode {
           className="about-page__back"
           href={`/${locale}/${MAIN_PAGE_ROUTE}`}
         >
-          {t('back')}
+          {translation('back')}
         </Link>
       </div>
     </div>

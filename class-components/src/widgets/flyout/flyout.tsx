@@ -13,7 +13,7 @@ import './flyout.scss';
 
 function Flyout(): JSX.Element | null {
   const { selectedItems, unselectAll } = useSelectionStore();
-  const t = useTranslations('pagination');
+  const translation = useTranslations('pagination');
 
   if (selectedItems.size === 0) return null;
 
@@ -29,7 +29,7 @@ function Flyout(): JSX.Element | null {
   };
 
   const itemCount = selectedItems.size;
-  const itemsText = t('itemsSelected');
+  const itemsText = translation('itemsSelected');
 
   return (
     <div className="flyout" role="complementary">
@@ -40,10 +40,10 @@ function Flyout(): JSX.Element | null {
         </span>
         <div className="flyout__actions">
           <ActionButton onClick={unselectAll} variant="secondary">
-            {t('unselectAll')}
+            {translation('unselectAll')}
           </ActionButton>
           <ActionButton onClick={handleDownload} variant="primary">
-            {t('download')}
+            {translation('download')}
           </ActionButton>
         </div>
       </div>

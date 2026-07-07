@@ -17,19 +17,40 @@ type PersonDetailsContentProps = Readonly<{
 export function PersonDetailsContent({
   person,
 }: PersonDetailsContentProps): JSX.Element {
-  const t = useTranslations('results');
+  const translation = useTranslations('results');
 
   return (
     <div className="person-details-content">
       <h2 className="person-details-content__name">{person.name}</h2>
       <ul className="person-details-content__list">
-        <PersonDetailsItem label={t('height')} value={`${person.height} cm`} />
-        <PersonDetailsItem label={t('mass')} value={`${person.mass} kg`} />
-        <PersonDetailsItem label={t('birthYear')} value={person.birth_year} />
-        <PersonDetailsItem label={t('gender')} value={person.gender} />
-        <PersonDetailsItem label={t('hair')} value={person.hair_color} />
-        <PersonDetailsItem label={t('eyes')} value={person.eye_color} />
-        <PersonDetailsItem label={t('skin')} value={person.skin_color} />
+        <PersonDetailsItem
+          label={translation('height')}
+          value={`${person.height} cm`}
+        />
+        <PersonDetailsItem
+          label={translation('mass')}
+          value={`${person.mass} kg`}
+        />
+        <PersonDetailsItem
+          label={translation('birthYear')}
+          value={person.birth_year}
+        />
+        <PersonDetailsItem
+          label={translation('gender')}
+          value={person.gender}
+        />
+        <PersonDetailsItem
+          label={translation('hair')}
+          value={person.hair_color}
+        />
+        <PersonDetailsItem
+          label={translation('eyes')}
+          value={person.eye_color}
+        />
+        <PersonDetailsItem
+          label={translation('skin')}
+          value={person.skin_color}
+        />
       </ul>
     </div>
   );

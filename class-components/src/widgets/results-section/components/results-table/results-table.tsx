@@ -13,7 +13,7 @@ import type { ResultsTableProps } from '../../model/types/results-table.type.ts'
 import './results-table.scss';
 
 function ResultsTable({ results, selectedId }: ResultsTableProps): JSX.Element {
-  const t = useTranslations('results');
+  const translation = useTranslations('results');
 
   const isEmpty = !results.length;
 
@@ -26,8 +26,8 @@ function ResultsTable({ results, selectedId }: ResultsTableProps): JSX.Element {
       <thead className="results-table__head">
         <tr>
           <th className="results-table__th results-table__th--checkbox" />
-          <th className="results-table__th">{t('name')}</th>
-          <th className="results-table__th">{t('description')}</th>
+          <th className="results-table__th">{translation('name')}</th>
+          <th className="results-table__th">{translation('description')}</th>
         </tr>
       </thead>
       <tbody>
