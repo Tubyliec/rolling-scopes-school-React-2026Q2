@@ -1,3 +1,5 @@
+import { ERROR_MESSAGES } from '@shared/constants/error-messages';
+
 import type { SearchError } from './model/types/search-error.type';
 
 export async function fetchJson<T>(url: string): Promise<T | SearchError> {
@@ -5,17 +7,22 @@ export async function fetchJson<T>(url: string): Promise<T | SearchError> {
     const response = await fetch(url);
 
     if (!response.ok) {
-      return { message: `Server error ${response.status}...` };
+      return { message: ERROR_MESSAGES.SERVER_ERROR(response.status) };
     }
 
     return (await response.json()) as T;
   } catch (err) {
-    const message =
-      err instanceof Error
-        ? err.message.toLowerCase().includes('fetch')
-          ? 'Network error: Unable to connect to SWAPI server.'
-          : err.message
-        : 'Unknown error occurred';
+    let message: string;
+
+    if (err instanceof Error) {
+      if (err.message.toLowerCase().includes('fetch')) {
+        message = ERROR_MESSAGES.NETWORK_ERROR;
+      } else {
+        message = err.message;
+      }
+    } else {
+      message = ERROR_MESSAGES.UNKNOWN_ERROR;
+    }
 
     return { message };
   }
