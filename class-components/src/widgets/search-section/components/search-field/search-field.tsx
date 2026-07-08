@@ -4,6 +4,8 @@ import React, { type JSX } from 'react';
 
 import { useTranslations } from 'next-intl';
 
+import { BaseButton } from '@shared/ui/buttons/base-button/base-button';
+
 import type { SearchFieldProps } from '../../model/types/search-field.type.ts';
 
 import './search-field.scss';
@@ -49,14 +51,13 @@ function SearchField({
         </div>
       </div>
 
-      <button
+      <BaseButton
         className="search-field__btn"
         onClick={onSearch}
         disabled={isLoading}
-        type="button"
       >
         {buttonText}
-      </button>
+      </BaseButton>
     </div>
   );
 }

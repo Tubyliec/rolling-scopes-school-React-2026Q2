@@ -11,12 +11,14 @@ export function BaseButton({
   onClick,
   className = '',
   type = 'button',
+  disabled = false,
 }: BaseButtonProps): JSX.Element {
   return (
     <button
       className={`base-button ${className}`}
       onClick={onClick}
       type={type}
+      disabled={disabled}
     >
       {children}
     </button>

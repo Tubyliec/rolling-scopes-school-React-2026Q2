@@ -11,6 +11,7 @@ import { useTheme } from '@features/theme/use-theme';
 import { LOCALE_DISPLAY_NAMES } from '@shared/constants/locale-display-names';
 import { ROUTES } from '@shared/constants/route-constants';
 import { THEME_ICONS } from '@shared/constants/theme-icons';
+import { BaseButton } from '@shared/ui/buttons/base-button/base-button';
 
 import { useLocalization } from '@/i18n/hooks/use-localization';
 import { SUPPORTED_LOCALES } from '@/i18n/i18n.config';
@@ -35,13 +36,12 @@ function Header(): JSX.Element {
           >
             {translation('about')}
           </Link>
-          <button
+          <BaseButton
             className="app-header__theme-toggle"
             onClick={toggleTheme}
-            type="button"
           >
             {theme === 'dark' ? THEME_ICONS.SUN : THEME_ICONS.MOON}
-          </button>
+          </BaseButton>
           <select
             className="app-header__language-select"
             value={locale}
