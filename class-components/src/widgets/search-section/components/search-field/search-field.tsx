@@ -4,6 +4,7 @@ import React, { type JSX } from 'react';
 
 import { useTranslations } from 'next-intl';
 
+import { SEARCH_TRANSLATION_KEYS } from '@shared/constants/search-constants';
 import { BaseButton } from '@shared/ui/buttons/base-button/base-button';
 
 import type { SearchFieldProps } from '../../model/types/search-field.type.ts';
@@ -29,20 +30,22 @@ function SearchField({
     }
   };
 
-  const buttonText = isLoading ? translation('loading') : translation('button');
+  const buttonText = isLoading
+    ? translation(SEARCH_TRANSLATION_KEYS.LOADING)
+    : translation(SEARCH_TRANSLATION_KEYS.BUTTON);
 
   return (
     <div className="search-field">
       <div className="search-field__group">
         <label className="search-field__label" htmlFor="search-input">
-          {translation('label')}
+          {translation(SEARCH_TRANSLATION_KEYS.LABEL)}
         </label>
         <div className="search-field__input-wrap">
           <input
             id="search-input"
             className="search-field__input"
             type="text"
-            placeholder={translation('placeholder')}
+            placeholder={translation(SEARCH_TRANSLATION_KEYS.PLACEHOLDER)}
             value={value}
             onChange={handleChange}
             onKeyDown={handleKeyDown}
