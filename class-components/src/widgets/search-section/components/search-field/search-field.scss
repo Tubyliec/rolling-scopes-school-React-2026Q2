@@ -1,0 +1,94 @@
+@use '../../../../shared/styles/variables' as *;
+@use '../../../../shared/styles/placeholders' as *;
+
+.search-field {
+  @extend %flex-row-space-between;
+  gap: $spacing-md;
+  padding-top: $spacing-sm;
+  width: 100%;
+
+  &__group {
+    display: flex;
+    flex-direction: column;
+    gap: $spacing-xs;
+    flex: 1;
+  }
+
+  &__label {
+    @extend %label-text;
+  }
+
+  &__input-wrap {
+    position: relative;
+    display: flex;
+    align-items: center;
+    width: 100%;
+
+    &::before {
+      content: '>';
+      position: absolute;
+      left: $position-input-icon;
+      color: $color-amber;
+      font-size: $font-size-md;
+      pointer-events: none;
+    }
+  }
+
+  &__input {
+    width: 100%;
+    background: $color-bg;
+    border: $border-bright;
+    color: $color-text-bright;
+    font-family: $font-mono;
+    font-size: $font-size-md;
+    padding: $padding-md;
+    outline: none;
+    transition:
+      border-color $transition-base,
+      box-shadow $transition-base;
+    caret-color: $color-amber;
+
+    &::placeholder {
+      color: $color-text-dim;
+    }
+
+    &:focus {
+      border-color: $color-amber;
+      box-shadow:
+        0 0 0 1px $color-amber,
+        inset 0 0 20px $color-amber-glow;
+    }
+
+    &:disabled {
+      opacity: $opacity-sm;
+    }
+  }
+
+  &__btn {
+    font-family: $font-mono;
+    font-size: $font-size-sm;
+    font-weight: $font-weight-extrabold;
+    letter-spacing: $letter-spacing-lg;
+    text-transform: uppercase;
+    background: $color-amber;
+    color: $color-bg;
+    padding: $padding-lg;
+    align-self: flex-end;
+    transition:
+      background $transition-fast,
+      transform $transition-fast;
+
+    &:hover:not(:disabled) {
+      background: $color-amber-dim;
+    }
+
+    &:active:not(:disabled) {
+      transform: scale($scale-active);
+    }
+
+    &:disabled {
+      background: $color-border-bright;
+      color: $color-text-dim;
+    }
+  }
+}

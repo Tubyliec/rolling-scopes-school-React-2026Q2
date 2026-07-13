@@ -1,0 +1,18 @@
+@use '../../shared/styles/variables' as *;
+@use '../../shared/styles/placeholders' as *;
+
+.results-section {
+  flex: 1;
+  padding: $padding-xl;
+}
+
+.results__wrapper {
+  gap: 1rem;
+  @extend %flex-center-column;
+}
+
+.results-section__toolbar {
+  position: fixed;
+  bottom: 1.5rem;
+  left: 2rem;
+}

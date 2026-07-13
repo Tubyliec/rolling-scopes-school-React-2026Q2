@@ -1,0 +1,67 @@
+'use client';
+
+import { Component, type ErrorInfo, type JSX, type ReactNode } from 'react';
+
+import { BaseButton } from '@shared/ui/buttons/base-button/base-button.tsx';
+
+import type { ErrorBoundaryProps } from './model/types/error-boundary-props.type.ts';
+import type { ErrorBoundaryState } from './model/types/error-boundary-state.type.ts';
+
+import './error-boundary.scss';
+
+class ErrorBoundary extends Component<ErrorBoundaryProps, ErrorBoundaryState> {
+  public constructor(props: ErrorBoundaryProps) {
+    super(props);
+    this.state = { hasError: false, error: null };
+    this.handleReset = this.handleReset.bind(this);
+  }
+
+  public static getDerivedStateFromError(error: Error): ErrorBoundaryState {
+    return { hasError: true, error };
+  }
+
+  public componentDidCatch(error: Error, info: ErrorInfo): void {
+    console.error('[ErrorBoundary] Caught runtime error:', error, info);
+  }
+
+  private handleReset(): void {
+    this.setState({ hasError: false, error: null });
+  }
+
+  private renderFallback(): JSX.Element {
+    const { error } = this.state;
+
+    return (
+      <div className="error-boundary">
+        <div className="error-boundary__code">ERR</div>
+        <div className="error-boundary__title">SYSTEM FAILURE</div>
+        <p className="error-boundary__message">
+          An unexpected error occurred in the application runtime. The error has
+          been logged to the console.
+        </p>
+        {error !== null && (
+          <div className="error-boundary__detail">
+            <div className="error-boundary__detail-label">ERROR MESSAGE</div>
+            {error.message}
+          </div>
+        )}
+        <BaseButton
+          className="error-boundary__reset"
+          onClick={this.handleReset}
+        >
+          RESET APP
+        </BaseButton>
+      </div>
+    );
+  }
+
+  public render(): ReactNode {
+    if (this.state.hasError) {
+      return this.renderFallback();
+    }
+
+    return this.props.children;
+  }
+}
+
+export default ErrorBoundary;

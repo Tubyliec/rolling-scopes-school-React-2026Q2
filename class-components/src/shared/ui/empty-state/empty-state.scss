@@ -1,0 +1,10 @@
+@use '../../../shared/styles/variables' as *;
+@use '../../../shared/styles/placeholders' as *;
+
+.empty-state {
+  @extend %flex-center-column;
+  color: $color-text-dim;
+  font-size: $font-size-base;
+  text-align: center;
+  padding: $padding-xl;
+}
